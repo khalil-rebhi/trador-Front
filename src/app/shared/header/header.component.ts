@@ -1,5 +1,8 @@
 import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
 import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { Client } from 'src/app/core/models/Client';
+import { logout } from 'src/app/store/actions/user.action';
 
 declare var $: any;
 
@@ -15,7 +18,7 @@ export class HeaderComponent implements AfterViewInit {
 
   public showSearch = false;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private store : Store<{user : Client, accessToken : string}>) {
   }
 
   // This is for Notifications
@@ -112,4 +115,8 @@ export class HeaderComponent implements AfterViewInit {
   }]
 
   ngAfterViewInit() { }
+
+  logout(){
+    this.store.dispatch(logout());
+  }
 }

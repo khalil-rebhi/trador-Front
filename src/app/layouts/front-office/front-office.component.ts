@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { Client } from 'src/app/core/models/Client';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { SidebarComponent } from 'src/app/shared/sidebar/sidebar.component';
 
@@ -13,7 +15,7 @@ import { SidebarComponent } from 'src/app/shared/sidebar/sidebar.component';
   styleUrls: ['./front-office.component.css']
 })
 export class FrontOfficeComponent {
-  constructor(public router: Router) {}
+  constructor(public router: Router , private store: Store<{user : Client, accessToken : string}>) {}
   public isCollapsed = false;
   public innerWidth: number = 0;
   public defaultSidebar: string = "";
@@ -40,6 +42,7 @@ export class FrontOfficeComponent {
 
   handleSidebar() {
     this.innerWidth = window.innerWidth;
+    this.sidebartype = "full"
     if (this.innerWidth < 1170) {
       this.sidebartype = "full";
     } else {

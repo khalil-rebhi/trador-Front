@@ -16,11 +16,17 @@ import {
   PathLocationStrategy
 } from '@angular/common';
 import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
+import { LoginComponent } from './shared/login/login.component';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './store/reducers/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './store/effects/user.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +40,8 @@ import { FrontOfficeComponent } from './layouts/front-office/front-office.compon
     FrontOfficeComponent,
     HeaderComponent,
     SidebarComponent,
+    StoreModule.forRoot({user : userReducer} , {}),
+    EffectsModule.forRoot(UserEffects),
   ],
   providers: [
     {

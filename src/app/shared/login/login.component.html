@@ -1,0 +1,51 @@
+<div class="vh-100 parent">
+  <div class="alert alert-danger w-100" *ngIf="badCredentials">
+    Please verify your credentials.
+  </div>
+  <div class="d-flex justify-content-center align-items-center pt-5">
+      <div class="center-div">
+          <form #form="ngForm" (ngSubmit)="login()">
+              <div>
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <div class="input-group mb-3" [ngClass]="{
+                  'mb-3': !mail.touched,
+                  'input-group': true
+                }">
+                  <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+                  <input type="text" name="email" class="form-control" [ngClass]="{'is-valid' : mail.touched && !mail.invalid || badCredentials , 'is-invalid': mail.touched && mail.invalid || badCredentials }" placeholder="winner@trador.com" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="email" #mail="ngModel" autocomplete="off" required pattern="^[\w-]+(\.[\w-]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z]{2,}$">
+              </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                  <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" [ngClass]="{'is-valid' : mdp.touched && !mdp.invalid || badCredentials  , 'is-invalid': mdp.touched && mdp.invalid || badCredentials }" aria-label="Amount (to the nearest dollar)" [(ngModel)]="password" #mdp="ngModel" required autocomplete="off" name="password">
+                  <a class="eye" (click)="show()"><span class="input-group-text"><i *ngIf="!showPassword" class="bi bi-eye-fill"></i><i *ngIf="showPassword" class="bi bi-eye-slash-fill"></i></span></a>
+                </div>
+              </div>
+              <div class="d-flex justify-content-end forget"><a href="#" class="form-label">I forgot my password</a></div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+              </div>
+              <button [disabled]="form.invalid" type="submit" class="btn btn-outline-primary w-100" style="color: white;">Log in</button>
+            </form>
+            <div class="line-container">
+              <div class="line"></div>
+              <div class="or-text">Log in with</div>
+              <div class="line"></div>
+          </div>
+          <button type="button" class="btn btn-outline-success w-100"><i class="bi bi-google"></i></button>
+          <div class="line-container">
+              <div class="line"></div>
+              <div class="or-text">Are you new here ?</div>
+              <div class="line"></div>
+          </div>
+          <div class="d-flex justify-content-between line-container">
+              <button type="submit" class="btn btn-outline-primary w-50" style="color: white;">Join now</button>
+              <div class="or-text">or</div>
+              <button type="submit" class="btn btn-outline-success w-50"><i class="bi bi-google"></i></button>
+          </div>
+      </div>
+  </div>
+</div>

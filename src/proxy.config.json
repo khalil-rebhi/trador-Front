@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "http://localhost:8089/trador",
+      "secure": false,
+      "changeOrigin" : true
+    }
+  }
+  
