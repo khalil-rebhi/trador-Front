@@ -2,7 +2,7 @@ export class Client{
     id : number;
     userApplicationId : number;
     name : string;
-    familyname: string;
+    familyName: string;
     email:string;
     
 }
