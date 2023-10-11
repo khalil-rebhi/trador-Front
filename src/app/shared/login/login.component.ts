@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Client } from 'src/app/core/models/Client';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { LOGIN, login, logout } from 'src/app/store/actions/user.action';
+import { UserService } from 'src/app/core/services/user.service';
+import { login } from 'src/app/store/actions/user.action';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   password : string;
   badCredentials : boolean = false;
 
-  constructor(private authService: AuthService, private router : Router, private store: Store<{user : Client, accessToken : string}>) {
+  constructor(private authService: UserService, private router : Router, private store: Store<{user : Client, accessToken : string}>) {
   }
 
   ngOnInit(): void {

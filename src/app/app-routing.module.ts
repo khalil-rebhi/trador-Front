@@ -3,17 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from "./shared/guard/auth.guard";
 import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
 import { LoginComponent } from './shared/login/login.component';
+import { SignupComponent } from './shared/signup/signup.component';
 
 export const Approutes: Routes = [
   {
     path : '',
     children: [
-      {path : 'login', component : LoginComponent}
+      {path : 'login', component : LoginComponent},
+      {path : 'signup', component : SignupComponent}
     ]
   },
   {
     path: 'trador',
-    canActivate : [AuthGuard],
+    //canActivate : [AuthGuard],
     component: FrontOfficeComponent,
     children: [
       { path: 'trador', redirectTo: '/client', pathMatch: 'full' },

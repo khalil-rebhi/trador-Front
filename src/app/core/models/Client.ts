@@ -1,8 +1,19 @@
 export class Client{
-    id : number;
-    userApplicationId : number;
-    name : string;
-    familyName: string;
+    IdClient:number;
+    userApplicationId:string;
+    name:string;
+    familyName:string;
+    phoneNumber:string;
+    cin:number;
+    password:string;
     email:string;
-    
+    birthDate:Date;
+    isVerified:boolean = false;
+    isPremium:boolean = false;
+    dateStartPremium:Date;
+    createdAt:Date;
+    lastModifiedAt:Date;
+    address:string;
+    role : string = "USER"
+    type ?: string
 }
