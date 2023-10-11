@@ -22,13 +22,15 @@ import { userReducer } from './store/reducers/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
 import { SignupComponent } from './shared/signup/signup.component';
+import { LandingComponent } from './shared/landing/landing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SpinnerComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    LandingComponent
   ],
   imports: [
     CommonModule,
