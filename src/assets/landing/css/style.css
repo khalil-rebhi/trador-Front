@@ -640,6 +640,14 @@ section {
   border-color: #41cf2e;
 }
 
+.services .icon-box-purple .icon i {
+  color: #800080;
+}
+
+.services .icon-box-purple:hover {
+  border-color: #800080;
+}
+
 .services .icon-box-blue .icon i {
   color: #2282ff;
 }
