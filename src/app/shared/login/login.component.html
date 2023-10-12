@@ -1,51 +1,49 @@
-<div class="vh-100 parent">
-  <div class="alert alert-danger w-100" *ngIf="badCredentials">
-    Please verify your credentials.
+<header id="header" class="fixed-top d-flex align-items-center">
+  <div class="container d-flex align-items-center">
+    <div class="logo me-auto">
+      <h1><a href="">Trad'OR</a></h1>
+    </div>
   </div>
-  <div class="d-flex justify-content-center align-items-center pt-5">
-      <div class="center-div">
-          <form #form="ngForm" (ngSubmit)="login()">
-              <div>
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <div class="input-group mb-3" [ngClass]="{
-                  'mb-3': !mail.touched,
-                  'input-group': true
-                }">
-                  <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
-                  <input id="exampleInputEmail1" type="text" name="email" class="form-control" [ngClass]="{'is-valid' : mail.touched && !mail.invalid || badCredentials , 'is-invalid': mail.touched && mail.invalid || badCredentials }" placeholder="winner@trador.com" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="email" #mail="ngModel" autocomplete="off" required pattern="^[\w-]+(\.[\w-]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z]{2,}$">
-              </div>
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <div class="input-group mb-3">
-                  <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-                  <input id="exampleInputPassword1" type="{{ showPassword ? 'text' : 'password' }}" class="form-control" [ngClass]="{'is-valid' : mdp.touched && !mdp.invalid || badCredentials  , 'is-invalid': mdp.touched && mdp.invalid || badCredentials }" aria-label="Amount (to the nearest dollar)" [(ngModel)]="password" #mdp="ngModel" required autocomplete="off" name="password">
-                  <a class="eye" (click)="show()"><span class="input-group-text"><i *ngIf="!showPassword" class="bi bi-eye-fill"></i><i *ngIf="showPassword" class="bi bi-eye-slash-fill"></i></span></a>
-                </div>
-              </div>
-              <div class="d-flex justify-content-end forget"><a href="#" class="form-label">I forgot my password</a></div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Remember me</label>
-              </div>
-              <button [disabled]="form.invalid" type="submit" class="btn btn-outline-primary w-100" style="color: white;">Log in</button>
-            </form>
-            <div class="line-container">
-              <div class="line"></div>
-              <div class="or-text">Log in with</div>
-              <div class="line"></div>
-          </div>
-          <button type="button" class="btn btn-outline-success w-100"><i class="bi bi-google"></i></button>
-          <div class="line-container">
-              <div class="line"></div>
-              <div class="or-text">Are you new here ?</div>
-              <div class="line"></div>
-          </div>
-          <div class="d-flex justify-content-between line-container">
-              <button type="button" routerLink="/signup" class="btn btn-outline-primary w-50" style="color: white;">Join now</button>
-              <div class="or-text">or</div>
-              <button type="button" class="btn btn-outline-success w-50"><i class="bi bi-google"></i></button>
-          </div>
+</header>
+<div class="d-flex row main">
+  <div class="col-8">
+    <img src="/assets/images/bg/trador.png" alt="" style="width: 100%; height: 100%; object-fit: fill;">
+  </div>
+  <div class="col-4">
+    <div class="myContainer">
+      <div class="screen center-div">
+        <div class="screen__content">
+          <!-- Add your form here -->
+          <form class="login" #form="ngForm" (ngSubmit)="login()">
+            <!-- Add the login fields here -->
+            <div class="login__field">
+              <i class="login__icon bi bi-person"></i>
+              <input type="text" class="login__input" placeholder="Email" name="email" [(ngModel)]="email" #mail="ngModel" autocomplete="off" required pattern="^[\w-]+(\.[\w-]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z]{2,}$">
+            </div>
+            <div class="login__field">
+              <i class="login__icon bi bi-lock"></i>
+              <a (click)="show()" *ngIf="!showPassword" class="login__icon__right bi bi-eye-fill"></a>
+              <i (click)="show()" *ngIf="showPassword" class="login__icon__right bi bi-eye-slash-fill"></i>
+              <input type="{{ showPassword ? 'text' : 'password' }}" name="password" class="login__input" placeholder="Password" [(ngModel)]="password" #mdp="ngModel" required autocomplete="off" name="password">
+            </div>
+            <!-- Add the login button here -->
+            <button [disabled]="form.invalid" type="submit" class="button login__submit">
+              <span class="button__text">Log In Now</span>
+              <i class="button__icon bi bi-chevron-right"></i>
+            </button>
+            <button type="button" class="button login__submit" routerLink="/signup">
+              <span class="button__text">Join Now</span>
+              <i class="button__icon bi bi-chevron-right"></i>
+            </button>
+          </form>
+        </div>
+        <div class="screen__background">
+          <span class="screen__background__shape screen__background__shape4"></span>
+          <span class="screen__background__shape screen__background__shape3"></span>		
+          <span class="screen__background__shape screen__background__shape2"></span>
+          <span class="screen__background__shape screen__background__shape1"></span>
+        </div>	
       </div>
+    </div>
   </div>
 </div>

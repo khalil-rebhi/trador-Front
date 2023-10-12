@@ -1,19 +1,28 @@
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex align-items-center">
+
+    <div class="logo me-auto">
+      <h1><a href="">Trad'OR</a></h1>
+    </div>
+  </div>
+</header>
 <div class="vh-100 parent">
-    <div class="d-flex justify-content-center align-items-center pt-5">
+    <div class="d-flex justify-content-center align-items-center p-5">
         <div class="center-div">
-            <form class="row g-3" #form="ngForm" (ngSubmit)="signup()">
-                <div class="col-12">
-                  <label for="inputEmail4" class="form-label">Email</label>
-                  <input name="email" type="text" placeholder="Enter your email address (ie : winner@trador.com)" class="form-control" [ngClass]="{'is-valid' : email.touched && !email.invalid  , 'is-invalid': email.touched && email.invalid }" id="inputEmail4" [(ngModel)]="user.email"  #email="ngModel" required pattern="^[\w-]+(\.[\w-]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z]{2,}$">
+            <div class="screen">
+              <div class="screen__content">
+            <form class="row g-3 signup" #form="ngForm" (ngSubmit)="signup()">
+                <div class="col-12 signup__field">
+                  <i class="signup__icon bi bi-person"></i>
+                  <input name="email" type="text" placeholder="Enter your email address (ie : winner@trador.com)" class="form-control signup__input" [ngClass]="{'is-valid' : email.touched && !email.invalid  , 'is-invalid': email.touched && email.invalid }" id="inputEmail4" [(ngModel)]="user.email"  #email="ngModel" required pattern="^[\w-]+(\.[\w-]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z]{2,}$">
                   <div *ngIf="email.invalid && email.touched" class="alert alert-danger invalid-feedback">
                       Please provide a valid email.
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                <div class="col-md-6 signup__field">
                   <div class="input-group mb-3">
-                    <input id="exampleInputPassword1" placeholder="Enter your password" type="{{ showPassword ? 'text' : 'password' }}" class="form-control" [ngClass]="{'is-valid' : mdp.touched && !mdp.invalid , 'is-invalid': mdp.touched && mdp.invalid }" (input)="checkPassword()" [(ngModel)]="user.password" #mdp="ngModel" required autocomplete="off" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,24}$">
-                    <a class="eye" (click)="show()"><span class="input-group-text"><i *ngIf="!showPassword" class="bi bi-eye-fill"></i><i *ngIf="showPassword" class="bi bi-eye-slash-fill"></i></span></a>
+                    <input id="exampleInputPassword1" placeholder="Enter your password" type="{{ showPassword ? 'text' : 'password' }}" class="form-control signup__input" [ngClass]="{'is-valid' : mdp.touched && !mdp.invalid , 'is-invalid': mdp.touched && mdp.invalid }" (input)="checkPassword()" [(ngModel)]="user.password" #mdp="ngModel" required autocomplete="off" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,24}$">
+                    <a class="eye signup__icon__right" (click)="show()"><i *ngIf="!showPassword" class="bi bi-eye-fill"></i><i *ngIf="showPassword" class="bi bi-eye-slash-fill"></i></a>
                   </div>
                   <div class="form-label" *ngIf="mdp.touched && mdp.invalid">
                     <div>
@@ -41,77 +50,67 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="exampleInputPassword2" class="form-label">Please repeat password</label>
+                <div class="col-md-6  signup__field">
                   <div class="input-group mb-3">
-                    <input id="exampleInputPassword2" placeholder="Repeat your password" type="password" class="form-control" [ngClass]="{'is-valid' : mdp2.touched && checkPassword()  , 'is-invalid': mdp2.touched && !checkPassword()  }" aria-label="Amount (to the nearest dollar)" [(ngModel)]="repeatPassword" #mdp2="ngModel" required autocomplete="off" name="repeatpassword" required>
+                    <input id="exampleInputPassword2" placeholder="Repeat your password" type="password" class="form-control signup__input" [ngClass]="{'is-valid' : mdp2.touched && checkPassword()  , 'is-invalid': mdp2.touched && !checkPassword()  }" aria-label="Amount (to the nearest dollar)" [(ngModel)]="repeatPassword" #mdp2="ngModel" required autocomplete="off" name="repeatpassword" required>
                     <div class="alert alert-danger invalid-feedback" *ngIf="mdp2.invalid && mdp2.touched">
                       No match
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="name" class="form-label">Name</label>
-                  <input name="name" type="text" placeholder="Enter your name" class="form-control" [ngClass]="{'is-valid' : name.touched && !name.invalid  , 'is-invalid': name.touched && name.invalid }" id="name" [(ngModel)]="user.name" #name="ngModel" required>
+                <div class="col-md-6 signup__field">
+                  <input name="name" type="text" placeholder="Enter your name" class="form-control signup__input" [ngClass]="{'is-valid' : name.touched && !name.invalid  , 'is-invalid': name.touched && name.invalid }" id="name" [(ngModel)]="user.name" #name="ngModel" required>
                   <div class="alert alert-danger invalid-feedback" *ngIf="name.invalid && name.touched">
                     Please enter your name
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="familyName" class="form-label">Family name</label>
-                  <input name="familyName" placeholder="Enter your family name" type="text" class="form-control" id="familyName" [(ngModel)]="user.familyName" #family="ngModel" [ngClass]="{'is-valid' : family.touched && !family.invalid  , 'is-invalid': family.touched && family.invalid }" required>
+                <div class="col-md-6 signup__field">
+                  <input name="familyName" placeholder="Enter your family name" type="text" class="form-control signup__input" id="familyName" [(ngModel)]="user.familyName" #family="ngModel" [ngClass]="{'is-valid' : family.touched && !family.invalid  , 'is-invalid': family.touched && family.invalid }" required>
                   <div class="alert alert-danger invalid-feedback" *ngIf="name.invalid && name.touched">
                     Please enter your family name
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="birthday" class="form-label">Birth date</label>
-                  <input name="birthDate" type="date" class="form-control" id="birthday" [(ngModel)]="user.birthDate" #date="ngModel" required>
+                <div class="col-md-6 signup__field">
+                  <input name="birthDate" type="date" class="form-control signup__input" id="birthday" [(ngModel)]="user.birthDate" #date="ngModel" required>
                   <div class="alert alert-danger invalid-feedback" *ngIf="date.invalid && date.touched">
                     Please enter your birth date
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="cin" class="form-label">CIN or Passport</label>
-                  <input name="cin" placeholder="Enter your cin or passport number" type="number" class="form-control" id="cin" [(ngModel)]="user.cin" #cin="ngModel" [ngClass]="{'is-valid' : cin.touched && !cin.invalid  , 'is-invalid': cin.touched && cin.invalid }" required>
+                <div class="col-md-6 signup__field">
+                  <input name="cin" placeholder="Enter your cin or passport number" type="number" class="form-control signup__input" id="cin" [(ngModel)]="user.cin" #cin="ngModel" [ngClass]="{'is-valid' : cin.touched && !cin.invalid  , 'is-invalid': cin.touched && cin.invalid }" required>
                   <div class="alert alert-danger invalid-feedback" *ngIf="cin.invalid && cin.touched">
                     Please enter your CIN or passport number
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="phone" class="form-label">Your phone number</label>
-                  <input name="phone" placeholder="Enter your phone number" type="number" class="form-control" id="phone" [(ngModel)]="user.phoneNumber" #phone="ngModel" [ngClass]="{'is-valid' : phone.touched && !phone.invalid  , 'is-invalid': phone.touched && phone.invalid }" required>
+                <div class="col-md-6 signup__field">
+                  <input name="phone" placeholder="Enter your phone number" type="number" class="form-control signup__input" id="phone" [(ngModel)]="user.phoneNumber" #phone="ngModel" [ngClass]="{'is-valid' : phone.touched && !phone.invalid  , 'is-invalid': phone.touched && phone.invalid }" required>
                   <div class="alert alert-danger invalid-feedback" *ngIf="phone.invalid && phone.touched">
                     Please enter your phone number
                   </div>
                 </div>
-                <div class="col-12">
-                  <label for="inputAddress" class="form-label">Address</label>
-                  <input name="address" type="text" placeholder="Enter your address" class="form-control" id="inputAddress" placeholder="1234 Main St" [(ngModel)]="address" #addres="ngModel" [ngClass]="{'is-valid' : addres.touched && !addres.invalid  , 'is-invalid': addres.touched && addres.invalid }" required>
+                <div class="col-12 signup__field">
+                  <input name="address" type="text" placeholder="Enter your address" class="form-control signup__input" id="inputAddress" placeholder="1234 Main St" [(ngModel)]="address" #addres="ngModel" [ngClass]="{'is-valid' : addres.touched && !addres.invalid  , 'is-invalid': addres.touched && addres.invalid }" required>
                   <div class="alert alert-danger invalid-feedback" *ngIf="addres.invalid && addres.touched">
                     Please enter your address
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="inputCity" class="form-label">City</label>
-                  <input name="city" type="text" placeholder="Enter your city" class="form-control" id="inputCity" [(ngModel)]="city" #cit="ngModel" [ngClass]="{'is-valid' : cit.touched && !cit.invalid  , 'is-invalid': cit.touched && cit.invalid }" required>
+                <div class="col-md-6 signup__field">
+                  <input name="city" type="text" placeholder="Enter your city" class="form-control signup__input" id="inputCity" [(ngModel)]="city" #cit="ngModel" [ngClass]="{'is-valid' : cit.touched && !cit.invalid  , 'is-invalid': cit.touched && cit.invalid }" required>
                   <div class="alert alert-danger invalid-feedback" *ngIf="cit.invalid && cit.touched">
                     Please enter your city
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <label for="inputState" class="form-label">State</label>
+                <div class="col-md-4 signup__field">
                   <select name="state" id="inputState" class="form-select" [(ngModel)]="state" #stat="ngModel" [ngClass]="{'is-valid' : stat.touched && !stat.invalid  , 'is-invalid': stat.touched && stat.invalid }" required>
                     <option selected>Choose...</option>
                     <option>...</option>
                   </select>
-                  <div class="alert alert-danger invalid-feedback" *ngIf="name.invalid && name.touched">
+                  <div class="alert alert-danger invalid-feedback" *ngIf="stat.invalid && stat.touched">
                     Please enter your state
                   </div>
                 </div>
-                <div class="col-md-2">
-                  <label for="inputZip" class="form-label">Zip</label>
-                  <input name="zip" type="number" class="form-control" id="inputZip" [(ngModel)]="zip" #zipCode="ngModel" [ngClass]="{'is-valid' : zipCode.touched && !zipCode.invalid  , 'is-invalid': zipCode.touched && zipCode.invalid }" required>
+                <div class="col-md-2 signup__field">
+                  <input name="zip" type="number" placeholder="Enter your zip code" class="form-control signup__input" id="inputZip" [(ngModel)]="zip" #zipCode="ngModel" [ngClass]="{'is-valid' : zipCode.touched && !zipCode.invalid  , 'is-invalid': zipCode.touched && zipCode.invalid }" required>
                   <div class="alert alert-danger invalid-feedback" *ngIf="zipCode.invalid && zipCode.touched">
                     Please enter your ZIP code
                   </div>
@@ -120,6 +119,15 @@
                   <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Sign up</button>
                 </div>
               </form>
+              </div>
+              <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+              </div>
+            </div>
+
         </div>
     </div>
-  </div>
+</div>
