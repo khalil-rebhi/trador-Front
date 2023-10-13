@@ -5,8 +5,6 @@
   }
 
 
-
-
 .center-div {
     padding: 3rem 2rem;
     border-radius: 10px;
@@ -74,7 +72,7 @@
 
 
 .screen__background__shape1 {
-	height: 520px;
+	height: 104px;
 	width: 520px;
 	background: #FFF;	
 	top: -50px;
@@ -83,7 +81,7 @@
 }
 
 .screen__background__shape2 {
-	height: 220px;
+	height: 44px;
 	width: 220px;
 	background: #6C63AC;	
 	top: -172px;
@@ -92,7 +90,7 @@
 }
 
 .screen__background__shape3 {
-	height: 540px;
+	height: 108px;
 	width: 190px;
 	background: linear-gradient(270deg, #5D54A4, #6A679E);
 	top: -24px;
@@ -101,10 +99,10 @@
 }
 
 .screen__background__shape4 {
-	height: 400px;
+	height: 80px;
 	width: 200px;
 	background: #7E7BB9;	
-	top: 420px;
+	top: 84px;
 	right: 50px;	
 	border-radius: 60px;
 }

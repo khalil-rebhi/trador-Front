@@ -36,7 +36,9 @@
 	font-family: Raleway, sans-serif;
 }
 
-
+.body{
+	background: linear-gradient(90deg, #C7C5F4, #776BCC);		
+}
 
 .screen {		
 	background: linear-gradient(90deg, #5D54A4, #7C78B8);		
@@ -68,7 +70,7 @@
 
 .screen__background__shape1 {
 	height: 520px;
-	width: 520px;
+	width: 104px;
 	background: #FFF;	
 	top: -200px;
 	right: -120px;	
@@ -77,7 +79,7 @@
 
 .screen__background__shape2 {
 	height: 220px;
-	width: 220px;
+	width: 44px;
 	background: #6C63AC;	
 	top: -322px;
 	right: -240;	
@@ -86,7 +88,7 @@
 
 .screen__background__shape3 {
 	height: 540px;
-	width: 190px;
+	width: 38px;
 	background: linear-gradient(270deg, #5D54A4, #6A679E);
 	top: -174px;
 	right: -240;	
@@ -95,7 +97,7 @@
 
 .screen__background__shape4 {
 	height: 400px;
-	width: 200px;
+	width: 40px;
 	background: #7E7BB9;	
 	top: 270px;
 	right: -190px;	

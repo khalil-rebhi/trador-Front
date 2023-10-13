@@ -6,6 +6,7 @@ import { LoginComponent } from './shared/login/login.component';
 import { SignupComponent } from './shared/signup/signup.component';
 import { LandingComponent } from './shared/landing/landing.component';
 import { ForgetComponent } from './shared/forget/forget.component';
+import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 export const Approutes: Routes = [
   {
@@ -31,6 +32,6 @@ export const Approutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    component: NotfoundComponent
   }
 ];

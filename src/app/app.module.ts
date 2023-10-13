@@ -24,6 +24,7 @@ import { UserEffects } from './store/effects/user.effects';
 import { SignupComponent } from './shared/signup/signup.component';
 import { LandingComponent } from './shared/landing/landing.component';
 import { ForgetComponent } from './shared/forget/forget.component';
+import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ForgetComponent } from './shared/forget/forget.component';
     LoginComponent,
     SignupComponent,
     LandingComponent,
-    ForgetComponent
+    ForgetComponent,
+    NotfoundComponent
   ],
   imports: [
     CommonModule,
