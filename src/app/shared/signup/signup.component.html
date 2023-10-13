@@ -101,7 +101,7 @@
                   </div>
                 </div>
                 <div class="col-md-4 signup__field">
-                  <select name="state" id="inputState" class="form-select" [(ngModel)]="state" #stat="ngModel" [ngClass]="{'is-valid' : stat.touched && !stat.invalid  , 'is-invalid': stat.touched && stat.invalid }" required>
+                  <select name="state" id="inputState" class="form-select signup__input" [(ngModel)]="state" #stat="ngModel" [ngClass]="{'is-valid' : stat.touched && !stat.invalid  , 'is-invalid': stat.touched && stat.invalid }" required>
                     <option selected>Choose...</option>
                     <option>...</option>
                   </select>
@@ -115,8 +115,15 @@
                     Please enter your ZIP code
                   </div>
                 </div>
-                <div class="col-12 d-flex justify-content-end">
-                  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Sign up</button>
+                <div class="d-flex justify-content-around">
+                  <a routerLink="/login" class="button signup__submit_right">
+                    <i class="button__icon_right bi bi-chevron-left"></i>
+                    <span class="button__text">Go back to login</span>
+                    </a>
+                  <button type="submit" class="button signup__submit" [disabled]="form.invalid">
+                    <span class="button__text">Sign up</span>
+                    <i class="button__icon bi bi-chevron-right"></i>
+                    </button>
                 </div>
               </form>
               </div>

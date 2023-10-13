@@ -134,7 +134,9 @@
 	font-weight: 700;
 	width: 75%;
 	transition: .2s;
-  color : white;
+	color : white;
+	border-radius: 5px;
+	padding: 0.5rem;
 }
 
 .signup__input::placeholder {
@@ -148,6 +150,31 @@
 	border-bottom-color: #6A679E;
 }
 
+.signup__submit_right {
+	background: #4C489D;
+	font-size: 14px;
+	margin-top: 30px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #5C5696;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 40%;
+	color: #fff;
+	box-shadow: 0px 2px 2px #D4D3E8;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.signup__submit_right:active,
+.signup__submit_right:focus,
+.signup__submit_right:hover {
+	border-color: #fff;
+	outline: none;
+}
+
 .signup__submit {
 	background: #fff;
 	font-size: 14px;
@@ -159,7 +186,9 @@
 	font-weight: 700;
 	display: flex;
 	align-items: center;
-	width: 100%;
+	justify-content: end;
+
+	width: 40%;
 	color: #4C489D;
 	box-shadow: 0px 2px 2px #5C5696;
 	cursor: pointer;
@@ -168,7 +197,7 @@
 
 .signup__submit:active,
 .signup__submit:focus,
-.signup__submit:hover {
+.signup__submit:hover{
 	border-color: #6A679E;
 	outline: none;
 }
@@ -176,6 +205,23 @@
 .button__icon {
 	font-size: 24px;
 	margin-left: auto;
+	color: #7875B5;
+}
+
+.button__icon_right {
+	font-size: 24px;
+	margin-right: auto;
+	color: #7875B5;
+}
+
+.button__text{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button__icon_right {
+	font-size: 24px;
+	margin-right: auto;
 	color: #7875B5;
 }
 

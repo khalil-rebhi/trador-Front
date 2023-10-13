@@ -91,11 +91,26 @@
 	width: 320px;
 	padding: 30px;
 	padding-top: 156px;
+	padding-right: 0;
+	right: 0;
 }
 
 .login__field {
 	padding: 20px 0px;	
 	position: relative;	
+}
+
+.forget {
+	color:#8B8EA6;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: small;
+	font-weight: bolder;
+	font-family: Raleway, sans-serif;
+}
+
+.forget:hover{
+	color: black;
 }
 
 .login__icon {
@@ -107,8 +122,10 @@
 .login__icon__right {
 	position: absolute;
 	top: 30px;
-  right: 3rem;
-	color: #7875B5;
+  	right: 0;
+	color: #fff;
+	z-index: 999;
+	cursor: pointer;
 }
 
 .login__input {

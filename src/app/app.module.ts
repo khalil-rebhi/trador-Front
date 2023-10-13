@@ -23,6 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
 import { SignupComponent } from './shared/signup/signup.component';
 import { LandingComponent } from './shared/landing/landing.component';
+import { ForgetComponent } from './shared/forget/forget.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LandingComponent } from './shared/landing/landing.component';
     SpinnerComponent,
     LoginComponent,
     SignupComponent,
-    LandingComponent
+    LandingComponent,
+    ForgetComponent
   ],
   imports: [
     CommonModule,

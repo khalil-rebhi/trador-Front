@@ -26,6 +26,9 @@
               <i (click)="show()" *ngIf="showPassword" class="login__icon__right bi bi-eye-slash-fill"></i>
               <input type="{{ showPassword ? 'text' : 'password' }}" name="password" class="login__input" placeholder="Password" [(ngModel)]="password" #mdp="ngModel" required autocomplete="off" name="password">
             </div>
+            <div class="d-flex justify-content-end">
+              <a class="forget" routerLink="/forget">Forget password ?</a>
+            </div>
             <!-- Add the login button here -->
             <button [disabled]="form.invalid" type="submit" class="button login__submit">
               <span class="button__text">Log In Now</span>

@@ -5,6 +5,7 @@ import { FrontOfficeComponent } from './layouts/front-office/front-office.compon
 import { LoginComponent } from './shared/login/login.component';
 import { SignupComponent } from './shared/signup/signup.component';
 import { LandingComponent } from './shared/landing/landing.component';
+import { ForgetComponent } from './shared/forget/forget.component';
 
 export const Approutes: Routes = [
   {
@@ -12,7 +13,8 @@ export const Approutes: Routes = [
     children: [
       {path : '', component: LandingComponent},
       {path : 'login', component : LoginComponent},
-      {path : 'signup', component : SignupComponent}
+      {path : 'signup', component : SignupComponent},
+      {path : 'forget', component : ForgetComponent}
     ]
   },
   {
