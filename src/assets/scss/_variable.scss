@@ -81,6 +81,7 @@ $green: #0bb7af !default;
 $teal: #20c997 !default;
 $cyan: #4fc3f7 !default;
 $text-muted: #757e85 !default;
+$trador : #776BCC !default;
 
 $light-info: #e1f0ff !default;
 $light-primary: #d3edfa !default;
@@ -102,6 +103,7 @@ $colors: (
   "white": $white,
   "gray": $gray-600,
   "gray-dark": $gray-800,
+  "trador" : $trador
 );
 
 $primary: $blue!default;
@@ -110,6 +112,7 @@ $success: $green !default;
 $info: #3699ff !default;
 $warning: $yellow !default;
 $danger: $red !default;
+$trador : $trador !default;
 $light: $gray-100 !default;
 $dark: $gray-800 !default;
 $muted: $gray-500 !default;

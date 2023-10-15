@@ -12,10 +12,12 @@ import {
   NavigationCancel,
   NavigationError
 } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-spinner',
+  standalone: true,
+  imports:[CommonModule],
   template: `<div class="preloader" *ngIf="isSpinnerVisible">
         <div class="spinner">
           <div class="double-bounce1"></div>

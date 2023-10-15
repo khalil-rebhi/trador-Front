@@ -29,7 +29,6 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent,
     LoginComponent,
     SignupComponent,
     LandingComponent,
@@ -47,6 +46,7 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
     RouterModule.forRoot(Approutes, { useHash: false }),
     FrontOfficeComponent,
     HeaderComponent,
+    SpinnerComponent,
     SidebarComponent,
     StoreModule.forRoot({user : userReducer} , {}),
     EffectsModule.forRoot(UserEffects),

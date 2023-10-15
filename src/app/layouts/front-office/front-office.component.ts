@@ -6,11 +6,12 @@ import { Store } from '@ngrx/store';
 import { Client } from 'src/app/core/models/Client';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { SidebarComponent } from 'src/app/shared/sidebar/sidebar.component';
+import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 
 @Component({
   selector: 'app-front-office',
   standalone : true,
-  imports:[RouterModule,SidebarComponent,HeaderComponent, CommonModule, NgbCollapseModule],
+  imports:[RouterModule,SidebarComponent,HeaderComponent, CommonModule, NgbCollapseModule,SpinnerComponent],
   templateUrl: './front-office.component.html',
   styleUrls: ['./front-office.component.css']
 })
@@ -22,17 +23,21 @@ export class FrontOfficeComponent {
   public showMobileMenu = false;
   public expandLogo = false;
   public sidebartype = "full";
+  public spinner = true;
 
   Logo() {
     this.expandLogo = !this.expandLogo;
   }
 
   ngOnInit() {
-    /* if (this.router.url === "/") {
+    setTimeout(() =>{
+          /* if (this.router.url === "/") {
       this.router.navigate(["/dashboard"]);
     } */
     this.defaultSidebar = this.sidebartype;
     this.handleSidebar();
+    this.spinner = !this.spinner
+    },500)
   }
 
   @HostListener("window:resize", ["$event"])

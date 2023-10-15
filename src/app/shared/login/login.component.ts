@@ -16,11 +16,14 @@ export class LoginComponent implements OnInit {
   email : string;
   password : string;
   badCredentials : boolean = false;
+  spinner = true;
+  loading = false;
 
   constructor(private authService: UserService, private router : Router, private store: Store<{user : Client, accessToken : string}>) {
   }
 
   ngOnInit(): void {
+    setTimeout(() => this.spinner = !this.spinner,500)
   }
 
   show(){
@@ -28,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.loading = !this.loading;
     this.store.dispatch(login({email : this.email, password: this.password}))
   }
 
