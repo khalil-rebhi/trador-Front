@@ -25,6 +25,8 @@ import { SignupComponent } from './shared/signup/signup.component';
 import { LandingComponent } from './shared/landing/landing.component';
 import { ForgetComponent } from './shared/forget/forget.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
+import { VerifCodeComponent } from './shared/verif-code/verif-code.component';
+import { VerificationCodeTimerComponent } from './shared/verification-code-timer/verification-code-timer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
     SignupComponent,
     LandingComponent,
     ForgetComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    VerifCodeComponent,
+    VerificationCodeTimerComponent
   ],
   imports: [
     CommonModule,

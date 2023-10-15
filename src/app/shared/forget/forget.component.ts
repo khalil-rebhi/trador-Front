@@ -6,9 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forget.component.css']
 })
 export class ForgetComponent implements OnInit {
+
+  verif = false;
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   email : string;
+
+  submitEmail(){
+    console.log(this.email);
+    
+    this.verif = !this.verif;
+  }
 }

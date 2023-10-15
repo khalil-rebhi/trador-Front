@@ -6,12 +6,12 @@
             </div>
         </div>
     </header>
-    <div class="parent">
+    <div class="parent" *ngIf="!verif">
         <div class="d-flex justify-content-center align-items-center p-5">
             <div class="center-div position-absolute top-50 start-50 translate-middle">
                 <div class="screen">
                     <div class="screen__content">
-                        <form class="row g-3 forget" #form="ngForm">
+                        <form class="row g-3 forget" #form="ngForm" (onSubmit)="submitEmail()">
                             <div class="col-12 forget__field">
                                 <i class="forget__icon bi bi-person"></i>
                                 <input name="email" type="text" placeholder="Enter your email address (ie : winner@trador.com)" class="form-control forget__input" [ngClass]="{'is-valid' : mail.touched && !mail.invalid  , 'is-invalid': mail.touched && mail.invalid }" id="inputEmail4" [(ngModel)]="email"  #mail="ngModel" required pattern="^[\w-]+(\.[\w-]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z]{2,}$">
@@ -24,10 +24,10 @@
                                     <i class="button__icon_right bi bi-chevron-left"></i>
                                     <span class="button__text">Go back to login</span>
                                 </a>
-                                <button type="submit" class="button forget__submit" [disabled]="form.invalid">
+                                <button type="submit" class="button forget__submit" (click)="submitEmail()" [disabled]="form.invalid">
                                     <span class="button__text">Send me an email</span>
                                     <i class="button__icon_left bi bi-chevron-right"></i>
-                                    </button>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -41,4 +41,5 @@
             </div>
         </div>
     </div>
+    <app-verif-code [email]="email" *ngIf="verif"></app-verif-code>
 </div>
