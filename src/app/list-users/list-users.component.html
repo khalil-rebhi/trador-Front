@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+  
+            <div class="panel-heading">
+                <h3 class="panel-title">Users List</h3>
+            </div>
+  
+            <div class="panel-body panel-body-table">
+  
+                <div class="table-responsive">
+                           <table class="table">
+                                    <thead>
+                                            <tr>
+                                                 <th scope="col">#</th>
+                                                 <th scope="col">User Application Id</th>
+                                                 <th scope="col">Family Name</th>
+                                                 <th scope="col">Name</th>
+                                                
+                                                 <th scope="col">Phone Number</th>
+                                                 <th scope="col">CIN</th>
+                                                 <th scope="col">Email</th>
+                                                 <th scope="col">Address</th>
+                                                 <th scope="col"></th>
+                                            </tr>
+                                    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{ user.IdClient }}</td>
+            <td>{{ user.userApplicationId }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.familyName }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.cin }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.address }}</td>
+            <td>
+                <button class="btn btn-primary" (click)="consulterUtilisateur(user.IdClient)">
+                  Consulter
+                </button>
+                <button class="btn btn-warning" (click)="modifierUtilisateur(user.IdClient)">
+                  Modifier
+                </button>
+                <button class="btn btn-danger" (click)="supprimerUtilisateur(user.IdClient)">
+                 Supprimer
+                </button>
+              </td>
+          </tr>
+    </tbody>
+  </table>
+</div>                                
+
+</div>
+</div>                                                
+
+</div>
+</div>
