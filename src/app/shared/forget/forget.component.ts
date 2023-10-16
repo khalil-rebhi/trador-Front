@@ -19,7 +19,9 @@ export class ForgetComponent implements OnInit {
   submitEmail(){
     console.log(this.email);
     
-    this.userService.sendEmail(this.email);
+    this.userService.sendEmail(this.email).subscribe(
+      response => console.log("response :"+response)
+    );
     this.verif = !this.verif;
   }
 }

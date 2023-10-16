@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-verif-code',
@@ -16,7 +17,6 @@ export class VerifCodeComponent implements OnInit {
   @ViewChild('digit4InputRef') digit4InputRef: ElementRef;
   @ViewChild('digit5InputRef') digit5InputRef: ElementRef;
   @ViewChild('digit6InputRef') digit6InputRef: ElementRef;
-  constructor() {}
 
   digit1: string = '';
   digit2: string = '';
@@ -25,6 +25,8 @@ export class VerifCodeComponent implements OnInit {
   digit5: string = '';
   digit6: string = '';
 
+  constructor(private userService : UserService) {}
+
   ngAfterViewInit() {
     this.digit1InputRef.nativeElement.focus();
   }
@@ -32,7 +34,9 @@ export class VerifCodeComponent implements OnInit {
   onSubmit() {
     const code = this.digit1 + this.digit2 + this.digit3 + this.digit4;
     console.log('Submitted code:', code);
-    // Add any further logic here (e.g., sending the code to a server)
+    this.userService.verifyCode(code, this.email).subscribe(
+      result => console.log(result)
+    );
   }
 
   moveToNext(event: Event, nextInput: HTMLInputElement) {
@@ -50,6 +54,8 @@ export class VerifCodeComponent implements OnInit {
   }
 
   resendEmail(){
+    console.log("resend");
+    
     this.timer = !this.timer;
   }
 }
