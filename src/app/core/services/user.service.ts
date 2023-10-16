@@ -19,9 +19,16 @@ export class UserService {
   }
 
   public signup(user : Client) : Observable<Client>{
-    console.log("service");
-    console.log(user);
-    
     return this.http.post<Client>('http://localhost:8089/trador/user/add',user)
+  }
+
+  public sendEmail(email  : string) {
+    console.log("send mail");
+    
+    return this.http.post<string>('http://localhost:8089/trador/user/send-verification-code', email).subscribe(
+      response => console.log("response :"+response),
+      error => console.error("error : "+error)
+       
+    );
   }
 }

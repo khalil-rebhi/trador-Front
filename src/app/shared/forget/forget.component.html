@@ -11,7 +11,7 @@
             <div class="center-div position-absolute top-50 start-50 translate-middle">
                 <div class="screen">
                     <div class="screen__content">
-                        <form class="row g-3 forget" #form="ngForm" (onSubmit)="submitEmail()">
+                        <form class="row g-3 forget" #form="ngForm">
                             <div class="col-12 forget__field">
                                 <i class="forget__icon bi bi-person"></i>
                                 <input name="email" type="text" placeholder="Enter your email address (ie : winner@trador.com)" class="form-control forget__input" [ngClass]="{'is-valid' : mail.touched && !mail.invalid  , 'is-invalid': mail.touched && mail.invalid }" id="inputEmail4" [(ngModel)]="email"  #mail="ngModel" required pattern="^[\w-]+(\.[\w-]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z]{2,}$">
