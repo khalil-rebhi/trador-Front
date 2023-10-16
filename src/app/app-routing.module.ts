@@ -10,6 +10,7 @@ import { ForgetComponent } from './shared/forget/forget.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 import { ListUsersComponent } from './list-users/list-users.component';
+import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 
 
 export const Approutes: Routes = [
@@ -20,7 +21,6 @@ export const Approutes: Routes = [
       {path : 'login', component : LoginComponent},
       {path : 'signup', component : SignupComponent},
       {path : 'forget', component : ForgetComponent},
-      {path : 'admin', component : ListUsersComponent},
     ]
   },
   {
@@ -33,6 +33,15 @@ export const Approutes: Routes = [
         path: 'client',
         loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
       }
+    ]
+  },{
+    path : 'admin',
+    component : BackOfficeComponent,
+    children : [
+      {
+        path : 'dashboard', 
+        loadChildren : () => import('./admin/admin.module').then(m => m.AdminModule)
+    }
     ]
   },
   {

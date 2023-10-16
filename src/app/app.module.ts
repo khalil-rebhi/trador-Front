@@ -29,6 +29,7 @@ import { VerifCodeComponent } from './shared/verif-code/verif-code.component';
 import { VerificationCodeTimerComponent } from './shared/verification-code-timer/verification-code-timer.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
+import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-p
     VerifCodeComponent,
     VerificationCodeTimerComponent,
     ListUsersComponent,
-    ResetPasswordFormComponent
+    ResetPasswordFormComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +54,7 @@ import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-p
     NgbModule,
     RouterModule.forRoot(Approutes, { useHash: false }),
     FrontOfficeComponent,
+    BackOfficeComponent,
     HeaderComponent,
     SpinnerComponent,
     SidebarComponent,
