@@ -29,7 +29,10 @@ export class UserService {
   public verifyCode(code : string, email : string){
     return this.http.post<any>('http://localhost:8089/trador/user/verify-code?verificationCode='+code,email)
   }
- 
+
+  public resetPassword(credentials: {email : string, newPass : string}){
+    return this.http.post('http://localhost:8089/trador/user/changePassword', credentials);
+  }
   
 
   getAllUsers(): Observable<User[]> {

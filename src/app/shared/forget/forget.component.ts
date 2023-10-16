@@ -9,12 +9,18 @@ import { UserService } from 'src/app/core/services/user.service';
 export class ForgetComponent implements OnInit {
 
   verif = false;
+  reset = false;
+  email : string;
+
   constructor (private userService : UserService) {}
 
   ngOnInit(): void {
   }
 
-  email : string;
+  handleReset(event : boolean){
+    this.reset = !this.reset;
+    this.verif = !this.verif;
+  }
 
   submitEmail(){
     this.userService.sendEmail(this.email).subscribe();

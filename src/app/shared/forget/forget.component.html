@@ -6,7 +6,7 @@
             </div>
         </div>
     </header>
-    <div class="parent" *ngIf="!verif">
+    <div class="parent" *ngIf="!verif && !reset">
         <div class="d-flex justify-content-center align-items-center p-5">
             <div class="center-div position-absolute top-50 start-50 translate-middle">
                 <div class="screen">
@@ -41,5 +41,6 @@
             </div>
         </div>
     </div>
-    <app-verif-code [email]="email" *ngIf="verif"></app-verif-code>
+    <app-verif-code [email]="email" *ngIf="verif" (resetEmitter)="handleReset($event)"></app-verif-code>
+    <app-reset-password-form [email]="email" *ngIf="reset"></app-reset-password-form>
 </div>

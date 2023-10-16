@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -8,8 +8,10 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class VerifCodeComponent implements OnInit {
 
-  buttonMessage : string;
   @Input() email : string;
+  @Output() resetEmitter : EventEmitter<boolean> = new EventEmitter<boolean>()
+
+  buttonMessage : string;
   timer : boolean = true;
   notification = false;
   @ViewChild('digit1InputRef') digit1InputRef: ElementRef;
@@ -36,8 +38,11 @@ export class VerifCodeComponent implements OnInit {
     const code = this.digit1 + this.digit2 + this.digit3 + this.digit4+this.digit5+this.digit6;
     this.userService.verifyCode(code, this.email).subscribe(
       result => {
+        console.log(result);
+        console.log(code);
+        
         if(result){
-
+          this.resetEmitter.emit(true);
         }else{
           this.notification = !this.notification;
           setTimeout(() => this.notification = !this.notification,2000);

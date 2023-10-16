@@ -28,6 +28,7 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { VerifCodeComponent } from './shared/verif-code/verif-code.component';
 import { VerificationCodeTimerComponent } from './shared/verification-code-timer/verification-code-timer.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ListUsersComponent } from './list-users/list-users.component';
     NotfoundComponent,
     VerifCodeComponent,
     VerificationCodeTimerComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    ResetPasswordFormComponent
   ],
   imports: [
     CommonModule,
