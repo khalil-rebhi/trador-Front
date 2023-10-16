@@ -5,6 +5,8 @@ import { LOGIN, LOGIN_SUCCESS, LOGOUT, SIGNIN, login } from "../actions/user.act
 import { EMPTY, catchError, exhaustMap, map, of } from "rxjs";
 import { Router } from "@angular/router";
 import { Client } from "src/app/core/models/Client";
+import { UPDATE } from "@ngrx/store";
+import { ClientService } from "src/app/core/services/client.service";
 
 @Injectable()
 export class UserEffects{
@@ -51,9 +53,26 @@ export class UserEffects{
         })
       ))
 
+      update$ = createEffect(()=>this.actions$.pipe(
+        ofType(UPDATE),
+        exhaustMap((payload:Client)=>{
+            const{type , ...result}=payload;
+            this.clientService.updateClient(result).subscribe(()=>{
+                return  of({type : 'NO_ACTION'})
+            });
+            return of({type : 'NO_ACTION'});
+        })
+      ))
+
     constructor (
         private actions$ : Actions,
         private authService : UserService,
-        private router : Router
+        private router : Router,
+        private clientService:ClientService
+        
     ) {}
+
+
+
+
 }

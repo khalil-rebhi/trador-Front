@@ -19,7 +19,9 @@ export class HeaderComponent implements AfterViewInit {
   public showSearch = false;
   public user : Client;
   constructor(private modalService: NgbModal, private store : Store<any>) {
-    this.store.subscribe(result => this.user = result.user.user)
+    this.store.subscribe(result => {this.user = result.user.user
+      console.log(this.user)}
+    )
   }
 
   ngAfterViewInit() { }

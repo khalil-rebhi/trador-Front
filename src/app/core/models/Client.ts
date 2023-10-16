@@ -14,6 +14,12 @@ export class Client{
     createdAt:Date;
     lastModifiedAt:Date;
     address:string;
-    role : string = "USER"
-    type ?: string
+    role : string = "USER";
+    type ?: string;
+    twitter:string;
+    instagram:string;
+    youtube:string;
+    facebook:string;
+    BIO:string;
+    photo:string;
 }

@@ -1,0 +1,87 @@
+{{user.role}}
+
+<!-- formulaire-->
+<div class="row border g-0 rounded shadow-sm" style="background-color: rgb(253, 252, 253);">
+    <div class="col p-4">
+        <h3>Info Public</h3>
+        <p class="fw-medium">Ces informations seront publiées et visibles pour tous les utilisateurs..</p>
+        <form class="row g-3"  >
+          <div class="col-md-6">
+            <label for="username" class="form-label">Non d'utilisateur </label>
+            <input type="text" class="form-control" id="username"  >
+          </div>
+          <!--<form (ngSubmit)="onFileUpload()" enctype="multipart/form-data">
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+            <button type="submit">Télécharger la photo de profil</button>
+          </form>-->
+          
+          <!---->
+          <div class="col-md-6">
+            <label for="commentaire" class="form-label">a propos de moi </label>
+            <input type="text" class="form-control" id="commentaire">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address twitter</label>
+            <input type="text" class="form-control" id="inputAddress"  >
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">lien vers la chaine Youtube </label>
+            <input type="text" class="form-control" id="inputAddress2" >
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Profil Facebook </label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">profil instagram </label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary" (click)="updateClientProfile()">Save changes</button>
+          </div>
+        </form>
+    </div>
+    
+</div>
+
+<!---->
+<div class="row border g-0 rounded shadow-sm" style="background-color: rgb(253, 252, 253);">
+    <div class="col p-4">
+        <h3>DÉTAILS PRIVÉS</h3>
+        <p class="fw-medium">Ces informations ne seront pas affichées publiquement.</p>
+        <form class="row g-3" #form="ngForm">
+          <div class="container">
+            <div >
+                <div class="col-md-6">
+                    <h2 class="mt-5 mb-4">Changement de mot de passe</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="currentPassword" class="form-label">Mot de passe actuel</label>
+                            <input type="password" class="form-control" id="currentPassword" name="currentPassword" required  >
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">Nouveau mot de passe</label>
+                            <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmer le nouveau mot de passe</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Changer le mot de passe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
+          <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required value={{user.phoneNumber}} [(ngModel)]="user.phoneNumber" >
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" (click)="updateClientProfile()">Save changes</button>
+      </div>
+ 
+        </form>
+    </div>
+    
+</div>
+

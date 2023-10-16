@@ -5,6 +5,7 @@ import { FrontOfficeComponent } from './layouts/front-office/front-office.compon
 import { LoginComponent } from './shared/login/login.component';
 import { SignupComponent } from './shared/signup/signup.component';
 import { LandingComponent } from './shared/landing/landing.component';
+import { ConfigProfileComponent } from './client/config-profile/config-profile.component';
 
 export const Approutes: Routes = [
   {
@@ -24,7 +25,9 @@ export const Approutes: Routes = [
      {
         path: 'client',
         loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
-      }
+      },
+      {path: 'editclient' , component:ConfigProfileComponent}
+      
     ]
   },
   {
