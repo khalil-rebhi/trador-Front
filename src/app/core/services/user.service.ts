@@ -24,4 +24,24 @@ export class UserService {
     
     return this.http.post<Client>('http://localhost:8089/trador/user/add',user)
   }
+ 
+  
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:8089/trador/user/show');
+  }
+
+}
+
+
+
+export interface User {
+  IdClient:number;
+  userApplicationId:string;
+  name:string;
+  familyName:string;
+  phoneNumber:string;
+  cin:number;
+  email:string;
+  address:string;
 }
