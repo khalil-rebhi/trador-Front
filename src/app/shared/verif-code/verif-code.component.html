@@ -3,6 +3,9 @@
     <div class="center-div position-absolute top-50 start-50 translate-middle">
       <div class="screen">
         <div class="screen__content">
+          <div class="alert alert-danger" *ngIf="notification">
+            Code may be expired or misspelled
+          </div>
           <form class="row g-3 forget" #form="ngForm">
             <div class="col-2 forget__field">
               <input name="digit1" #digit1InputRef type="text" class="form-control forget__input" [(ngModel)]="digit1" maxlength="1" required (input)="moveToNext($event, digit2InputRef)">
@@ -24,7 +27,7 @@
                           </div>
                           
                           <div class="d-flex justify-content-center">
-                          <button type="button" class="button forget__submit" [disabled]="timer">
+                          <button type="button" class="button forget__submit" [disabled]="timer" (click)="resendEmail()">
                             <span class="button__text" *ngIf="timer"><app-verification-code-timer (timerEndEmitter)="handleTimer($event)"></app-verification-code-timer></span>
                             <span class="button__text" *ngIf="!timer">Resend verification code</span>
                           </button>

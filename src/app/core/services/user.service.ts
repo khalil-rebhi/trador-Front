@@ -23,14 +23,10 @@ export class UserService {
   }
 
   public sendEmail(email  : string) {
-    console.log(email);
-    
     return this.http.post<string>('http://localhost:8089/trador/user/send-verification-code', email)
   }
 
   public verifyCode(code : string, email : string){
-    console.log(code);
-    
     return this.http.post<any>('http://localhost:8089/trador/user/verify-code?verificationCode='+code,email)
   }
  

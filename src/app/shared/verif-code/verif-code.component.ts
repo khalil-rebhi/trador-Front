@@ -11,6 +11,7 @@ export class VerifCodeComponent implements OnInit {
   buttonMessage : string;
   @Input() email : string;
   timer : boolean = true;
+  notification = false;
   @ViewChild('digit1InputRef') digit1InputRef: ElementRef;
   @ViewChild('digit2InputRef') digit2InputRef: ElementRef;
   @ViewChild('digit3InputRef') digit3InputRef: ElementRef;
@@ -32,10 +33,16 @@ export class VerifCodeComponent implements OnInit {
   }
 
   onSubmit() {
-    const code = this.digit1 + this.digit2 + this.digit3 + this.digit4;
-    console.log('Submitted code:', code);
+    const code = this.digit1 + this.digit2 + this.digit3 + this.digit4+this.digit5+this.digit6;
     this.userService.verifyCode(code, this.email).subscribe(
-      result => console.log(result)
+      result => {
+        if(result){
+
+        }else{
+          this.notification = !this.notification;
+          setTimeout(() => this.notification = !this.notification,2000);
+        }
+      }
     );
   }
 
@@ -54,8 +61,7 @@ export class VerifCodeComponent implements OnInit {
   }
 
   resendEmail(){
-    console.log("resend");
-    
+    this.userService.sendEmail(this.email).subscribe();
     this.timer = !this.timer;
   }
 }
