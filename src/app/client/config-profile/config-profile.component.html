@@ -1,14 +1,32 @@
-{{user.role}}
+
 
 <!-- formulaire-->
 <div class="row border g-0 rounded shadow-sm" style="background-color: rgb(253, 252, 253);">
     <div class="col p-4">
         <h3>Info Public</h3>
         <p class="fw-medium">Ces informations seront publiées et visibles pour tous les utilisateurs..</p>
-        <form class="row g-3"  >
+        <form class="row g-3"  #form="ngForm"  (ngSubmit)="updateClientProfile()">
           <div class="col-md-6">
-            <label for="username" class="form-label">Non d'utilisateur </label>
-            <input type="text" class="form-control" id="username"  >
+            <label for="text" class="form-label">Non d'utilisateur </label>
+            <input type="text" class="form-control" id="name"  name="nom" [(ngModel)]="user.name" #name="ngModel">
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email </label>
+            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email"  #email="ngModel"  >
+          </div>
+          <div class="col-md-6">
+            <label for="text" class="form-label">CIN</label>
+            <input type="text" class="form-control" id="cin" name="cin"  [(ngModel)]="user.cin"  #cin="ngModel"  >
+          </div>
+
+          <div class="col-md-6">
+            <label for="text" class="form-label">Adresse</label>
+            <input type="text" class="form-control" id="address"  name="address"  [(ngModel)]="user.address"  #address="ngModel">
+          </div>
+
+          <div class="col-md-6">
+            <label for="commentaire" class="form-label">Date de naissance </label>
+            <input name="birthDate" type="date" class="form-control signup__input" id="birthday" name="birthDate"  [(ngModel)]="user.birthDate"  #birthDate="ngModel">
           </div>
           <!--<form (ngSubmit)="onFileUpload()" enctype="multipart/form-data">
             <input type="file" (change)="onFileSelected($event)" accept="image/*" />
@@ -18,23 +36,23 @@
           <!---->
           <div class="col-md-6">
             <label for="commentaire" class="form-label">a propos de moi </label>
-            <input type="text" class="form-control" id="commentaire">
+            <input type="text" class="form-control" id="commentaire"  id="bio" name="bio"  [(ngModel)]="user.bio"  #bio="ngModel">
           </div>
           <div class="col-12">
             <label for="inputAddress" class="form-label">Address twitter</label>
-            <input type="text" class="form-control" id="inputAddress"  >
+            <input type="text" class="form-control" id="inputAddress" id="twitter" name="twitter"  [(ngModel)]="user.twitter"  #twitter="ngModel" >
           </div>
           <div class="col-12">
             <label for="inputAddress2" class="form-label">lien vers la chaine Youtube </label>
-            <input type="text" class="form-control" id="inputAddress2" >
+            <input type="text" class="form-control" id="inputAddress2"  id="youtube" name="youtube"  [(ngModel)]="user.youtube"  #youtube="ngModel" >
           </div>
           <div class="col-md-6">
             <label for="inputCity" class="form-label">Profil Facebook </label>
-            <input type="text" class="form-control" id="inputCity">
+            <input type="text" class="form-control" id="facebook" id="facebook" name="facebook"  [(ngModel)]="user.facebook"  #facebook="ngModel" >
           </div>
           <div class="col-md-6">
             <label for="inputCity" class="form-label">profil instagram </label>
-            <input type="text" class="form-control" id="inputCity">
+            <input type="text" class="form-control" id="insta" id="instagram" name="instagram"  [(ngModel)]="user.instagram"  #instagram="ngModel" >
           </div>
           <div class="col-12">
             <button type="submit" class="btn btn-primary" (click)="updateClientProfile()">Save changes</button>
@@ -57,7 +75,7 @@
                     <form>
                         <div class="mb-3">
                             <label for="currentPassword" class="form-label">Mot de passe actuel</label>
-                            <input type="password" class="form-control" id="currentPassword" name="currentPassword" required  >
+                            <input type="password" class="form-control" id="currentPassword" name="currentPassword" required id="password" name="password"  [(ngModel)]="user.password"  #password="ngModel"  >
                         </div>
                         <div class="mb-3">
                             <label for="newPassword" class="form-label">Nouveau mot de passe</label>
@@ -74,8 +92,9 @@
         </div>
         <div class="col-md-6">
           <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-          <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required value={{user.phoneNumber}} [(ngModel)]="user.phoneNumber" >
+          <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required id="phoneNumber" name="phoneNumber"  [(ngModel)]="user.phoneNumber"  #phoneNumber="ngModel"  >
       </div>
+     
       <div class="col-12">
         <button type="submit" class="btn btn-primary" (click)="updateClientProfile()">Save changes</button>
       </div>

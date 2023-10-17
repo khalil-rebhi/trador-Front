@@ -1,5 +1,6 @@
 export class Reclamation{
-    idReclamation:number;
-    dateReclamation:Date;
-    detail:string;
+    reclamationId:number;
+    date:Date;
+    contenu:string;
+    typeReclamation:string
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Reclamation } from 'src/app/core/models/Reclamation';
+import { ClientService } from 'src/app/core/services/client.service';
 @Component({
   selector: 'app-reclamation',
   templateUrl: './reclamation.component.html',
@@ -7,7 +8,19 @@ import { Reclamation } from 'src/app/core/models/Reclamation';
 })
 export class ReclamationComponent implements OnInit  {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
+
+reclamation:Reclamation = new Reclamation();
+constructor(private service:ClientService){}
+
+submitReclamation(){
+  this.service.addreclamation(this.reclamation).subscribe(
+    Response =>{
+      console.log(Response);
+    }
+  )
+}
+
 
 }

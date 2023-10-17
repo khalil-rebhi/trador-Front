@@ -20,6 +20,6 @@ export class Client{
     instagram:string;
     youtube:string;
     facebook:string;
-    BIO:string;
+    bio:string;
     photo:string;
 }

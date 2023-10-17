@@ -6,25 +6,23 @@ import { ConfigProfileComponent } from './config-profile/config-profile.componen
 import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 
-const routes: Routes = [{ path : '', component:ClientComponent, children:[
+export 
+const clientroutes: Routes = [{ path : '', component:ClientComponent, children:[
   {
-    path: 'config',
-    component : ConfigProfileComponent,
-    
-  },{
-    path: 'idee', // Le nouveau chemin que vous souhaitez ajouter
-    component: IdeeComponent, // Composant associé au nouveau chemin
+    path: 'config', component : ConfigProfileComponent,
   },
   {
-    path:'reclamation',
-    component:ReclamationComponent,
+    path: 'idee',  component: IdeeComponent, 
+  },
+  {
+    path:'reclamation', component:ReclamationComponent,
   }
 
 
 ]}];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(clientroutes)],
   exports: [RouterModule]
 })
 export class ClientRoutingModule { }

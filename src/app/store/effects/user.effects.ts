@@ -57,6 +57,7 @@ export class UserEffects{
         ofType(UPDATE),
         exhaustMap((payload:Client)=>{
             const{type , ...result}=payload;
+            console.log("effect")
             this.clientService.updateClient(result).subscribe(()=>{
                 return  of({type : 'NO_ACTION'})
             });

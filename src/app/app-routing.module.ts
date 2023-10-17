@@ -26,7 +26,7 @@ export const Approutes: Routes = [
         path: 'client',
         loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
       },
-      {path: 'editclient' , component:ConfigProfileComponent}
+      
       
     ]
   },

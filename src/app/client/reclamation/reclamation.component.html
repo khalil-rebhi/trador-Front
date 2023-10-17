@@ -4,7 +4,7 @@
     <div class="col p-4">
         <h3>Reclamation</h3>
         <p class="fw-medium"></p>
-        <form class="row g-3">
+        <form class="row g-3"  #form="ngForm" (submit)="submitReclamation()">
          
          
           <div class="col-md-6">
@@ -22,8 +22,8 @@
           </div>
 
           <div class="col-md-6">
-            <label for="commentaire" class="form-label">Date de naissance </label>
-            <input name="birthDate" type="date" class="form-control signup__input" id="birthday"  required>
+            <label for="commentaire" class="form-label">Date de Reclamtion </label>
+            <input name="birthDate" type="date" class="form-control signup__input" id="birthday"  required [(ngModel)]="reclamation.date" >
             <div class="alert alert-danger invalid-feedback" >
               Please enter your birth date
             </div>
@@ -31,18 +31,18 @@
 
           <div class="col-md-6">
             <label for="commentaire" class="form-label">Type de  Reclamation </label>
-            <input type="text" class="form-control" id="commentaire">
+            <input type="text" class="form-control" id="commentaire" [(ngModel)]="reclamation.typeReclamation">
           </div>
 
           <div class="col-md-6">
             <label for="reclamation" class="form-label">Detail de la reclamation </label>
-            <textarea class="form-control" id="reclamation" rows="3"></textarea>
+            <textarea class="form-control" id="reclamation" rows="3" [(ngModel)]="reclamation.contenu"></textarea>
           </div>
 
           
           
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">soumettre</button>
+            <button type="submit" class="btn btn-primary" (click)="submitReclamation()">soumettre</button>
           </div>
         </form>
     </div>
