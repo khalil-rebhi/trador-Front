@@ -39,7 +39,7 @@ export const Approutes: Routes = [
     component : BackOfficeComponent,
     children : [
       {
-        path : 'dashboard', 
+        path : '', 
         loadChildren : () => import('./admin/admin.module').then(m => m.AdminModule)
     }
     ]

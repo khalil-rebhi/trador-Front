@@ -43,6 +43,7 @@ import { BackOfficeComponent } from './layouts/back-office/back-office.component
     VerificationCodeTimerComponent,
     ListUsersComponent,
     ResetPasswordFormComponent,
+    BackOfficeComponent,
   ],
   imports: [
     CommonModule,
@@ -54,7 +55,6 @@ import { BackOfficeComponent } from './layouts/back-office/back-office.component
     NgbModule,
     RouterModule.forRoot(Approutes, { useHash: false }),
     FrontOfficeComponent,
-    BackOfficeComponent,
     HeaderComponent,
     SpinnerComponent,
     SidebarComponent,
