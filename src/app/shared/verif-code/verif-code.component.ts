@@ -38,9 +38,6 @@ export class VerifCodeComponent implements OnInit {
     const code = this.digit1 + this.digit2 + this.digit3 + this.digit4+this.digit5+this.digit6;
     this.userService.verifyCode(code, this.email).subscribe(
       result => {
-        console.log(result);
-        console.log(code);
-        
         if(result){
           this.resetEmitter.emit(true);
         }else{

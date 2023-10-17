@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { UserService } from "src/app/core/services/user.service";
-import { LOGIN, LOGIN_SUCCESS, LOGOUT, SIGNIN, login } from "../actions/user.action";
+import { LOGIN, LOGIN_SUCCESS, LOGOUT, SIGNIN, UPDATE } from "../actions/user.action";
 import { EMPTY, catchError, exhaustMap, map, of } from "rxjs";
 import { Router } from "@angular/router";
 import { Client } from "src/app/core/models/Client";
-import { UPDATE } from "@ngrx/store";
 import { ClientService } from "src/app/core/services/client.service";
 
 @Injectable()
 export class UserEffects{
+
     login$ = createEffect(() =>
         this.actions$.pipe(
             ofType(LOGIN),
@@ -56,8 +56,8 @@ export class UserEffects{
         ofType(UPDATE),
         exhaustMap((payload:Client)=>{
             const{type , ...result}=payload;
-            console.log("effect")
-            this.clientService.updateClient(result).subscribe(()=>{
+            let myUser = Client.fromObject(result);
+            this.clientService.updateClient(myUser).subscribe(()=>{
                 return  of({type : 'NO_ACTION'})
             });
             return of({type : 'NO_ACTION'});

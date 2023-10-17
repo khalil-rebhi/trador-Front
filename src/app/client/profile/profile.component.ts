@@ -7,7 +7,6 @@ import { Client } from 'src/app/core/models/Client';
 })
 export class ProfileComponent  implements OnInit  {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
  

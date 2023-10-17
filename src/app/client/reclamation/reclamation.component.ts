@@ -17,7 +17,6 @@ constructor(private service:ClientService){}
 submitReclamation(){
   this.service.addreclamation(this.reclamation).subscribe(
     Response =>{
-      console.log(Response);
     }
   )
 }

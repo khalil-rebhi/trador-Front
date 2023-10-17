@@ -8,12 +8,7 @@ import { ConfigProfileComponent } from './config-profile/config-profile.componen
 import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { FormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
-import { userReducer } from '../store/reducers/user.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from '../store/effects/user.effects';
-import { RouterModule, Routes } from '@angular/router';
-import { clientroutes } from './client-routing.module';
+import { SpinnerComponent } from '../shared/spinner/spinner.component';
 
 
 @NgModule({
@@ -28,6 +23,7 @@ import { clientroutes } from './client-routing.module';
     CommonModule,
     ClientRoutingModule,
     FormsModule,
+    SpinnerComponent
    //RouterModule.forRoot(clientroutes, { useHash: false }),
   
     

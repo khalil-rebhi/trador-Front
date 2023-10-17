@@ -11,12 +11,12 @@ export class ClientService {
 
   constructor(private http:HttpClient) {   }
 
-  public updateClient( client:Client ):Observable<Client>{
-    return this.http.put<Client>('http://localhost:8089/trador/user/edit/'+ client.IdClient , client);
+  public updateClient( client:Client ):Observable<Client>{    
+    return this.http.put<Client>('http://localhost:8089/trador/user/edit/'+ client.idUser , client);
   }
 
-  public getClient(client:Client){
-    return this.http.get('http://localhost:8089/trador/user/show/'+client.IdClient);
+  public getClient(user : Client) : Observable<Client>{
+    return this.http.get<Client>('http://localhost:8089/trador/user/show/'+user.idUser);
   }
 
   public uploadPhoto(idUser:number){

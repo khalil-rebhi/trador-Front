@@ -1,5 +1,5 @@
 export class Client{
-    IdClient:number;
+    idUser:number;
     userApplicationId:string;
     name:string;
     familyName:string;
@@ -22,4 +22,15 @@ export class Client{
     facebook:string;
     bio:string;
     photo:string;
+    enabled?:boolean;
+    accountNonLocked?:boolean;
+    authorities?: any;
+    username?:string;
+    accountNonExpired?:boolean;
+    credentialsNonExpired?:boolean;
+
+    static fromObject(obj : Client){
+        const {enabled, accountNonExpired, accountNonLocked, authorities,credentialsNonExpired,username,...myUser} = obj
+        return myUser;
+    }
 }
