@@ -1,0 +1,54 @@
+<div class="container mt-2">
+
+<!---->
+<style>
+
+
+ 
+  ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 12px;
+    
+  }
+
+  ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px;
+  }
+
+
+</style>
+<ul>
+  <li> <i  class="bi bi-people-fill" aria-hidden="true"></i>FOLLOWERS</li>
+  <li> <i class="bi bi-rocket" aria-hidden="true"></i>BOOSTS</li>
+  <li> <i class="bi bi-graph-up" aria-hidden="true"></i>IDEES</li>
+  <li> <i class="bi bi-file-text" aria-hidden="true"></i>SCRIPTS</li>
+</ul>
+
+
+
+
+
+
+
+
+
+<!-- tabs-->
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"  routerLink="idee">Idees</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"  routerLink="idee">Minds</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"  routerLink="reclamation">Reclamation</button>
+    <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled"  routerLink="config">configuration</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <router-outlet></router-outlet>
+</div>
+<!---->
+
+
+
+

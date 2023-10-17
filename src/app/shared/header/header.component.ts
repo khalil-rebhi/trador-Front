@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { Client } from 'src/app/core/models/Client';
@@ -18,13 +19,21 @@ export class HeaderComponent implements AfterViewInit {
 
   public showSearch = false;
   public user : Client;
-  constructor(private modalService: NgbModal, private store : Store<any>) {
-    this.store.subscribe(result => this.user = result.user.user)
+  constructor(private modalService: NgbModal, private store : Store<any> , private router:Router) {
+    this.store.subscribe(result => {this.user = result.user.user
+      console.log(this.user)}
+    )
   }
 
   ngAfterViewInit() { }
 
   logout(){
     this.store.dispatch(logout());
+  }
+
+
+  toprofile(){
+    this.router.navigateByUrl("/trador/client/config")
+    
   }
 }
