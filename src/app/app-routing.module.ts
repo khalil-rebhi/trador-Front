@@ -10,7 +10,7 @@ import { ConfigProfileComponent } from './client/config-profile/config-profile.c
 import { ForgetComponent } from './shared/forget/forget.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 
-import { ListUsersComponent } from './list-users/list-users.component';
+import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 
 

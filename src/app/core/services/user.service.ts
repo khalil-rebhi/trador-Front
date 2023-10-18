@@ -35,21 +35,9 @@ export class UserService {
   }
   
 
-  getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:8089/trador/user/show');
+  getAllUsers(): Observable<Client[]> {
+    return this.http.get<Client[]>('http://localhost:8089/trador/user/show');
   }
 
 }
 
-
-
-export interface User {
-  IdClient:number;
-  userApplicationId:string;
-  name:string;
-  familyName:string;
-  phoneNumber:string;
-  cin:number;
-  email:string;
-  address:string;
-}
