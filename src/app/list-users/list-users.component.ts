@@ -9,6 +9,8 @@ import { User } from '../core/services/user.service';
 })
 export class ListUsersComponent implements OnInit {
   users: User[] ;
+  selectedUser: User | null = null;
+  modalOpen = false; // Variable pour stocker les détails de l'utilisateur sélectionné
 
   constructor(private userService: UserService) { }
 
@@ -21,8 +23,9 @@ export class ListUsersComponent implements OnInit {
     
   }
 
-  consulterUtilisateur(userId: number) {
-    
+  consulterUtilisateur(user: User) {
+    this.selectedUser = user;
+    this.modalOpen = true;
   }
 
   modifierUtilisateur(userId: number) {
