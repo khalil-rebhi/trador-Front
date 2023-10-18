@@ -19,12 +19,20 @@ export class UserService {
   }
 
   public signup(user : Client) : Observable<Client>{
-    console.log("service");
-    console.log(user);
-    
     return this.http.post<Client>('http://localhost:8089/trador/user/add',user)
   }
- 
+
+  public sendEmail(email  : string) {
+    return this.http.post<string>('http://localhost:8089/trador/user/send-verification-code', email)
+  }
+
+  public verifyCode(code : string, email : string){
+    return this.http.post<any>('http://localhost:8089/trador/user/verify-code?verificationCode='+code,email)
+  }
+
+  public resetPassword(credentials: {email : string, newPass : string}){
+    return this.http.post('http://localhost:8089/trador/user/changePassword', credentials);
+  }
   
 
   getAllUsers(): Observable<User[]> {

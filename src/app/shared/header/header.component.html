@@ -3,7 +3,7 @@
 <!-- ============================================================== -->
 <ul class="navbar-nav float-start me-auto">
     <li class="nav-item">
-      <a class="nav-link waves-effect waves-dark" href="/dashboard"> Starter </a>
+      <a class="nav-link waves-effect waves-dark" routerLink="/trador/client"> Starter </a>
     </li>
     <li class="nav-item">
       <a class="nav-link waves-effect waves-dark" href="/about"> About </a>
@@ -40,11 +40,11 @@
         </span>
       </a>
       <div class="dropdown-menu-right" ngbDropdownMenu>
-        <a class="dropdown-item" href="javascript:void(0)"> My Profile</a>
-        <a class="dropdown-item" href="javascript:void(0)"> My Balance</a>
-        <a class="dropdown-item" href="javascript:void(0)"> Inbox</a>
+        <a class="dropdown-item" style="cursor:pointer" (click)="toprofile()"> My Profile</a>
+        <a class="dropdown-item" style="cursor:pointer" > My Balance</a>
+        <a class="dropdown-item" style="cursor:pointer" > Inbox</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="javascript:void(0)"> Account Setting</a>
+        <a class="dropdown-item" style="cursor:pointer" > Account Setting</a>
         <div class="dropdown-divider"></div>
         <a (click)="logout()" class="btn btn-outline-danger w-100"> Logout</a>
       </div>

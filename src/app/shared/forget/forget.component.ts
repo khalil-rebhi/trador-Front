@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-forget',
@@ -8,15 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class ForgetComponent implements OnInit {
 
   verif = false;
+  reset = false;
+  email : string;
+
+  constructor (private userService : UserService) {}
 
   ngOnInit(): void {
   }
 
-  email : string;
+  handleReset(event : boolean){
+    this.reset = !this.reset;
+    this.verif = !this.verif;
+  }
 
   submitEmail(){
-    console.log(this.email);
-    
+    this.userService.sendEmail(this.email).subscribe();
     this.verif = !this.verif;
   }
 }

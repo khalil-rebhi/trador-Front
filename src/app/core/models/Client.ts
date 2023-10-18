@@ -1,5 +1,5 @@
 export class Client{
-    IdClient:number;
+    idUser:number;
     userApplicationId:string;
     name:string;
     familyName:string;
@@ -13,7 +13,25 @@ export class Client{
     dateStartPremium:Date;
     createdAt:Date;
     lastModifiedAt:Date;
+    lastDateChangePassword:Date;
     address:string;
-    role : string = "USER"
-    type ?: string
+    role : string = "USER";
+    type ?: string;
+    twitter:string;
+    instagram:string;
+    youtube:string;
+    facebook:string;
+    bio:string;
+    photo:string;
+    enabled?:boolean;
+    accountNonLocked?:boolean;
+    authorities?: any;
+    username?:string;
+    accountNonExpired?:boolean;
+    credentialsNonExpired?:boolean;
+
+    static fromObject(obj : Client){
+        const {enabled, accountNonExpired, accountNonLocked, authorities,credentialsNonExpired,username,...myUser} = obj
+        return myUser;
+    }
 }

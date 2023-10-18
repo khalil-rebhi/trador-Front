@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-verif-code',
@@ -7,16 +8,18 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 })
 export class VerifCodeComponent implements OnInit {
 
-  buttonMessage : string;
   @Input() email : string;
+  @Output() resetEmitter : EventEmitter<boolean> = new EventEmitter<boolean>()
+
+  buttonMessage : string;
   timer : boolean = true;
+  notification = false;
   @ViewChild('digit1InputRef') digit1InputRef: ElementRef;
   @ViewChild('digit2InputRef') digit2InputRef: ElementRef;
   @ViewChild('digit3InputRef') digit3InputRef: ElementRef;
   @ViewChild('digit4InputRef') digit4InputRef: ElementRef;
   @ViewChild('digit5InputRef') digit5InputRef: ElementRef;
   @ViewChild('digit6InputRef') digit6InputRef: ElementRef;
-  constructor() {}
 
   digit1: string = '';
   digit2: string = '';
@@ -25,14 +28,24 @@ export class VerifCodeComponent implements OnInit {
   digit5: string = '';
   digit6: string = '';
 
+  constructor(private userService : UserService) {}
+
   ngAfterViewInit() {
     this.digit1InputRef.nativeElement.focus();
   }
 
   onSubmit() {
-    const code = this.digit1 + this.digit2 + this.digit3 + this.digit4;
-    console.log('Submitted code:', code);
-    // Add any further logic here (e.g., sending the code to a server)
+    const code = this.digit1 + this.digit2 + this.digit3 + this.digit4+this.digit5+this.digit6;
+    this.userService.verifyCode(code, this.email).subscribe(
+      result => {
+        if(result){
+          this.resetEmitter.emit(true);
+        }else{
+          this.notification = !this.notification;
+          setTimeout(() => this.notification = !this.notification,2000);
+        }
+      }
+    );
   }
 
   moveToNext(event: Event, nextInput: HTMLInputElement) {
@@ -50,6 +63,7 @@ export class VerifCodeComponent implements OnInit {
   }
 
   resendEmail(){
+    this.userService.sendEmail(this.email).subscribe();
     this.timer = !this.timer;
   }
 }
