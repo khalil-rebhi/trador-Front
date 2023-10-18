@@ -8,59 +8,67 @@
 <!-- formulaire-->
 <div class="row border g-0 rounded shadow-sm" style="background-color: rgb(253, 252, 253);">
   <div class="col p-4">
-      <h3>Info Public</h3>
-      <p class="fw-medium">Ces informations seront publiées et visibles pour tous les utilisateurs..</p>
+      <h3>Public Info</h3>
+      <p class="fw-medium">This information will be published and visible to all users.</p>
       <form class="row g-3"  #form="ngForm"  (ngSubmit)="updateClientProfile()">
         <div class="col-md-6">
-          <label for="nom" class="form-label">Non d'utilisateur </label>
+          <label for="appid" class="form-label">Your unique ID </label>
+          <input type="text" class="form-control" id="appid" [(ngModel)]="user.userApplicationId" #appid="ngModel" name="appid" disabled>
+        </div>
+        <div class="col-md-6">
+          <label for="nom" class="form-label">Name </label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="user.name" #name="ngModel" name="name">
+        </div>
+        <div class="col-md-6">
+          <label for="nom" class="form-label">Family name </label>
           <input type="text" class="form-control" id="name" [(ngModel)]="user.name" #name="ngModel" name="name">
         </div>
         <div class="col-md-6">
           <label for="email" class="form-label">Email </label>
-          <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email"  #email="ngModel"  >
+          <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email"  #email="ngModel" disabled>
         </div>
         <div class="col-md-6">
           <label for="cin" class="form-label">CIN</label>
-          <input type="text" class="form-control" id="cin" name="cin"  [(ngModel)]="user.cin"  #cin="ngModel"  >
+          <input type="text" class="form-control" id="cin" name="cin"  [(ngModel)]="user.cin"  #cin="ngModel" disabled>
         </div>
-
         <div class="col-md-6">
-          <label for="address" class="form-label">Adresse</label>
+          <label for="birthdate" class="form-label">Date of birth </label>
+          <input name="birthDate" type="date" class="form-control signup__input" id="birthday" name="birthDate"  [(ngModel)]="user.birthDate"  #birthDate="ngModel" [value]="getFormattedDate(user.birthDate)">
+        </div>
+        <div class="col-12">
+          <label for="address" class="form-label">Address</label>
           <input type="text" class="form-control" id="address"  name="address"  [(ngModel)]="user.address"  #address="ngModel">
         </div>
 
-        <div class="col-md-6">
-          <label for="birthdate" class="form-label">Date de naissance </label>
-          <input name="birthDate" type="date" class="form-control signup__input" id="birthday" name="birthDate"  [(ngModel)]="user.birthDate"  #birthDate="ngModel">
-        </div>
         <!--<form (ngSubmit)="onFileUpload()" enctype="multipart/form-data">
           <input type="file" (change)="onFileSelected($event)" accept="image/*" />
           <button type="submit">Télécharger la photo de profil</button>
         </form>-->
         
         <!---->
-        <div class="col-md-6">
-          <label for="bio" class="form-label">a propos de moi </label>
+        <div class="col-12">
+          <label for="bio" class="form-label">About me</label>
           <input type="text" class="form-control"  id="bio" name="bio"  [(ngModel)]="user.bio"  #bio="ngModel">
         </div>
         <div class="col-md-6">
-          <label for="twitter" class="form-label">Address twitter</label>
+          <label for="twitter" class="form-label"><i class="bi bi-twitter-x"></i> Twitter</label>
           <input type="text" class="form-control" id="twitter" name="twitter"  [(ngModel)]="user.twitter"  #twitter="ngModel" >
         </div>
         <div class="col-md-6">
-          <label for="youtube" class="form-label">Lien vers la chaine Youtube </label>
+          <label for="youtube" class="form-label"><i class="bi bi-youtube"></i> Youtube </label>
           <input type="text" class="form-control"  id="youtube" name="youtube"  [(ngModel)]="user.youtube"  #youtube="ngModel" >
         </div>
         <div class="col-md-6">
-          <label for="facebook" class="form-label">Profil Facebook </label>
+          <label for="facebook" class="form-label"><i class="bi bi-facebook"></i> Facebook </label>
           <input type="text" class="form-control" id="facebook" name="facebook"  [(ngModel)]="user.facebook"  #facebook="ngModel" >
         </div>
         <div class="col-md-6">
-          <label for="instagram" class="form-label">Profil instagram </label>
+          <label for="instagram" class="form-label"><i class="bi bi-instagram"></i> Instagram </label>
           <input type="text" class="form-control" id="instagram" name="instagram"  [(ngModel)]="user.instagram"  #instagram="ngModel" >
         </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Save changes</button>
+        <div class="col-12 text-end" *ngIf="!private">
+          <button type="button" (click)="showPrivate()" class="btn btn-info">{{ showButton }}</button>
+          <button type="submit" class="btn btn-success">Save changes</button>
         </div>
       </form>
   </div>
@@ -68,46 +76,75 @@
 </div>
 
 <!---->
-<div class="row border g-0 rounded shadow-sm" style="background-color: rgb(253, 252, 253);">
-  <div class="col p-4">
-      <h3>DÉTAILS PRIVÉS</h3>
-      <p class="fw-medium">Ces informations ne seront pas affichées publiquement.</p>
+<div class="row border g-0 rounded shadow-sm" style="background-color: rgb(253, 252, 253);" *ngIf="private">
+  <div class="col p-4" >
+      <h3>PRIVATE DETAILS</h3>
+      <p class="fw-medium">This information will not be publicly displayed.</p>
       <form class="row g-3" #form="ngForm">
         <div class="container">
           <div >
+            <div class="col-md-6">
+              <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
+              <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required id="phoneNumber" name="phoneNumber"  [(ngModel)]="user.phoneNumber"  #phoneNumber="ngModel"  >
+            </div>
               <div class="col-md-6">
-                  <h2 class="mt-5 mb-4">Changement de mot de passe</h2>
+                  <h2 class="mt-5 mb-4">Change Password</h2>
                   <form>
                       <div class="mb-3">
-                          <label for="currentPassword" class="form-label">Mot de passe actuel</label>
-                          <input type="password" class="form-control" id="currentPassword" name="currentPassword" required id="password" name="password"  [(ngModel)]="user.password"  #password="ngModel"  >
+                          <label for="currentPassword" class="form-label">Actual password</label><br>
+                          <small class="">Last time you changed your password was on : {{ getFormattedDate(user.lastDateChangePassword )}}</small>
+                          <input type="password" class="form-control" id="currentPassword" name="currentPassword" required id="password" name="password"  [(ngModel)]="oldPassword"  #actualPassword="ngModel" (change)="checkPassword()" [disabled]="match">
+                          <div *ngIf="actualPassword.touched && !match">
+                            <div class="alert alert-danger">Please enter your actual password.</div>
+                          </div>
                       </div>
                       <div class="mb-3">
-                          <label for="newPassword" class="form-label">Nouveau mot de passe</label>
-                          <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                          <label for="newPassword" class="form-label">New password</label>
+                          <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" [ngClass]="{'is-valid' : mdp.touched && !mdp.invalid , 'is-invalid': mdp.touched && mdp.invalid }" id="newPassword" name="newPassword" #mdp="ngModel" [(ngModel)]="password" required [disabled]="!match" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,24}$">
+                          <div class="form-label" *ngIf="mdp.touched && mdp.invalid">
+                            <div>
+                              <i [ngClass]="{'bi bi-check-circle-fill green' : isPasswordLengthValid(password), 'bi bi-x-circle-fill red' : !isPasswordLengthValid(password)}"></i> 
+                              {{ isPasswordLengthValid(password) ? 'Password length is valid' : 'Password must be between 8 and 24 characters' }}
+                            </div>
+                            <div>
+                              <i [ngClass]="{'bi bi-check-circle-fill green' : hasUpperCase(password), 'bi bi-x-circle-fill red' : !hasUpperCase(password)}"></i> 
+                              {{ hasUpperCase(password) ? 'You have an uppercase letter' : 'No uppercase letter found' }}
+                            </div>
+                            
+                            <div>
+                              <i [ngClass]="{'bi bi-check-circle-fill green' : hasLowerCase(password), 'bi bi-x-circle-fill red' : !hasLowerCase(password)}"></i> 
+                              {{ hasLowerCase(password) ? 'You have a lowercase letter' : 'No lowercase letter found' }}
+                            </div>
+                            
+                            <div>
+                              <i [ngClass]="{'bi bi-check-circle-fill green' : hasDigit(password), 'bi bi-x-circle-fill red' : !hasDigit(password)}"></i> 
+                              {{ hasDigit(password) ? 'You have a digit' : 'No digit found' }}
+                            </div>
+                            
+                            <div>
+                              <i [ngClass]="{'bi bi-check-circle-fill green' : hasSpecialCharacters(password), 'bi bi-x-circle-fill red' : !hasSpecialCharacters(password)}"></i> 
+                              {{ hasSpecialCharacters(password) ? 'You have a special character' : 'No special character found' }}
+                            </div>
+                          </div>
                       </div>
                       <div class="mb-3">
-                          <label for="confirmPassword" class="form-label">Confirmer le nouveau mot de passe</label>
-                          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                          <label for="confirmPassword" class="form-label">Confirm your new password</label>
+                          <input type="password" class="form-control" [ngClass]="{'is-valid' : mdp2.touched && mdp2 == mdp  , 'is-invalid': mdp2.touched && !(mdp2 == mdp)  }" id="confirmPassword" name="confirmPassword" [(ngModel)]="repeatPassword" #mdp2="ngModel" required [disabled]="!match">
+                          <div class="alert alert-danger invalid-feedback" *ngIf="mdp2.invalid && mdp2.touched && mdp != mdp2">
+                            No match
+                          </div>
                       </div>
-                      <button type="submit" class="btn btn-primary">Changer le mot de passe</button>
+                      <button type="submit" class="btn btn-primary" (click)="changePassword()">Change password</button>
                   </form>
               </div>
           </div>
       </div>
-      <div class="col-md-6">
-        <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required id="phoneNumber" name="phoneNumber"  [(ngModel)]="user.phoneNumber"  #phoneNumber="ngModel"  >
-    </div>
-   
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary" (click)="updateClientProfile()">Save changes</button>
+    <div class="col-12 text-end">
+      <button type="button" (click)="showPrivate()" class="btn btn-info">{{ showButton }}</button>
+      <button type="submit" class="btn btn-success" (click)="updateClientProfile()">Save changes</button>
     </div>
 
       </form>
   </div>
   
-</div>
-
-
 </div>

@@ -13,6 +13,7 @@ export class Client{
     dateStartPremium:Date;
     createdAt:Date;
     lastModifiedAt:Date;
+    lastDateChangePassword:Date;
     address:string;
     role : string = "USER";
     type ?: string;

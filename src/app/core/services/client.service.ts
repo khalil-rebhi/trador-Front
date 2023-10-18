@@ -26,4 +26,8 @@ export class ClientService {
     return this.http.post('http://localhost:8089/trador/reclamation/addReclamation',Reclamation);
   }
 
+  public checkPassword(user : Client, password : string) : Observable<boolean>{
+    return this.http.post<boolean>("http://localhost:8089/trador/user/verifyOldPassword/"+user.idUser, password);
+  }
+
 }
