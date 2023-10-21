@@ -29,6 +29,7 @@ import { VerifCodeComponent } from './shared/verif-code/verif-code.component';
 import { VerificationCodeTimerComponent } from './shared/verification-code-timer/verification-code-timer.component';
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
+import { EditUserComponent } from './admin/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { BackOfficeComponent } from './layouts/back-office/back-office.component
     VerificationCodeTimerComponent,
     ResetPasswordFormComponent,
     BackOfficeComponent,
+    EditUserComponent,
   ],
   imports: [
     CommonModule,

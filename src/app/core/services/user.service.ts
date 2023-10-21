@@ -33,6 +33,20 @@ export class UserService {
   public resetPassword(credentials: {email : string, newPass : string}){
     return this.http.post('http://localhost:8089/trador/user/changePassword', credentials);
   }
+
+  
+  
+  public deleteUser(userId: number): Observable<any> {
+    return this.http.delete(`http://localhost:8089/trador/user/remove/${userId}`);
+  }
+
+  public updateUser(user: Client): Observable<Client> {
+    return this.http.put<Client>(`http://localhost:8089/trador/user/edit/${user.idUser}`, user);
+  }
+
+  retrieveUser(userId: number): Observable<Client> {
+    return this.http.get<Client>(`http://localhost:8089/trador/user/show/${userId}`);
+  }
   
 
   getAllUsers(): Observable<Client[]> {
