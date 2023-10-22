@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { UserService } from "src/app/core/services/user.service";
-import { LOGIN, LOGIN_SUCCESS, LOGOUT, SIGNIN, UPDATE } from "../actions/user.action";
-import { EMPTY, catchError, exhaustMap, map, of } from "rxjs";
+import { CURRENT_USER, LOGIN, LOGIN_SUCCESS, LOGOUT, SIGNUP, UPDATE } from "../actions/user.action";
+import { catchError, exhaustMap, map, of } from "rxjs";
 import { Router } from "@angular/router";
 import { Client } from "src/app/core/models/Client";
-import { ClientService } from "src/app/core/services/client.service";
 
 @Injectable()
 export class UserEffects{
@@ -16,7 +15,11 @@ export class UserEffects{
             exhaustMap((action: {email : string, password : string, type : string}) => this.authService.login({email : action.email, password : action.password})
             .pipe(
                 map(user => ({type : LOGIN_SUCCESS ,payload : user})),
-                catchError(() => EMPTY)
+                catchError(error =>{
+                    console.log(error.status);
+                    
+                    throw new Error("Login failed");
+                })
             )
             )
         )
@@ -41,7 +44,7 @@ export class UserEffects{
       ))
 
       signup$ = createEffect(() => this.actions$.pipe(
-        ofType(SIGNIN),
+        ofType(SIGNUP),
         exhaustMap((payload : Client) => {
             const {type , ...result} = payload;
             this.authService.signup(result).subscribe(() => {
@@ -68,7 +71,7 @@ export class UserEffects{
         private actions$ : Actions,
         private authService : UserService,
         private router : Router,
-        private clientService:ClientService
+        private clientService:UserService
         
     ) {}
 

@@ -81,6 +81,15 @@ data-boxed-layout="full"
       ></app-header>
     </div>
   </nav>
+  <div class="verify row alert alert-warning d-flex justify-content" *ngIf="!user.isVerified">
+    <div class="col-8">
+      Please verify your account
+    </div>
+    <div class="col-4 text-end">
+      <a class="btn btn-outline-warning" (click)="sendVerificationMail()" *ngIf="verify">Send me verification email</a>
+      <a class="btn btn-outline-warning" *ngIf="!verify" data-bs-toggle="modal" data-bs-target="#userDetailsModal">Enter code</a>
+    </div>
+  </div>
 </header>
 <!-- ============================================================== -->
 <!-- Left Sidebar - style you can find in sidebar.scss  -->
@@ -131,4 +140,32 @@ data-boxed-layout="full"
 <!-- ============================================================== -->
 </div>
 
+</div>
+
+
+<div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="userDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userDetailsModalLabel">Verify my account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+          <span aria-hidden="true" data-bs-dismiss="modal"><i class="bi bi-x" style="color: red;"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" *ngIf="error">
+          Your code may be expired or misspelled ! Please review it
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Verification code</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="code">
+        </div>
+      </div>
+      <div class="modal-footer text-end">
+        <button type="button" class="btn btn-warning" (click)="sendVerificationMail()">Resend email</button>
+        <button type="button" class="btn btn-success" (click)="verifyCode()">Verify</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Fermer">close</button>
+      </div>
+    </div>
+  </div>
 </div>

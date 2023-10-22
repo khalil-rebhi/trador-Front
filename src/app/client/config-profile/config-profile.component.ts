@@ -1,12 +1,8 @@
 import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit  } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import {  map, switchMap } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
-import { ClientService } from 'src/app/core/services/client.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { update } from 'src/app/store/actions/user.action';
 @Component({
@@ -39,7 +35,7 @@ export class ConfigProfileComponent  implements OnInit{
   }
   
 
-  constructor( private store : Store<any> ,private clientService:ClientService, private datePipe : DatePipe, private userService : UserService) {
+  constructor( private store : Store<any> ,private clientService:UserService, private datePipe : DatePipe, private userService : UserService) {
   }
 
   updateClientProfile() {

@@ -1,22 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { Client } from 'src/app/core/models/Client';
+import { UserService } from 'src/app/core/services/user.service';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { SidebarComponent } from 'src/app/shared/sidebar/sidebar.component';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
+import { verify } from 'src/app/store/actions/user.action';
 
 @Component({
   selector: 'app-front-office',
   standalone : true,
-  imports:[RouterModule,SidebarComponent,HeaderComponent, CommonModule, NgbCollapseModule,SpinnerComponent],
+  imports:[RouterModule,SidebarComponent,HeaderComponent, CommonModule, NgbCollapseModule,SpinnerComponent,FormsModule],
   templateUrl: './front-office.component.html',
   styleUrls: ['./front-office.component.css']
 })
 export class FrontOfficeComponent {
-  constructor(public router: Router , private store: Store<{user : Client, accessToken : string}>) {}
+  constructor(public router: Router , private store: Store<any>, private userService: UserService) {}
   public isCollapsed = false;
   public innerWidth: number = 0;
   public defaultSidebar: string = "";
@@ -24,6 +27,10 @@ export class FrontOfficeComponent {
   public expandLogo = false;
   public sidebartype = "full";
   public spinner = true;
+  public user : Client;
+  public verify= true;
+  public code = "";
+  public error = false;
 
   Logo() {
     this.expandLogo = !this.expandLogo;
@@ -37,7 +44,8 @@ export class FrontOfficeComponent {
     this.defaultSidebar = this.sidebartype;
     this.handleSidebar();
     this.spinner = !this.spinner
-    },500)
+  },500)
+  this.store.subscribe(result =>this.user = result.user.user);
   }
 
   @HostListener("window:resize", ["$event"])
@@ -67,6 +75,22 @@ export class FrontOfficeComponent {
 
       default:
     }
+  }
+
+  sendVerificationMail(){
+    this.userService.sendEmail(this.user.email).subscribe(res => this.verify = false
+    )
+  }
+
+  verifyCode(){
+    this.userService.sendVerificationCode(this.user.email, this.code).subscribe(res => {
+      if (res) {
+        this.store.dispatch(verify())
+        this.router.navigateByUrl("/trador");
+      }else{
+        this.error = true;
+      }
+    })
   }
 }
 

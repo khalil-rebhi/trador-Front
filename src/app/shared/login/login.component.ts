@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   badCredentials : boolean = false;
   spinner = true;
   loading = false;
+  error = false;
 
   constructor(private authService: UserService, private router : Router, private store: Store<{user : Client, accessToken : string}>) {
   }
@@ -32,7 +33,16 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.loading = !this.loading;
-    this.store.dispatch(login({email : this.email, password: this.password}))
+    try {
+      this.store.dispatch(login({email : this.email, password: this.password}))
+    } catch (error) {
+      console.log("error");
+      
+      console.log(error);
+      
+      this.error = true;
+      this.loading = false;
+    }
   }
 
 }

@@ -5,9 +5,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { ConfigProfileComponent } from './config-profile/config-profile.component';
 import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
+import { DataUserGuard } from '../shared/guard/Data-User.guard';
 
 export 
-const clientroutes: Routes = [{ path : '', component:ClientComponent, children:[
+const clientroutes: Routes = [{ path : '', component:ClientComponent,canActivate:[DataUserGuard], children:[
   {
     path: 'config', component : ConfigProfileComponent,
   },

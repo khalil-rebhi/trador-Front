@@ -12,6 +12,7 @@ import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
+import { DataUserGuard } from './shared/guard/Data-User.guard';
 
 
 export const Approutes: Routes = [
@@ -26,7 +27,7 @@ export const Approutes: Routes = [
   },
   {
     path: 'trador',
-    //canActivate : [AuthGuard],
+    canActivate : [DataUserGuard],
     component: FrontOfficeComponent,
     children: [
       { path: 'trador', redirectTo: '/client', pathMatch: 'full' },

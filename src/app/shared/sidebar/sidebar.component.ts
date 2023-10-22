@@ -4,6 +4,8 @@ import { RouteInfo } from './sidebar.metadata';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule, NgIf } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { Client } from 'src/app/core/models/Client';
 //declare var $: any;
 
 @Component({
@@ -15,6 +17,7 @@ import { CommonModule, NgIf } from '@angular/common';
 export class SidebarComponent implements OnInit {
   showMenu = '';
   showSubMenu = '';
+  user : Client;
   public sidebarnavItems:RouteInfo[]=[];
   // this is for the open close
   addExpandClass(element: string) {
@@ -26,13 +29,12 @@ export class SidebarComponent implements OnInit {
   }
 
   constructor(
-    private modalService: NgbModal,
-    private router: Router,
-    private route: ActivatedRoute
+    private store : Store<any>
   ) {}
 
   // End open close
   ngOnInit() {
     this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem);
+    this.store.subscribe(result => this.user = result.user.user);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Reclamation } from 'src/app/core/models/Reclamation';
-import { ClientService } from 'src/app/core/services/client.service';
+import { UserService } from 'src/app/core/services/user.service';
 @Component({
   selector: 'app-reclamation',
   templateUrl: './reclamation.component.html',
@@ -12,7 +12,7 @@ export class ReclamationComponent implements OnInit  {
   }
 
 reclamation:Reclamation = new Reclamation();
-constructor(private service:ClientService){}
+constructor(private service:UserService){}
 
 submitReclamation(){
   this.service.addreclamation(this.reclamation).subscribe(
