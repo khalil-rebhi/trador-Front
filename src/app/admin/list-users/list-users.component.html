@@ -35,7 +35,7 @@
             <td>{{ user.address }}</td>
             <td class="btn-group">
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userDetailsModal" (click)="consulterUtilisateur(user)"><i class="bi bi-box-arrow-up-left"></i></button>
-                <button class="btn btn-warning" [routerLink]="['/edit-user', user.idUser]"><i class="bi bi-pencil-square"></i></button>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#userEditModal" (click)="modifierUtilisateur(user)"><i class="bi bi-pencil-square"></i></button>
                 <button class="btn btn-danger" (click)="supprimerUtilisateur(user)"><i class="bi bi-trash"></i></button>
             </td>
         </tr>
@@ -147,6 +147,22 @@
         <button type="button" class="btn btn-warning" data-dismiss="modal">Edit</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Fermer">Close</button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal de modification  -->
+<div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+          <span aria-hidden="true" data-bs-dismiss="modal"><i class="bi bi-x" style="color: red;"></i></span>
+        </button>
+      </div>
+      <app-edit-user [user]="selectedUser"></app-edit-user>
     </div>
   </div>
 </div>

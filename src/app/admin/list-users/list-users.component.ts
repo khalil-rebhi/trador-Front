@@ -31,8 +31,9 @@ export class ListUsersComponent implements OnInit {
     this.modalOpen = true;
   }
 
-  modifierUtilisateur(idUser: number) {
-    
+  modifierUtilisateur(user: Client) {
+    this.selectedUser = user;
+    this.modalOpen = true;
   }
   
   confirmerSuppression() {

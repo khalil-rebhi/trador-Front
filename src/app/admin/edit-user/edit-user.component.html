@@ -1,32 +1,67 @@
-<div class="modal-header">
-    <h4 class="modal-title">Edit User</h4>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+<div class="alert alert-danger" *ngIf="!user">
+    An error has occured
 </div>
-<div class="modal-body">
-    <form>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name">
+<div class="modal-body" *ngIf="user">
+    <form class="row g-3">
+
+        <div class="col-md-6">
+            <label class="form-label" for="name">Name:</label>
+            <input class="form-control" type="text" id="name" name="name" [(ngModel)]="user.name" #ngModel="ngModel">
         </div>
-        <div class="form-group">
-            <label for="familyName">Family Name</label>
-            <input type="text" class="form-control" id="familyName" name="familyName" [(ngModel)]="user.familyName">
+
+        <div class="col-md-6">
+            <label class="form-label" for="familyName">Family Name:</label>
+            <input class="form-control" type="text" id="familyName" name="familyName" [(ngModel)]="user.familyName" #ngModel="ngModel">
         </div>
-        <div class="form-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber">
+
+        <div class="col-md-6">
+            <label class="form-label" for="phoneNumber">Phone Number:</label>
+            <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber" #ngModel="ngModel">
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email">
+
+        <div class="col-md-6">
+            <label class="form-label" for="cin">CIN:</label>
+            <input class="form-control" type="text" id="cin" name="cin" [(ngModel)]="user.cin" #ngModel="ngModel">
         </div>
-        <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" name="address" [(ngModel)]="user.address">
+<!--
+        <label class="form-label" for="password">Password:</label>
+        <input class="form-control" type="password" id="password" name="password" [(ngModel)]="user.password" #ngModel="ngModel">  -->
+
+        <div class="col-12">
+            <label class="form-label" for="email">Email:</label>
+            <input class="form-control" type="email" id="email" name="email" [(ngModel)]="user.email" #ngModel="ngModel">
         </div>
-        <!-- Ajoutez d'autres champs de formulaire ici -->
+
+        <div class="col-12">
+            <label class="form-label" for="birthDate">Birth Date:</label>
+            <input class="form-control" type="date" id="birthDate" name="birthDate" [(ngModel)]="user.birthDate" #ngModel="ngModel">
+        </div>
+
+        <div class="col-12">
+            <label class="form-label" for="address">Address:</label>
+            <input class="form-control" type="text" id="address" name="address" [(ngModel)]="user.address" #ngModel="ngModel">
+        </div>
+        <div class="col-md-6">
+            
+        <label class="form-label" for="twitter">Twitter:</label>
+        <input class="form-control" type="text" id="twitter" name="twitter" [(ngModel)]="user.twitter" #ngModel="ngModel">
+        </div>
+        <div class="col-md-6">
+            
+        <label class="form-label" for="instagram">Instagram:</label>
+        <input class="form-control" type="text" id="instagram" name="instagram" [(ngModel)]="user.instagram" #ngModel="ngModel">
+        </div>
+        <div class="col-md-6">
+            
+        <label class="form-label" for="youtube">YouTube:</label>
+        <input class="form-control" type="text" id="youtube" name="youtube" [(ngModel)]="user.youtube" #ngModel="ngModel">
+        </div>
+        <div class="col-md-6">
+            
+        <label class="form-label" for="facebook">Facebook:</label>
+        <input class="form-control" type="text" id="facebook" name="facebook" [(ngModel)]="user.facebook" #ngModel="ngModel">
+        </div>
+
     </form>
 </div>
 <div class="modal-footer">
