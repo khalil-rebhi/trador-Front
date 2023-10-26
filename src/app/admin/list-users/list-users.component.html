@@ -85,66 +85,65 @@
           <hr>
           <div class="row">
               <span class="col-6 label">ID Client:</span>
-              <span class="col-6">{{ selectedUser?.idUser }}</span>
+              <span class="col-6">{{ selectedUser?.idUser || "--"}}</span>
           </div>
           <div class="row">
               <span class="col-6 label">User Application Id:</span>
-              <span class="col-6">{{ selectedUser?.userApplicationId }}</span>
+              <span class="col-6">{{ selectedUser?.userApplicationId || "--"}}</span>
           </div>
           <div class="row">
               <span class="col-6 label">Name:</span>
-              <span class="col-6">{{ selectedUser?.name }}</span>
+              <span class="col-6">{{ selectedUser?.name || "--"}}</span>
           </div>
           <div class="row">
               <span class="col-6 label">Family Name:</span>
-              <span class="col-6">{{ selectedUser?.familyName }}</span>
+              <span class="col-6">{{ selectedUser?.familyName || "--"}}</span>
           </div>
           <div class="row">
               <span class="col-6 label">Phone Number:</span>
-              <span class="col-6">{{ selectedUser?.phoneNumber }}</span>
+              <span class="col-6">{{ selectedUser?.phoneNumber || "--"}}</span>
           </div>
           <div class="row">
               <span class="col-6 label">CIN:</span>
-              <span class="col-6">{{ selectedUser?.cin }}</span>
+              <span class="col-6">{{ selectedUser?.cin || "--"}}</span>
           </div>
           <div class="row">
               <span class="col-6 label">Email:</span>
-              <span class="col-6">{{ selectedUser?.email }}</span>
+              <span class="col-6">{{ selectedUser?.email || "--"}}</span>
           </div>
           <hr>
           <div class="row">
               <span class="col-6 label">Address:</span>
-              <span class="col-6">{{ selectedUser?.address }}</span>
+              <span class="col-6">{{ selectedUser?.address || "--"}}</span>
           </div>
           <div class="row">
             <span class="col-6 label">Date of birth:</span>
-            <span class="col-6">{{ getFormattedDate(selectedUser?.birthDate) }}</span>
+            <span class="col-6">{{ getFormattedDate(selectedUser?.birthDate) || "--" }}</span>
         </div>
         <div class="row">
           <span class="col-6 label">Twitter:</span>
-          <span class="col-6">{{ selectedUser?.twitter }}</span>
+          <span class="col-6">{{ selectedUser?.twitter || "--" }}</span>
       </div>
       <div class="row">
         <span class="col-6 label">Facebook:</span>
-        <span class="col-6">{{ selectedUser?.facebook }}</span>
+        <span class="col-6">{{ selectedUser?.facebook || "--" }}</span>
     </div>
     <div class="row">
       <span class="col-6 label">Instagram:</span>
-      <span class="col-6">{{ selectedUser?.instagram }}</span>
+      <span class="col-6">{{ selectedUser?.instagram || "--" }}</span>
   </div>
   <div class="row">
     <span class="col-6 label">Youtube:</span>
-    <span class="col-6">{{ selectedUser?.youtube }}</span>
+    <span class="col-6">{{ selectedUser?.youtube || "--" }}</span>
 </div>
 <div class="row">
   <span class="col-6 label">Bio:</span>
-  <span class="col-6">{{ selectedUser?.bio }}</span>
+  <span class="col-6">{{ selectedUser?.bio || "--" }}</span>
 </div>
       </div>
       
       </div>
       <div class="modal-footer text-end">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Edit</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Fermer">Close</button>
       </div>
     </div>
@@ -153,20 +152,7 @@
 
 
 <!-- Modal de modification  -->
-<div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-          <span aria-hidden="true" data-bs-dismiss="modal"><i class="bi bi-x" style="color: red;"></i></span>
-        </button>
-      </div>
-      <app-edit-user [user]="selectedUser"></app-edit-user>
-    </div>
-  </div>
-</div>
-
+<app-edit-user [user]="selectedUser"></app-edit-user>
 
 <!-- Modal de confirmation de suppression -->
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true" *ngIf="confirmationModalOpen">

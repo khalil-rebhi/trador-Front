@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../core/services/user.service';
 import { Client } from '../../core/models/Client';
 import { DatePipe } from '@angular/common';
@@ -12,6 +12,7 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent implements OnInit {
+  @ViewChild(EditUserComponent) modal : EditUserComponent;
   users: Client[] ;
   selectedUser: Client | null = null;
   modalOpen = false;
@@ -33,7 +34,7 @@ export class ListUsersComponent implements OnInit {
 
   modifierUtilisateur(user: Client) {
     this.selectedUser = user;
-    this.modalOpen = true;
+    this.modal.showModal = true;
   }
   
   confirmerSuppression() {
@@ -62,11 +63,6 @@ export class ListUsersComponent implements OnInit {
       return this.datePipe.transform(date, 'dd-MM-yyyy')
     }
     return '--'
-  }
- 
-  openEditModal(user: User) {
-    const modalRef = this.modalService.open(EditUserComponent, { size: 'lg' }); // Utilisez NgbModal pour ouvrir le modal.
-    modalRef.componentInstance.userToEdit = user; // Passez l'utilisateur à éditer au composant du modal.
   }
 
 }

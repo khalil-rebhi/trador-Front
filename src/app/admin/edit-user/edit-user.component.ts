@@ -8,8 +8,8 @@ import { update_admin } from 'src/app/store/actions/user.action';
 })
 export class EditUserComponent implements OnInit {
   @Input() user: Client | null;
-  userId: number;
   modalVisible = false;
+  showModal = false;
 
   constructor(
     private store : Store<any>
@@ -17,6 +17,11 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  toggleModal(){
+    this.showModal = !this.showModal;
+  }
+
   
 
   saveChanges() {
