@@ -13,6 +13,8 @@ export const SIGNUP = '[USER] SIGNUP'
 export const UPDATE = '[USER] UPDATE'
 export const VERIFY = '[USER] VERIFY'
 export const CURRENT_USER = '[USER] CURRENT USER'
+export const UPDATE_ADMIN = '[USER] UPDATE ADMIN'
+
 
 export const login = createAction(LOGIN, props<{email : string, password: string}>());
 export const loginSucces = createAction(LOGIN_SUCCESS, props<{payload : User}>());
@@ -21,3 +23,4 @@ export const signup = createAction(SIGNUP, props<Client>());
 export const update= createAction(UPDATE ,props<Client>());
 export const verify = createAction(VERIFY);
 export const currentUser = createAction(CURRENT_USER, props<{accessToken : string}>)
+export const update_admin= createAction(UPDATE_ADMIN ,props<Client>());

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { UserService } from "src/app/core/services/user.service";
-import { CURRENT_USER, LOGIN, LOGIN_SUCCESS, LOGOUT, SIGNUP, UPDATE } from "../actions/user.action";
+import { CURRENT_USER, LOGIN, LOGIN_SUCCESS, LOGOUT, SIGNUP, UPDATE, UPDATE_ADMIN } from "../actions/user.action";
 import { catchError, exhaustMap, map, of } from "rxjs";
 import { Router } from "@angular/router";
 import { Client } from "src/app/core/models/Client";
@@ -57,6 +57,18 @@ export class UserEffects{
 
       update$ = createEffect(()=>this.actions$.pipe(
         ofType(UPDATE),
+        exhaustMap((payload:Client)=>{
+            const{type , ...result}=payload;
+            let myUser = Client.fromObject(result);
+            this.clientService.updateClient(myUser).subscribe(()=>{
+                return  of({type : 'NO_ACTION'})
+            });
+            return of({type : 'NO_ACTION'});
+        })
+      ))
+
+      update_admin$ = createEffect(()=>this.actions$.pipe(
+        ofType(UPDATE_ADMIN),
         exhaustMap((payload:Client)=>{
             const{type , ...result}=payload;
             let myUser = Client.fromObject(result);
