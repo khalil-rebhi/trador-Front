@@ -4,6 +4,7 @@ import { Client } from '../models/Client';
 import { Reclamation } from '../models/Reclamation';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Store } from '@ngrx/store';
+import { currentUser } from 'src/app/store/actions/user.action';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,14 @@ export class UserService {
   public isLoggedin$ : ReplaySubject<boolean> = new ReplaySubject(1);
   public user$: BehaviorSubject<Client | null> = new BehaviorSubject<Client |null>(null);
   private accessToken: string;
-private httpOptions = {
-  headers: new HttpHeaders()
-}
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    })
+  };
 
   constructor(private http : HttpClient, private store: Store<any>) {
-    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'Bearer ' + localStorage.getItem('accessToken'));
    }
 
   public login(credentials:{email:string,password:string}) : Observable<Client>{
@@ -26,13 +29,10 @@ private httpOptions = {
   }
 
   public getCurrentUser() : Observable<Client>{
-    console.log("service out");
-    
-    return this.http.get<Client>('http://localhost:8089/trador/auth/getCurrentUser',this.httpOptions).pipe(
+    this.accessToken = localStorage.getItem("accessToken") || '';
+    return this.http.post<Client>('http://localhost:8089/trador/auth/getCurrentUser',{user : null , accessToken : this.accessToken}).pipe(
       tap((user : Client) => {
-        console.log("service");
-        console.log(user);
-        
+        this.store.dispatch(currentUser({accessToken : this.accessToken, user : user}))
         this.user$.next(user);
         if (user) {
           this.isLoggedin$.next(true);

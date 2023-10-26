@@ -16,8 +16,6 @@ export class UserEffects{
             .pipe(
                 map(user => ({type : LOGIN_SUCCESS ,payload : user})),
                 catchError(error =>{
-                    console.log(error.status);
-                    
                     throw new Error("Login failed");
                 })
             )

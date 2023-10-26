@@ -36,10 +36,6 @@ export class LoginComponent implements OnInit {
     try {
       this.store.dispatch(login({email : this.email, password: this.password}))
     } catch (error) {
-      console.log("error");
-      
-      console.log(error);
-      
       this.error = true;
       this.loading = false;
     }

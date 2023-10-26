@@ -22,5 +22,5 @@ export const logout = createAction(LOGOUT);
 export const signup = createAction(SIGNUP, props<Client>());
 export const update= createAction(UPDATE ,props<Client>());
 export const verify = createAction(VERIFY);
-export const currentUser = createAction(CURRENT_USER, props<{accessToken : string}>)
+export const currentUser = createAction(CURRENT_USER, props<User>())
 export const update_admin= createAction(UPDATE_ADMIN ,props<Client>());

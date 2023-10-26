@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Client } from "src/app/core/models/Client";
-import { User, loginSucces, logout, update, verify } from "../actions/user.action";
+import { CURRENT_USER, User, currentUser, loginSucces, logout, update, verify } from "../actions/user.action";
 
 const emptyState : User ={
   user : new Client(),
@@ -28,5 +28,11 @@ export const userReducer = createReducer(
       ...state.user,
       isVerified : true
     }
-  }))
+  })),
+  on(currentUser, (state, payload) => {
+    return {
+      accessToken : state.accessToken,
+      user : payload.user
+    }
+  })
 )
