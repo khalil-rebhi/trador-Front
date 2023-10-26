@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../core/services/user.service';
 import { Client } from '../../core/models/Client';
 import { DatePipe } from '@angular/common';
-import { User } from 'src/app/store/actions/user.action';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
@@ -14,16 +12,15 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 export class ListUsersComponent implements OnInit {
   @ViewChild(EditUserComponent) modal : EditUserComponent;
   users: Client[] ;
-  selectedUser: Client | null = null;
+  selectedUser: Client;
   modalOpen = false;
-  confirmationModalOpen = false;
-  userToDelete: Client | null = null;
 
-  constructor(private userService: UserService , private datePipe : DatePipe, private modalService: NgbModal) { }
+  constructor(private userService: UserService , private datePipe : DatePipe) { }
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe((data: Client[]) => {
-      this.users = data;
+      this.users = data.sort((a,b) => a.idUser - b.idUser );
+      this.selectedUser = data[0];
     });
   }
 
@@ -38,24 +35,14 @@ export class ListUsersComponent implements OnInit {
   }
   
   confirmerSuppression() {
-    if (this.userToDelete) {
-      // Utilisez this.userToDelete pour supprimer l'utilisateur
-      this.userService.deleteUser(this.userToDelete.idUser).subscribe(() => {
-        // Mettez à jour la liste d'utilisateurs ou effectuez d'autres actions nécessaires
-        this.userToDelete = null;
-        this.confirmationModalOpen = false;
-      });
-    }
+    let index = this.users.indexOf(this.selectedUser);
+    this.users.splice(index,1);
+    this.userService.deleteUser(this.selectedUser.idUser).subscribe(() => {
+    })
   }
 
-  annulerSuppression() {
-    this.userToDelete = null;
-    this.confirmationModalOpen = false;
-  }
-
-  supprimerUtilisateur(user: Client) {
-    this.userToDelete = user;
-    this.confirmationModalOpen = true;
+  supprimerUtilisateur(user : Client) {
+    this.selectedUser = user;
   }
 
   getFormattedDate(date ?: Date ){
