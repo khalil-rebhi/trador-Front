@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationsService } from 'angular2-notifications';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ForgetComponent implements OnInit {
   reset = false;
   email : string;
 
-  constructor (private userService : UserService) {}
+  constructor (private userService : UserService ,private notifier :NotificationsService) {}
 
   ngOnInit(): void {
   }
@@ -24,6 +25,11 @@ export class ForgetComponent implements OnInit {
 
   submitEmail(){
     this.userService.sendEmail(this.email).subscribe();
+    this.notifier.info('succes', 'email envoyé',{
+      timeOut: 5000,
+      animate: 'fromRight',
+      position: ['top']
+    });
     this.verif = !this.verif;
   }
 }

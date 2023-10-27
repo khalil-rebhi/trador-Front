@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { NotificationsService } from 'angular2-notifications';
 import { Client } from 'src/app/core/models/Client';
 import { UserService } from 'src/app/core/services/user.service';
 import { signup } from 'src/app/store/actions/user.action';
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit {
   state : string;
   zip : number;
 
-  constructor(private userService: UserService, private store : Store ){
+  constructor(private userService: UserService, private notifications: NotificationsService,private store : Store ){
     this.user = new Client();
     this.user.password ='';
   }
@@ -36,6 +37,7 @@ export class SignupComponent implements OnInit {
     this.user.createdAt = new Date();
     this.user.lastModifiedAt = new Date();
     this.store.dispatch(signup(this.user));
+    this.notifications.success('Succès', 'Ajout de compte avec succès',{timeoOut: 5000});
   }
 
   getAddress=() => this.address+" "+this.city+" "+this.state+" "+this.zip

@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NotificationsService } from 'angular2-notifications';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class VerifCodeComponent implements OnInit {
   digit5: string = '';
   digit6: string = '';
 
-  constructor(private userService : UserService) {}
+  constructor(private userService : UserService ,private notifier : NotificationsService) {}
 
   ngAfterViewInit() {
     this.digit1InputRef.nativeElement.focus();
@@ -40,7 +41,11 @@ export class VerifCodeComponent implements OnInit {
       result => {
         if(result){
           this.resetEmitter.emit(true);
+          this.notifier.info('succes', 'code valide',{
+            timeOut: 5000});
         }else{
+          this.notifier.error('erreur', 'code invalide',{
+            timeOut: 5000});
           this.notification = !this.notification;
           setTimeout(() => this.notification = !this.notification,2000);
         }

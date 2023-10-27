@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { NotificationsService } from 'angular2-notifications';
 import { Client } from 'src/app/core/models/Client';
 import { UserService } from 'src/app/core/services/user.service';
 import { login } from 'src/app/store/actions/user.action';
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   error = false;
 
-  constructor(private authService: UserService, private router : Router, private store: Store<{user : Client, accessToken : string}>) {
+  constructor(private authService: UserService,private notifications: NotificationsService, private router : Router, private store: Store<{user : Client, accessToken : string}>) {
   }
 
   ngOnInit(): void {
@@ -34,8 +35,14 @@ export class LoginComponent implements OnInit {
   login(){
     this.loading = !this.loading;
     try {
-      this.store.dispatch(login({email : this.email, password: this.password}))
+      this.store.dispatch(login({email : this.email, password: this.password})) ;
+      this.notifications.success('succes', 'connexion aveec succées ',{
+        timeOut: 5000});
     } catch (error) {
+
+      this.notifications.error('eurreur', 'connexion erronnée verifiez les données  ',{
+        timeOut: 5000});
+      
       this.error = true;
       this.loading = false;
     }

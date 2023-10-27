@@ -29,6 +29,7 @@ import { VerifCodeComponent } from './shared/verif-code/verif-code.component';
 import { VerificationCodeTimerComponent } from './shared/verification-code-timer/verification-code-timer.component';
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { BackOfficeComponent } from './layouts/back-office/back-office.component
     SidebarComponent,
     StoreModule.forRoot({user : userReducer} , {}),
     EffectsModule.forRoot(UserEffects),
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [
     {
