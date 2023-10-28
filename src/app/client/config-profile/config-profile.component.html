@@ -16,24 +16,24 @@
           <input type="text" class="form-control" id="appid" [(ngModel)]="user.userApplicationId" #appid="ngModel" name="appid" disabled>
         </div>
         <div class="col-md-6">
+          <label for="cin" class="form-label">CIN</label>
+          <input type="text" class="form-control" id="cin" name="cin"  [(ngModel)]="user.cin"  #cin="ngModel" disabled>
+        </div>
+        <div class="col-md-6">
           <label for="nom" class="form-label">Name </label>
           <input type="text" class="form-control" id="name" [(ngModel)]="user.name" #name="ngModel" name="name">
         </div>
         <div class="col-md-6">
           <label for="nom" class="form-label">Family name </label>
-          <input type="text" class="form-control" id="name" [(ngModel)]="user.name" #name="ngModel" name="name">
+          <input type="text" class="form-control" id="familyname" [(ngModel)]="user.name" #name="ngModel" name="name">
         </div>
         <div class="col-md-6">
           <label for="email" class="form-label">Email </label>
           <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email"  #email="ngModel" disabled>
         </div>
         <div class="col-md-6">
-          <label for="cin" class="form-label">CIN</label>
-          <input type="text" class="form-control" id="cin" name="cin"  [(ngModel)]="user.cin"  #cin="ngModel" disabled>
-        </div>
-        <div class="col-md-6">
           <label for="birthdate" class="form-label">Date of birth </label>
-          <input name="birthDate" type="date" class="form-control signup__input" id="birthday" name="birthDate"  [(ngModel)]="user.birthDate"  #birthDate="ngModel" [value]="getFormattedDate(user.birthDate)">
+          <input name="birthDate" type="date" class="form-control signup__input" id="birthday" name="birthDate"  [(ngModel)]="birthDate"  (blur)="onBirthDateChange($event)">
         </div>
         <div class="col-12">
           <label for="address" class="form-label">Address</label>

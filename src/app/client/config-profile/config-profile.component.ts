@@ -21,6 +21,7 @@ export class ConfigProfileComponent  implements OnInit{
   repeatPassword: string;
   password: string;
   showPassword : false;
+  birthDate : string | null;
 
   ngOnInit(): void {
     this.store.pipe(
@@ -29,7 +30,10 @@ export class ConfigProfileComponent  implements OnInit{
     ).subscribe(result => {
       if (result) {
         this.user = result
+        console.log(this.user.userApplicationId);
+        
         this.spinner = false;
+        this.birthDate = this.getFormattedDate(this.user.birthDate);
       }
     });
   }
@@ -37,6 +41,16 @@ export class ConfigProfileComponent  implements OnInit{
 
   constructor( private store : Store<any> ,private clientService:UserService, private datePipe : DatePipe, private userService : UserService) {
   }
+
+  onBirthDateChange(newDate: any) {
+    if(this.birthDate){
+      let dateArray = this.birthDate?.split("-");
+      let date = new Date();
+      date.setFullYear(parseInt(dateArray[0]),parseInt(dateArray[1])-1,parseInt(dateArray[2]));
+      this.user.birthDate = date;
+    }
+  }
+  
 
   updateClientProfile() {
     this.store.dispatch(update(this.user))
