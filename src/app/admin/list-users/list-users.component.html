@@ -36,8 +36,9 @@
             <td>{{ user.address }}</td>
             <td class="btn-group">
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userDetailsModal" (click)="consulterUtilisateur(user)"><i class="bi bi-box-arrow-up-left"></i></button>
-                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#userEditModal" (click)="modifierUtilisateur(user)"><i class="bi bi-pencil-square"></i></button>
+                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#userEditModal" (click)="modifierUtilisateur(user)"><i class="bi bi-pencil-square"></i></button>
                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" (click)="supprimerUtilisateur(user)"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-warning" (click)="bloquerUtilisateur(user.idUser)"><i class="bi bi-slash-square"></i></button>
             </td>
         </tr>
     </tbody>

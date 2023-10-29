@@ -52,4 +52,10 @@ export class ListUsersComponent implements OnInit {
     return '--'
   }
 
+  bloquerUtilisateur(idUser : Number):any{
+    return this.userService.bloquerUtilisateur(idUser).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
 }

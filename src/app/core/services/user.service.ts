@@ -10,7 +10,7 @@ import { currentUser } from 'src/app/store/actions/user.action';
   providedIn: 'root'
 })
 export class UserService {
-
+  host :string = 'http://localhost:8089';
   public isLoggedin$ : ReplaySubject<boolean> = new ReplaySubject(1);
   public user$: BehaviorSubject<Client | null> = new BehaviorSubject<Client |null>(null);
   private accessToken: string;
@@ -99,6 +99,10 @@ export class UserService {
 
   public sendVerificationCode(email : string , code : string){
     return this.http.post("http://localhost:8089/trador/user/verifyOldPassword?code="+code, email);
+  }
+
+  public bloquerUtilisateur(userId:any){
+    return this.http.post("http://localhost:8089/trador/user/bannedAccount/" + userId , userId);
   }
 
 }
