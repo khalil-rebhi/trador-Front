@@ -1,6 +1,7 @@
 .parent {
     padding: 0;
     overflow: auto;
+	overflow-x: hidden;
 }
 
 .center-div {
@@ -21,6 +22,7 @@
 
 .eye{
   cursor: pointer;
+  color: #D4D3E8;
 }
 
 .green{
@@ -37,7 +39,7 @@
 }
 
 .body{
-	background: linear-gradient(90deg, #C7C5F4, #776BCC);		
+	background: linear-gradient(90deg, #C7C5F4, #776BCC);
 }
 
 .screen {		
@@ -254,3 +256,14 @@
   color: #6A679E;
   text-decoration: none;
 }
+
+.input-group-text{
+	background-color: transparent;
+	color: white;
+	border: 0;
+	border-bottom:  2px solid #D1D1D4;
+}
+
+.select-background {
+	background-color: #6C63AC; /* Replace with your desired color */
+  }

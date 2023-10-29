@@ -18,4 +18,9 @@ export class BackOfficeComponent {
   logout(){
     this.store.dispatch(logout());
   }
+
+  toggleClass(id : string){
+    document.getElementsByClassName("collapsed").item(0)?.classList.remove("collapsed");
+    document.getElementById(id)?.classList.add("collapsed");
+  }
 }

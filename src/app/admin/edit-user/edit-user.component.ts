@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { update_admin } from 'src/app/store/actions/user.action';
 @Component({
   selector: 'app-edit-user',
+  styleUrls : ['./edit-user.component.css'],
   templateUrl: './edit-user.component.html',
 })
 export class EditUserComponent implements OnInit {

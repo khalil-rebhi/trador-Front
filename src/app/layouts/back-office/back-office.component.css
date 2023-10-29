@@ -678,8 +678,8 @@ a {
   }
   
   .sidebar-nav .nav-link.collapsed {
-    color: #012970;
-    background: #fff;
+    color: #fff;
+    background: #012970;
   }
   
   .sidebar-nav .nav-link.collapsed i {
