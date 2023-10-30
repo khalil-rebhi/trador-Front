@@ -41,4 +41,9 @@ export class HeaderComponent implements AfterViewInit {
     this.router.navigateByUrl("/trador/client/config")
     
   }
+
+  toOrderBook(){
+    this.router.navigateByUrl("/trador/client/orderbook")
+    
+  }
 }
