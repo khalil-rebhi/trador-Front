@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Last</th>
+      <th>Chg</th>
+      <th>Chg%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of forexData">
+      <td>{{ data.symbol }}</td>
+      <td>{{ data.last }}</td>
+      <td>{{ data.chg }}</td>
+      <td>{{ data.chgPercentage }}%</td>
+    </tr>
+  </tbody>
+</table>

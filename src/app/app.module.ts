@@ -31,6 +31,7 @@ import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-p
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 
+
 @NgModule({
   declarations: [
     AppComponent,
