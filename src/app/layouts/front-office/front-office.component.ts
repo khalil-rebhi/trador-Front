@@ -14,7 +14,7 @@ import { verify } from 'src/app/store/actions/user.action';
 @Component({
   selector: 'app-front-office',
   standalone : true,
-  imports:[RouterModule,SidebarComponent,HeaderComponent, CommonModule, NgbCollapseModule,SpinnerComponent,FormsModule],
+  imports:[RouterModule,SidebarComponent, HeaderComponent , CommonModule, NgbCollapseModule,SpinnerComponent,FormsModule],
   templateUrl: './front-office.component.html',
   styleUrls: ['./front-office.component.css']
 })

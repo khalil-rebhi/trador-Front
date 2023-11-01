@@ -5,6 +5,8 @@ import {  map, switchMap } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
 import { UserService } from 'src/app/core/services/user.service';
 import { update } from 'src/app/store/actions/user.action';
+import { NgForm } from '@angular/forms';
+import { HeaderComponent } from 'src/app/shared/header/header.component';
 @Component({
   selector: 'app-config-profile',
   templateUrl: './config-profile.component.html',
@@ -18,6 +20,13 @@ export class ConfigProfileComponent  implements OnInit{
   showButton = "Show more";
   oldPassword : string;
   match = false;
+  alertstyle: string; 
+  alertmessage: string;
+  imgURL: any;
+  userFile: any;
+  imagevalidation: string = "";
+  userpicture : any = HeaderComponent.profileimage;
+  public imagePath: any;
   repeatPassword: string;
   password: string;
   showPassword : false;
@@ -36,6 +45,8 @@ export class ConfigProfileComponent  implements OnInit{
         this.birthDate = this.getFormattedDate(this.user.birthDate);
       }
     });
+
+    this.userpicture = 'http://localhost:8089/trador/user/getpicture/'+this.user.photo;
   }
   
 
@@ -117,5 +128,66 @@ export class ConfigProfileComponent  implements OnInit{
 
   show(){
     this.showPassword != this.showPassword;
+  }
+
+
+  changeimage(imageForm: NgForm){
+    if(this.userFile == null){
+      this.alertstyle="danger";
+      this.alertmessage="No file chosen Or The file is not supported !"; 
+      this.imagevalidation = "was-validated";
+      return;
+    }
+    const formData = new FormData();
+    formData.append('iduser', this.user.idUser.toString());
+    formData.append('file', this.userFile);
+    console.log("iduse = "+ this.user.idUser);
+    console.log(formData);
+    this.userService.updateimage(formData).subscribe(
+
+      (res: any) => {
+        this.alertstyle="success";
+        this.alertmessage="profile image successfully updated !"; 
+        this.userpicture = this.imgURL;
+        this.user = res;
+        HeaderComponent.profileimage = this.imgURL;
+        localStorage.setItem("photo",this.user.photo);
+        console.log(this.store.select(this.user.photo));
+        //AdminaccounthomeComponent.profileimagehome = this.imgURL;
+      },
+      (err : any)=> {
+        this.alertstyle="danger";
+        this.alertmessage="unable to change profile image !"; 
+      }
+    );
+  }
+
+  onSelectFile(event: any){
+
+    if(event.target.files.length > 0){
+      var mimeType = event.target.files[0].type;
+      if(mimeType.match(/image\/png/) == null && mimeType.match(/image\/jpeg/) == null){
+        this.alertstyle="warning";
+        this.alertmessage="only PNG and JPG images are supported !"; 
+        return;
+      }
+      var mimesize = event.target.files[0].size;
+      if(mimesize > 410000){
+        this.alertstyle="warning";
+        this.alertmessage="image size must be under 400 KB !"; 
+        return;
+      }
+      const file = event.target.files[0];
+      this.userFile = file;
+
+      var render = new FileReader();
+
+      this.imagePath = file;
+      render.readAsDataURL(file);
+      render.onload =(event) => {
+      this.imgURL = render.result;
+      this.userpicture = this.imgURL;
+      }
+    }
   }
 }
