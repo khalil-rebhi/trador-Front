@@ -10,6 +10,7 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { OrderBookComponent } from './order-book/order-book.component';
+import { PortfeuilleComponent } from './portfeuille/portfeuille.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { OrderBookComponent } from './order-book/order-book.component';
     ConfigProfileComponent,
     IdeeComponent,
     ReclamationComponent,
-    OrderBookComponent
+    OrderBookComponent,
+    PortfeuilleComponent
   ],
   imports: [
     CommonModule,
