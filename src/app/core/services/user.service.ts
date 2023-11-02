@@ -105,5 +105,8 @@ export class UserService {
     return this.http.post("http://localhost:8089/trador/user/bannedAccount/" + userId , userId);
   }
 
+  public updateimage(formData:any){ 
+    return this.http.post<Client>("http://localhost:8089/trador/user/changeimage",formData)}
+
 }
 

@@ -7,7 +7,6 @@ import { Client } from 'src/app/core/models/Client';
 import { logout } from 'src/app/store/actions/user.action';
 
 declare var $: any;
-
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -20,12 +19,21 @@ export class HeaderComponent implements AfterViewInit {
 
   public showSearch = false;
   public user : Client;
+  static profileimage: any;
   constructor(private modalService: NgbModal, private store : Store<any> , private router:Router,private notifier : NotificationsService) {
     this.store.subscribe(result => {this.user = result.user.user}
     )
   }
 
   ngAfterViewInit() { }
+
+  ngOnInit() {
+    HeaderComponent.profileimage = 'http://localhost:8089/trador/user/getpicture/'+this.user.photo;
+  }
+
+  get profileimage() {
+    return HeaderComponent.profileimage;
+  }
 
   logout(){
     this.store.dispatch(logout());
