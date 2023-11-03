@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { OrderBookComponent } from './order-book/order-book.component';
 
+import { NgApexchartsModule } from 'ng-apexcharts';
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { OrderBookComponent } from './order-book/order-book.component';
     CommonModule,
     ClientRoutingModule,
     FormsModule,
-    SpinnerComponent
+    SpinnerComponent,
+    NgApexchartsModule
    //RouterModule.forRoot(clientroutes, { useHash: false }),
   
     
