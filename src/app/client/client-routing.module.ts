@@ -8,6 +8,7 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DataUserGuard } from '../shared/guard/Data-User.guard';
 import { OrderBookComponent } from './order-book/order-book.component';
 
+
 export 
 const clientroutes: Routes = [{ path : '', component:ClientComponent,canActivate:[DataUserGuard], children:[
   {
@@ -18,9 +19,8 @@ const clientroutes: Routes = [{ path : '', component:ClientComponent,canActivate
   },
   {
     path:'reclamation', component:ReclamationComponent,
-  },
-  {
-    path:'orderbook', component:OrderBookComponent,
+  }, {
+    path:'orderBook', component:OrderBookComponent,
   }
 
 

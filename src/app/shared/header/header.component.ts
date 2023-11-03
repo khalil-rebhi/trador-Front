@@ -43,7 +43,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   toOrderBook(){
-    this.router.navigateByUrl("/trador/client/orderbook")
+    this.router.navigateByUrl("/trador/client/orderBook")
     
   }
 }

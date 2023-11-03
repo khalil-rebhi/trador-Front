@@ -1,0 +1,8 @@
+.orderBook{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height:10rem;
+}
+.graphique{
+    height: 20rem;
+}

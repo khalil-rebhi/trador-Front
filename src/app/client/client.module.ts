@@ -12,6 +12,7 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { OrderBookComponent } from './order-book/order-book.component';
 
 
+
 @NgModule({
   declarations: [
     ClientComponent,
@@ -19,7 +20,8 @@ import { OrderBookComponent } from './order-book/order-book.component';
     ConfigProfileComponent,
     IdeeComponent,
     ReclamationComponent,
-    OrderBookComponent
+    OrderBookComponent,
+   
   ],
   imports: [
     CommonModule,
