@@ -1,5 +1,5 @@
 export class Order{
-    price:String;
-    amount:String;
+    price:number;
+    amount:number;
     timestamp:String;
 }

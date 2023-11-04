@@ -12,6 +12,7 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { OrderBookComponent } from './order-book/order-book.component';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { DepthChartComponent } from './depth-chart/depth-chart.component';
 
 
 
@@ -23,6 +24,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     IdeeComponent,
     ReclamationComponent,
     OrderBookComponent,
+    DepthChartComponent,
    
   ],
   imports: [

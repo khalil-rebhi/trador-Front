@@ -38,6 +38,7 @@ export class OrderBookComponent {
     this.webSocket = new WebSocket('ws://localhost:8089/trador/orderBook/CRYPTO/BTCUSD');
     this.webSocket.onmessage = (event) => {
       this.orderBookData = JSON.parse(event.data)
+      console.log(this.orderBookData)
     };
 
     this.chartOptions = {

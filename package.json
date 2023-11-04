@@ -25,10 +25,13 @@
     "@ngrx/store": "16.3.0",
     "@popperjs/core": "2.11.8",
     "@stomp/stompjs": "^7.0.0",
+    "@types/highcharts": "^7.0.0",
+    "@types/zingchart": "^2.8.37",
     "angular2-notifications": "^12.0.0",
     "apexcharts": "^3.44.0",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
+    "highcharts": "^11.2.0",
     "ng-apexcharts": "^1.8.0",
     "ng2-file-upload": "^5.0.0",
     "npm-check-updates": "^16.14.5",
@@ -36,6 +39,7 @@
     "sockjs-client": "^1.6.1",
     "tslib": "^2.6.2",
     "wrap-ansi": "^8.1.0",
+    "zingchart": "^2.9.12",
     "zone.js": "^0.11.4"
   },
   "devDependencies": {
