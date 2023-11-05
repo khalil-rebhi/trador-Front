@@ -1,7 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
-import { OrderBook } from 'src/app/core/models/OrderBook';
-
-
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -11,6 +8,7 @@ import {
   ApexTitleSubtitle,
   ApexNonAxisChartSeries
 } from "ng-apexcharts";
+import { OrderBook } from 'src/app/core/models/OrderBook';
 
 export type ChartOptions = {
   series: any;
@@ -19,28 +17,19 @@ export type ChartOptions = {
   yaxis: any;
   title: any;
 };
+
 @Component({
-  selector: 'app-order-book',
-  templateUrl: './order-book.component.html',
-  styleUrls: ['./order-book.component.css']
+  selector: 'app-candlsticks',
+  templateUrl: './candlsticks.component.html',
+  styleUrls: ['./candlsticks.component.css']
 })
-export class OrderBookComponent {
+export class CandlsticksComponent implements OnInit {
 
+  @Input() orderBookData : OrderBook;
   @ViewChild("chart") chart: ChartComponent;
-  public chartOptions: Partial<ChartOptions>;
- 
- 
-  orderBookData: OrderBook ;
+  public chartOptions: Partial<ChartOptions>; 
 
-  private webSocket: WebSocket;
-
-  constructor() {
-    this.webSocket = new WebSocket('ws://localhost:8089/trador/orderBook/CRYPTO/BTCUSD');
-    this.webSocket.onmessage = (event) => {
-      this.orderBookData = JSON.parse(event.data)
-      console.log(this.orderBookData)
-    };
-
+  constructor(){
     this.chartOptions = {
       series: [
         {
@@ -291,10 +280,6 @@ export class OrderBookComponent {
         type: "candlestick",
         height: 350
       },
-      title: {
-        text: "CandleStick Chart",
-        align: "left"
-      },
       xaxis: {
         type: "datetime"
       },
@@ -306,13 +291,15 @@ export class OrderBookComponent {
     };
   }
 
+  ngOnInit(): void {
+  }
+
   public generateDayWiseTimeSeries(baseval:any, count:any, yrange:any) {
     var i = 0;
     var series = [];
     while (i < count) {
       var y =
         Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-
       series.push([baseval, y]);
       baseval += 86400000;
       i++;
@@ -320,21 +307,4 @@ export class OrderBookComponent {
     return series;
   }
 
-
-
-
-
-
-
-  }
-
-///////////////////////////////
-    
-
-
-
-
-
-
-
-
+}

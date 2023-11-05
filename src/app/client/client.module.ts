@@ -9,10 +9,6 @@ import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
-import { OrderBookComponent } from './order-book/order-book.component';
-
-import { NgApexchartsModule } from 'ng-apexcharts';
-import { DepthChartComponent } from './depth-chart/depth-chart.component';
 
 
 
@@ -22,17 +18,14 @@ import { DepthChartComponent } from './depth-chart/depth-chart.component';
     ProfileComponent,
     ConfigProfileComponent,
     IdeeComponent,
-    ReclamationComponent,
-    OrderBookComponent,
-    DepthChartComponent,
+    ReclamationComponent
    
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
     FormsModule,
-    SpinnerComponent,
-    NgApexchartsModule
+    SpinnerComponent
    //RouterModule.forRoot(clientroutes, { useHash: false }),
   
     

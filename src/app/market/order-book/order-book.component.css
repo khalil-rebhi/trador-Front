@@ -1,0 +1,22 @@
+.orderBook{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height:10rem;
+}
+
+.place-order-buttons {
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.5); /* Background color with transparency */
+    backdrop-filter: blur(10px); /* Apply a blur effect */
+    padding: 1rem;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    border-radius: 10px; /* Add rounded corners */
+  }
+  
+  .place-order-buttons button {
+    display: block;
+    margin-bottom: 10px; /* Add space between the buttons */
+  }
+  
