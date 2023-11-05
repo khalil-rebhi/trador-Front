@@ -12,7 +12,8 @@ declare var $: any;
   selector: 'app-header',
   standalone: true,
   imports:[NgbDropdownModule],
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
+  styleUrls:['./header.component.css']
 })
 export class HeaderComponent implements AfterViewInit {
   @Output() toggleSidebar = new EventEmitter<void>();
