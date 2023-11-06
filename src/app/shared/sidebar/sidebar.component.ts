@@ -6,13 +6,15 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Client } from 'src/app/core/models/Client';
+import { DataSurveillanceComponent } from '../data-surveillance/data-surveillance.component';
 //declare var $: any;
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports:[RouterModule, CommonModule, NgIf],
-  templateUrl: './sidebar.component.html'
+  imports:[RouterModule, CommonModule, NgIf,DataSurveillanceComponent],
+  templateUrl: './sidebar.component.html',
+  styleUrls:['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
   showMenu = '';

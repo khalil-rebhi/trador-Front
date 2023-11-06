@@ -30,6 +30,7 @@ import { VerificationCodeTimerComponent } from './shared/verification-code-timer
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { DataSurveillanceComponent } from './shared/data-surveillance/data-surveillance.component';
 
 
 @NgModule({
@@ -44,6 +45,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     VerificationCodeTimerComponent,
     ResetPasswordFormComponent,
     BackOfficeComponent,
+    
+
   ],
   imports: [
     CommonModule,
@@ -60,7 +63,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     SidebarComponent,
     StoreModule.forRoot({user : userReducer} , {}),
     EffectsModule.forRoot(UserEffects),
-    SimpleNotificationsModule.forRoot()
+    SimpleNotificationsModule.forRoot(),
+    DataSurveillanceComponent
   ],
   providers: [
     {

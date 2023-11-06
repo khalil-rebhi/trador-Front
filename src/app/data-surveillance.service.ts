@@ -10,8 +10,8 @@ export class DataSurveillanceService {
 
   constructor(private http : HttpClient) { }
 
-  getData(ticker : string): Observable<any> {
-    return this.http.get(`http://localhost:8089/trador/data/data/${ticker}`);
+  getData(ticker : string): Observable<Data> {
+    return this.http.get<Data>(`http://localhost:8089/trador/data/data/${ticker}`);
   }
   
 
