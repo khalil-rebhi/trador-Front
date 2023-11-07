@@ -1,11 +1,11 @@
-import { CommonModule, JsonPipe, NgIf } from '@angular/common';
+import { CommonModule, DatePipe, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Data } from 'src/app/core/models/Data';
-import { DataSurveillanceService } from 'src/app/data-surveillance.service';
 
 @Component({
   selector: 'app-data-surveillance',
   standalone:true ,
+  providers: [DatePipe],
   imports :[CommonModule, NgIf],
   templateUrl: './data-surveillance.component.html',
   styleUrls: ['./data-surveillance.component.css']
@@ -21,15 +21,21 @@ export class DataSurveillanceComponent  implements OnInit{
   refreshInterval: number = 5000;
   webSocket : WebSocket;
   increase = true;
+  currentDate : string | null;
 
 
 
   
   
 
-  constructor( ) {}
+  constructor(private datePipe : DatePipe ) {
+  }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.currentDate = this.datePipe.transform(new Date(), 'EEEE dd MMMM yyyy HH:mm:ss');
+    }, 1000); // Update every 1 second
+
     this.webSocket=new WebSocket("ws://localhost:8089/trador/ticker/TSLA");
     this.webSocket.onmessage=(event)=>{
       this.Data=JSON.parse(event.data)

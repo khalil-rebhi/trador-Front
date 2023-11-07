@@ -1,5 +1,4 @@
-.all{
-    width: 10%;
-    margin-top: 1rem;
-    font-size : small;
+.global{
+    overflow-y: scroll;
+    height: 100vh;
 }
