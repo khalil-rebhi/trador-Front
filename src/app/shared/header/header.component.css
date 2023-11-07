@@ -1,3 +1,31 @@
 .dropdown-item{
     cursor: pointer;
 }
+
+a{
+    cursor: pointer;
+}
+.line {
+    position: relative;
+    text-decoration: none;
+}
+
+.line::after {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    bottom:1rem;
+    width:0;
+    height: 4px;
+    background-color: #fff; /* Change this to the color you want for the underline */
+    transition: width 0.3s ease; /* Add a smooth transition effect */
+}
+
+.line:hover {
+    font-weight: bold; /* Make the text bold when hovered */
+}
+
+.line:hover::after {
+    font-weight: bold;
+    width: calc(100% - 2rem);
+}

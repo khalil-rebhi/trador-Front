@@ -6,7 +6,9 @@ import { ConfigProfileComponent } from './config-profile/config-profile.componen
 import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DataUserGuard } from '../shared/guard/Data-User.guard';
-import { OrderBookComponent } from './order-book/order-book.component';
+import { OrderBookComponent } from '../market/order-book/order-book.component';
+import { DepthChartComponent } from '../market/depth-chart/depth-chart.component';
+
 
 export 
 const clientroutes: Routes = [{ path : '', component:ClientComponent,canActivate:[DataUserGuard], children:[
@@ -18,9 +20,11 @@ const clientroutes: Routes = [{ path : '', component:ClientComponent,canActivate
   },
   {
     path:'reclamation', component:ReclamationComponent,
+  }, {
+    path:'orderBook', component:OrderBookComponent,
   },
-  {
-    path:'orderbook', component:OrderBookComponent,
+   {
+    path:'depthChart', component:DepthChartComponent,
   }
 
 
