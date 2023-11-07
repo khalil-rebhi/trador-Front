@@ -1,4 +1,4 @@
-import { JsonPipe } from '@angular/common';
+import { CommonModule, JsonPipe, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Data } from 'src/app/core/models/Data';
 import { DataSurveillanceService } from 'src/app/data-surveillance.service';
@@ -6,6 +6,7 @@ import { DataSurveillanceService } from 'src/app/data-surveillance.service';
 @Component({
   selector: 'app-data-surveillance',
   standalone:true ,
+  imports :[CommonModule, NgIf],
   templateUrl: './data-surveillance.component.html',
   styleUrls: ['./data-surveillance.component.css']
 })
@@ -19,6 +20,7 @@ export class DataSurveillanceComponent  implements OnInit{
   lastCloseValue : number ;
   refreshInterval: number = 5000;
   webSocket : WebSocket;
+  increase = true;
 
 
 
@@ -31,8 +33,6 @@ export class DataSurveillanceComponent  implements OnInit{
     this.webSocket=new WebSocket("ws://localhost:8089/trador/ticker/TSLA");
     this.webSocket.onmessage=(event)=>{
       this.Data=JSON.parse(event.data)
-      console.log(this.Data['Time Series (1min)']);
-      //console.log("Data"+this.Data);
       
       
 
@@ -53,13 +53,18 @@ export class DataSurveillanceComponent  implements OnInit{
       const closeValue = timeSeries[firstDate]['4. close'];
 
  // Calculez le changement (chg)
- this.chg =( closeValue - openValue).toFixed(2);
+ this.chg =( closeValue - openValue).toFixed(3);
 
  // Calculez le pourcentage de changement (chg%)
-this.chgPercent = (this.chg / openValue) * 100;
+this.chgPercent = Number(((this.chg / openValue) * 100).toFixed(3));
 
  const lastData = timeSeries[lastDateTime];
- this.lastCloseValue = lastData['4. close'];
+ if (lastData['4. close'] > this.lastCloseValue) {
+  this.increase = true
+}else{
+   this.increase = false
+ }
+ this.lastCloseValue = Number(lastData['4. close'].toFixed(3));
 
 
 

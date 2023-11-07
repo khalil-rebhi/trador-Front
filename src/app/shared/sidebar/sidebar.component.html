@@ -6,7 +6,9 @@
             *ngFor="let sidebarnavItem of sidebarnavItems"
             [routerLinkActive]="sidebarnavItem.submenu.length != 0 ? '' : 'active'">
             <div class="nav-small-cap" *ngIf="sidebarnavItem.extralink === true">{{sidebarnavItem.title}}</div>
+        <div style="width: 100%;">
            <app-data-surveillance></app-data-surveillance>
+        </div>
         </li>
         <li class="text-center p-3 upgrade-btn" *ngIf="!user.isPremium">
             <a href="https://www.wrappixel.com/templates/xtreme-angular-admin/"
