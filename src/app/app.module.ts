@@ -31,6 +31,8 @@ import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-p
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 
+import { ChatbotComponent } from './shared/chatbot/chatbot.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     VerificationCodeTimerComponent,
     ResetPasswordFormComponent,
     BackOfficeComponent,
+    ChatbotComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +62,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     SidebarComponent,
     StoreModule.forRoot({user : userReducer} , {}),
     EffectsModule.forRoot(UserEffects),
+    ReactiveFormsModule,
     SimpleNotificationsModule.forRoot()
   ],
   providers: [
