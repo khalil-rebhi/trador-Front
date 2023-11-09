@@ -1,4 +1,7 @@
-<div id="chart">
+<div *ngIf="spinner" class="spinner">
+<app-spinner></app-spinner>
+</div>
+<div  id="chart" *ngIf="!spinner">
   <apx-chart
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
@@ -7,3 +10,9 @@
     [title]="chartOptions.title"
   ></apx-chart>
 </div>
+<select [(ngModel)]="selectedInterval" (change)="onIntervalChange($event.target)">
+  <option value="hour">Per Hour</option>
+  <option value="minute">Per Minute</option>
+  <option value="day">Per Day</option>
+  <option value="year">Per Year</option>
+</select>

@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { MarketComponent } from './market.component';
 import { DepthChartComponent } from './depth-chart/depth-chart.component';
 import { CandlsticksComponent } from './candlsticks/candlsticks.component';
+import { CandlesComponent } from './candles/candles.component';
 
 const routes: Routes = [
   {path : '', component : MarketComponent, children:[
-    {path: "candle" , component : CandlsticksComponent},
+    {path: "candle" , component : CandlesComponent},
     {path: "depth" , component : DepthChartComponent},
   ]},
 

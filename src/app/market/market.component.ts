@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderBook } from '../core/models/OrderBook';
+import { TraderComponentStore } from '../store/Trader.component-store';
 
 @Component({
   selector: 'app-market',
@@ -8,18 +9,19 @@ import { OrderBook } from '../core/models/OrderBook';
   styleUrls: ['./market.component.css']
 })
 export class MarketComponent implements OnInit {
-  webSocket: WebSocket;
+  orderBookWebSocket: WebSocket;
+  marketWebSocket : WebSocket;
   orderBookData: OrderBook;
   candle = true;
   depth = false;
   spinner = true;
 
-  constructor (private router : Router) {
+  constructor (private tradeStore : TraderComponentStore) {
   }
   
   ngOnInit(): void {
-    this.webSocket = new WebSocket('ws://localhost:8089/trador/orderBook/CRYPTO/BTCUSD');
-    this.webSocket.onmessage = (event) => {
+    this.orderBookWebSocket = new WebSocket('ws://localhost:8089/trador/orderBook/CRYPTO/BTCUSD');
+    this.orderBookWebSocket.onmessage = (event) => {
       this.orderBookData = JSON.parse(event.data)  
       this.spinner = false;    
     };

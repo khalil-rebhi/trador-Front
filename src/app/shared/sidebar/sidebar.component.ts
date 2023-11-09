@@ -6,13 +6,14 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Client } from 'src/app/core/models/Client';
-import { DataSurveillanceComponent } from '../data-surveillance/data-surveillance.component';
+import { DataSurveillanceComponent } from '../../market/data-surveillance/data-surveillance.component';
+import { MarketModule } from 'src/app/market/market.module';
 //declare var $: any;
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports:[RouterModule, CommonModule, NgIf,DataSurveillanceComponent],
+  imports:[RouterModule, CommonModule, NgIf,MarketModule],
   templateUrl: './sidebar.component.html',
   styleUrls:['./sidebar.component.css']
 })
