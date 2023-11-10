@@ -1,0 +1,18 @@
+
+    <!-- formulaire-->
+    <div class="row border g-0 rounded shadow-sm" style="background-color: rgb(253, 252, 253);">
+      <div class="col p-4">
+          <h3>Deposit</h3>
+          <p class="fw-medium">Welcome to our Application .. Please set an amount to deposit</p>
+          <form class="row g-3"  #form="ngForm"  (ngSubmit)="depositAndPlaceOrder(form)">
+            <div class="col-md-6">
+                <label for="amount" class="form-label">Amount</label>
+                <input type="number" class="form-control" id="amount" name="amount"  [(ngModel)]="amount" min="1" >
+              </div>
+              <div class="col-12 text-end">
+                <button type="submit" class="btn btn-success">Deposit</button>
+              </div>
+          </form>
+      </div>
+    </div>
+           

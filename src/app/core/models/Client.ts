@@ -1,3 +1,5 @@
+import { Portefeuille } from "./Portefeuille";
+
 export class Client{
     idUser:number;
     userApplicationId:string;
@@ -29,7 +31,7 @@ export class Client{
     username?:string;
     accountNonExpired?:boolean;
     credentialsNonExpired?:boolean;
-
+    portefeuille: Portefeuille;
     static fromObject(obj : Client){
         const {enabled, accountNonExpired, accountNonLocked, authorities,credentialsNonExpired,username,...myUser} = obj
         return myUser;

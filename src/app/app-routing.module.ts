@@ -14,8 +14,6 @@ import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { DataUserGuard } from './shared/guard/Data-User.guard';
 import { EditUserComponent } from './admin/edit-user/edit-user.component';
-import { PortfeuilleComponent } from './client/portfeuille/portfeuille.component';
-
 
 
 export const Approutes: Routes = [
@@ -26,8 +24,7 @@ export const Approutes: Routes = [
       {path : 'login', component : LoginComponent},
       {path : 'signup', component : SignupComponent},
       {path : 'forget', component : ForgetComponent},
-      { path: 'edit-user/:id', component: EditUserComponent },
-      { path: 'trador/client/portfolio', component: PortfeuilleComponent },
+      { path: 'edit-user/:id', component: EditUserComponent }
     ]
   },
   {

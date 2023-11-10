@@ -4,6 +4,8 @@ import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { NotificationsService } from 'angular2-notifications';
 import { Client } from 'src/app/core/models/Client';
+import { Portefeuille } from 'src/app/core/models/Portefeuille';
+import { UserService } from 'src/app/core/services/user.service';
 import { logout } from 'src/app/store/actions/user.action';
 
 declare var $: any;
@@ -19,20 +21,34 @@ export class HeaderComponent implements AfterViewInit {
 
   public showSearch = false;
   public user : Client;
+  public portefeuille : Portefeuille ;
   static profileimage: any;
-  constructor(private modalService: NgbModal, private store : Store<any> , private router:Router,private notifier : NotificationsService) {
-    this.store.subscribe(result => {this.user = result.user.user}
-    )
+  static profilesolde: number;
+  solde : number ;
+  constructor(private modalService: NgbModal, private store : Store<any> , private router:Router,private notifier : NotificationsService, private userService : UserService) {
+    this.store.subscribe(result => {this.user = result.user.user})
   }
 
   ngAfterViewInit() { }
 
   ngOnInit() {
     HeaderComponent.profileimage = 'http://localhost:8089/trador/user/getpicture/'+this.user.photo;
+    this.userService.getPortefeuilleByUser(this.user.idUser).subscribe((portefeuille) => {
+      HeaderComponent.profilesolde = portefeuille.solde;
+      this.solde = portefeuille.solde;
+    });
   }
 
   get profileimage() {
     return HeaderComponent.profileimage;
+  }
+
+  get profilesolde() {
+    return HeaderComponent.profilesolde;
+  }
+
+  get soldeportefeuille(){
+    return this.portefeuille.solde;
   }
 
   logout(){
@@ -53,5 +69,21 @@ export class HeaderComponent implements AfterViewInit {
   toOrderBook(){
     this.router.navigateByUrl("/trador/client/orderbook")
     
+  }
+
+  todepot(){
+    this.router.navigateByUrl("/trador/client/deposit")
+  }
+
+  toretrait(){
+    this.router.navigateByUrl("/trador/client/config")
+  }
+
+  tohistorique(){
+    this.router.navigateByUrl("/trador/client/orderbook") 
+  }
+
+  towallet(){
+    this.router.navigateByUrl("/trador/client/orderbook") 
   }
 }
