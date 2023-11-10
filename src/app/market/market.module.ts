@@ -8,7 +8,7 @@ import { OrderBookComponent } from './order-book/order-book.component';
 import { CandlsticksComponent } from './candlsticks/candlsticks.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
-import { DataSurveillanceComponent } from './data-surveillance/data-surveillance.component';
+import { DataSurveillanceComponent } from '../shared/data-surveillance/data-surveillance.component';
 import { FormsModule } from '@angular/forms';
 import { CandlesComponent } from './candles/candles.component';
 import { IgxFinancialChartModule, IgxLegendModule } from 'igniteui-angular-charts';
@@ -20,7 +20,6 @@ import { IgxFinancialChartModule, IgxLegendModule } from 'igniteui-angular-chart
     DepthChartComponent,
     OrderBookComponent,
     CandlsticksComponent,
-    DataSurveillanceComponent,
     CandlesComponent
   ],
   imports: [
@@ -31,7 +30,6 @@ import { IgxFinancialChartModule, IgxLegendModule } from 'igniteui-angular-chart
     FormsModule,
     IgxFinancialChartModule,
     IgxLegendModule
-  ],
-  exports : [DataSurveillanceComponent]
+  ]
 })
 export class MarketModule { }

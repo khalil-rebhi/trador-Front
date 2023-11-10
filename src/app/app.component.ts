@@ -6,18 +6,6 @@ import { TraderComponentStore } from './store/Trader.component-store';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-
-  private webSocket : WebSocket;
-
-  constructor(private readonly tradeStore : TraderComponentStore) {
-    
-  }
-  ngOnInit(): void {
-    this.webSocket = new WebSocket('ws://localhost:8089/trador/ticker/TSLA');
-    this.webSocket.onmessage = (event) => {
-      this.tradeStore.updateTrader(JSON.parse(event.data));
-  }
-  }
+export class AppComponent {
   title = 'trador';
 }
