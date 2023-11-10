@@ -14,11 +14,13 @@
         </div>
       </div>
       <div class="card-body pt-4 p-3">
-        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3 text-success">Newest</h6>
-        <ul class="list-group">
-          <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1">
+        <div *ngIf="spinner"><app-spinner></app-spinner></div>
+        <ul class="list-group" *ngIf="!spinner">
+          <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of datas"
+          >
             <div class="d-flex align-items-center">
               <div class="col">
+                <div class="row"></div>
                   <div class="row row-4">
                     <div class="col-2">
                       <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="increase">
@@ -29,77 +31,25 @@
                       </button>
                     </div>
                     <div class="col-10">
-                    <h6 class="text-dark text-sm">Tesla</h6>
-                    <span class="text-small" style="font-size: smaller;">{{Data.symbol}}</span>
+                    <h6 class="text-dark text-sm">{{data.name}}</h6>
+                    <span class="text-small" style="font-size: smaller;">{{data.symbol}}</span>
                   </div>
                   </div>
                   <div class="row row-8 align-items-center text text-sm ">
                     <div class="col-4" >
                       <div class="row-2 font-weight-bold">Chg</div>
-                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{Data.chg.toFixed(3)}}</div>
+                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chg.toFixed(3)}}</div>
                     </div>
                     <div class="col-4"  >
                       <div class="row-2 font-weight-bold">Chg %</div>
-                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{Data.chgPercent.toFixed(3)}}</div>
+                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chgPercent.toFixed(3)}}</div>
                     </div>
                     <div class="col-4" style="padding-right: 0;">
                       <div class="row-2 font-weight-bold" >Last</div>
-                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{Data.lastCloseValue.toFixed(3)}}</div>
+                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.lastCloseValue.toFixed(3)}}</div>
                     </div>
                   </div>
               </div>
-            </div>
-          </li>
-          
-        </ul>
-        <h6 class="text-uppercase text-body text-xs font-weight-bolder my-3">Yesterday</h6>
-        <ul class="list-group">
-          <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1 ">
-            <div class="d-flex align-items-center">
-              <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
-              <div class="d-flex flex-column">
-                <h6 class="mb-1 text-dark text-sm">Stripe</h6>
-                <span class="text-xs">26 March 2020, at 13:45 PM</span>
-              </div>
-            </div>
-            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-              + $ 750
-            </div>
-          </li>
-          <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1 ">
-            <div class="d-flex align-items-center">
-              <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
-              <div class="d-flex flex-column">
-                <h6 class="mb-1 text-dark text-sm">HubSpot</h6>
-                <span class="text-xs">26 March 2020, at 12:30 PM</span>
-              </div>
-            </div>
-            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-              + $ 1,000
-            </div>
-          </li>
-          <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1 ">
-            <div class="d-flex align-items-center">
-              <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
-              <div class="d-flex flex-column">
-                <h6 class="mb-1 text-dark text-sm">Creative Tim</h6>
-                <span class="text-xs">26 March 2020, at 08:30 AM</span>
-              </div>
-            </div>
-            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-              + $ 2,500
-            </div>
-          </li>
-          <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1 ">
-            <div class="d-flex align-items-center">
-              <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-exclamation" aria-hidden="true"></i></button>
-              <div class="d-flex flex-column">
-                <h6 class="mb-1 text-dark text-sm">Webflow</h6>
-                <span class="text-xs">26 March 2020, at 05:00 AM</span>
-              </div>
-            </div>
-            <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
-              Pending
             </div>
           </li>
         </ul>
