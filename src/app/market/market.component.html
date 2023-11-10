@@ -1,5 +1,4 @@
-<app-spinner *ngIf="spinner"></app-spinner>
-<div class="col" *ngIf="orderBookData && !spinner">
+<div class="col">
   <div class="row-6">
       <!-- tabs-->
       <nav>
@@ -15,7 +14,7 @@
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <app-candles></app-candles>
+        <app-candles *ngIf="candle" [graphData]="graphData"></app-candles>
         <app-depth-chart [orderBookData]="orderBookData" *ngIf="depth"></app-depth-chart>
       </div>
   </div>

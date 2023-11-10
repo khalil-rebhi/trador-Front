@@ -1,58 +1,151 @@
-  <div class="col global" >
-    <div class="card h-100 mb-4">
-      <div class="card-header">
-        <div class="row">
-          <div class="col">
-            <h6 class="mb-0">List of surveillance</h6>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="col d-flex justify-content-around align-items-center">
-            <i class="far fa-calendar-alt me-2" aria-hidden="true"></i>
-            <small>{{ currentDate }}</small>
-          </div>
+<div class="d-flex justify-content-start" *ngIf="spinner">
+  <app-spinner></app-spinner>
+</div>
+<div class="global" *ngIf="!spinner">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Stocks
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul class="list-group">
+            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of stocks" (click)="navigateToMarket('crypto',data.symbol)">
+              <div class="d-flex align-items-center">
+                <div class="col">
+                  <div class="row"></div>
+                    <div class="row row-4">
+                      <div class="col-2">
+                        <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="increase">
+                          <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="!increase">
+                          <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div class="col-10">
+                      <h6 class="text-dark text-sm" style="margin-bottom: 0;">{{data.name}}</h6>
+                      <span class="text-small" style="font-size: smaller;">{{data.symbol}}</span>
+                    </div>
+                    </div>
+                    <div class="row row-8 align-items-center text text-sm ">
+                      <div class="col-4" >
+                        <div class="row-2 font-weight-bold" style="font-size: small;">Chg</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chg.toFixed(3)}}</div>
+                      </div>
+                      <div class="col-4"  >
+                        <div class="row-2 font-weight-bold" style="font-size: small;">Chg%</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chgPercent.toFixed(3)}}</div>
+                      </div>
+                      <div class="col-4" style="padding-right: 0;">
+                        <div class="row-2 font-weight-bold" style="font-size: small;" >Last</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.lastCloseValue.toFixed(3)}}</div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="card-body pt-4 p-3">
-        <div *ngIf="spinner"><app-spinner></app-spinner></div>
-        <ul class="list-group" *ngIf="!spinner">
-          <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of datas"
-          >
-            <div class="d-flex align-items-center">
-              <div class="col">
-                <div class="row"></div>
-                  <div class="row row-4">
-                    <div class="col-2">
-                      <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="increase">
-                        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-                      </button>
-                      <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="!increase">
-                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
-                      </button>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Forex
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul class="list-group">
+            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of forex" (click)="navigateToMarket('crypto',data.symbol)">
+              <div class="d-flex align-items-center">
+                <div class="col">
+                  <div class="row"></div>
+                    <div class="row row-4">
+                      <div class="col-2">
+                        <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="increase">
+                          <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="!increase">
+                          <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div class="col-10">
+                      <h6 class="text-dark text-sm" style="margin-bottom: 0;">{{data.name}}</h6>
+                      <span class="text-small" style="font-size: smaller;">{{data.symbol}}</span>
                     </div>
-                    <div class="col-10">
-                    <h6 class="text-dark text-sm">{{data.name}}</h6>
-                    <span class="text-small" style="font-size: smaller;">{{data.symbol}}</span>
-                  </div>
-                  </div>
-                  <div class="row row-8 align-items-center text text-sm ">
-                    <div class="col-4" >
-                      <div class="row-2 font-weight-bold">Chg</div>
-                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chg.toFixed(3)}}</div>
                     </div>
-                    <div class="col-4"  >
-                      <div class="row-2 font-weight-bold">Chg %</div>
-                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chgPercent.toFixed(3)}}</div>
+                    <div class="row row-8 align-items-center text text-sm ">
+                      <div class="col-4" >
+                        <div class="row-2 font-weight-bold" style="font-size: small;">Chg</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chg.toFixed(3)}}</div>
+                      </div>
+                      <div class="col-4"  >
+                        <div class="row-2 font-weight-bold" style="font-size: small;">Chg%</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chgPercent.toFixed(3)}}</div>
+                      </div>
+                      <div class="col-4" style="padding-right: 0;">
+                        <div class="row-2 font-weight-bold" style="font-size: small;" >Last</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.lastCloseValue.toFixed(3)}}</div>
+                      </div>
                     </div>
-                    <div class="col-4" style="padding-right: 0;">
-                      <div class="row-2 font-weight-bold" >Last</div>
-                      <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.lastCloseValue.toFixed(3)}}</div>
-                    </div>
-                  </div>
+                </div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Cryptocurrency
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul class="list-group">
+            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of cryptos" (click)="navigateToMarket('crypto',data.symbol)">
+              <div class="d-flex align-items-center">
+                <div class="col">
+                  <div class="row"></div>
+                    <div class="row row-4">
+                      <div class="col-2">
+                        <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="increase">
+                          <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center" *ngIf="!increase">
+                          <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div class="col-10">
+                      <h6 class="text-dark text-sm" style="margin-bottom: 0;">{{data.name}}</h6>
+                      <span class="text-small" style="font-size: smaller;">{{data.symbol}}</span>
+                    </div>
+                    </div>
+                    <div class="row row-8 align-items-center text text-sm ">
+                      <div class="col-4" >
+                        <div class="row-2 font-weight-bold" style="font-size: small;">Chg</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chg.toFixed(3)}}</div>
+                      </div>
+                      <div class="col-4"  >
+                        <div class="row-2 font-weight-bold" style="font-size: small;">Chg%</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.chgPercent.toFixed(3)}}</div>
+                      </div>
+                      <div class="col-4" style="padding-right: 0;">
+                        <div class="row-2 font-weight-bold" style="font-size: small;" >Last</div>
+                        <div class="row-10" class="text-small" [ngClass]="{'text-success': increase, 'text-danger': !increase}">{{data.lastCloseValue.toFixed(3)}}</div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+</div>

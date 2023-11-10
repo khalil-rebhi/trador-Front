@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -30,7 +29,6 @@ import { VerificationCodeTimerComponent } from './shared/verification-code-timer
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';import { MarketModule } from './market/market.module';
-import { TraderComponentStore } from './store/Trader.component-store';
 import { DataSurveillanceComponent } from './shared/data-surveillance/data-surveillance.component';
 
 
@@ -70,8 +68,7 @@ import { DataSurveillanceComponent } from './shared/data-surveillance/data-surve
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
-    },
-    TraderComponentStore
+    }
   ],
   bootstrap: [AppComponent]
 })

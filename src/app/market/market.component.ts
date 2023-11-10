@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { OrderBook } from '../core/models/OrderBook';
-import { TraderComponentStore } from '../store/Trader.component-store';
+import { ActivatedRoute } from '@angular/router';
+import { Data } from '../core/models/Data';
+
 
 @Component({
   selector: 'app-market',
@@ -10,21 +11,34 @@ import { TraderComponentStore } from '../store/Trader.component-store';
 })
 export class MarketComponent implements OnInit {
   orderBookWebSocket: WebSocket;
-  marketWebSocket : WebSocket;
+  graphWebSocket : WebSocket;
   orderBookData: OrderBook;
+  graphData : Data;
   candle = true;
   depth = false;
-  spinner = true;
+  market : string;
+  symbol : string;
+  interval : '1min';
 
-  constructor (private tradeStore : TraderComponentStore) {
+  constructor (private activatedRoute : ActivatedRoute) {
   }
   
   ngOnInit(): void {
-    this.orderBookWebSocket = new WebSocket('ws://localhost:8089/trador/orderBook/CRYPTO/BTCUSD');
-    this.orderBookWebSocket.onmessage = (event) => {
-      this.orderBookData = JSON.parse(event.data)  
-      this.spinner = false;    
-    };
+    this.activatedRoute.params.subscribe((params) =>{
+      this.market = params["market"];
+      this.symbol = params["symbole"];
+      console.log(this.market);
+      console.log(this.symbol);
+      
+      this.orderBookWebSocket = new WebSocket(`ws://localhost:8089/trador/orderBook/crypto/btcusd`);
+      this.graphWebSocket = new WebSocket(`ws://localhost:8089/trador/graph/${this.symbol}/${this.interval}`)
+      this.orderBookWebSocket.onmessage = (event) => {
+        this.orderBookData = JSON.parse(event.data)    
+      };
+      this.graphWebSocket.onmessage = (event) => {
+        this.graphData = JSON.parse(event.data);
+      }
+    })
   }
   
   toDepthChart(){

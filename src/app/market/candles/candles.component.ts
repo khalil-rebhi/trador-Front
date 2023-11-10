@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Data } from 'src/app/core/models/Data';
-import { TraderComponentStore } from 'src/app/store/Trader.component-store';
 
 @Component({
   selector: 'app-candles',
@@ -10,14 +9,11 @@ import { TraderComponentStore } from 'src/app/store/Trader.component-store';
 export class CandlesComponent implements OnInit {
   public stocksData: any;
   public symbole : string;
-
-  constructor(private readonly tradeStore : TraderComponentStore) {}
+  @Input() graphData : Data;
+  constructor() {}
 
   ngOnInit(): void {
-    this.tradeStore.trader$.subscribe(result=> {
-      this.stocksData = this.formatData(result);
-      this.symbole = result['Meta Data']['2. Symbol']
-    })
+      this.stocksData = this.formatData(this.graphData);
   }
 
   formatData(data: Data): any[] {

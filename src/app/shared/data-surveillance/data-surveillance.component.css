@@ -1,4 +1,4 @@
 .global{
-    overflow-y: scroll;
-    height: 100vh;
+    height: 75vh;
+    overflow: auto;
 }

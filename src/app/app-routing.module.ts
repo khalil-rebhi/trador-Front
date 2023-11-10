@@ -7,7 +7,6 @@ import { ForgetComponent } from './shared/forget/forget.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { DataUserGuard } from './shared/guard/Data-User.guard';
-import { MarketModule } from './market/market.module';
 
 
 
@@ -23,7 +22,6 @@ export const Approutes: Routes = [
   },
   {
     path: 'trador',
-    canActivate: [DataUserGuard],
     component: FrontOfficeComponent,
     children: [
       { path: 'trador', redirectTo: '/client', pathMatch: 'full' },
@@ -32,7 +30,7 @@ export const Approutes: Routes = [
         loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
       },
       {
-        path: 'market', loadChildren: () => import('./market/market.module').then(m => m.MarketModule)
+        path: 'market/:market/:symbole', loadChildren: () => import('./market/market.module').then(m => m.MarketModule)
       }
     ]
   }, 

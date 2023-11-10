@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { TraderComponentStore } from './store/Trader.component-store';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
