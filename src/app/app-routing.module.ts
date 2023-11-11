@@ -22,6 +22,7 @@ export const Approutes: Routes = [
   },
   {
     path: 'trador',
+    canActivate:[DataUserGuard],
     component: FrontOfficeComponent,
     children: [
       { path: 'trador', redirectTo: '/client', pathMatch: 'full' },

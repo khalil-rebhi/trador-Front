@@ -13,9 +13,9 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class DataSurveillanceComponent implements OnInit {
   datas : {
-    Forex : SideBarData[],
-    Stocks : SideBarData[],
-    Cryptocurrency : SideBarData[]
+    FOREX : SideBarData[],
+    STOCKS : SideBarData[],
+    CRYPTOCURRENCY : SideBarData[]
   };
   forex : SideBarData[];
   stocks : SideBarData[];
@@ -36,9 +36,9 @@ export class DataSurveillanceComponent implements OnInit {
     this.webSocket = new WebSocket("ws://localhost:8089/trador/sidebar");
     this.webSocket.onmessage = (event) => {
       this.datas = JSON.parse(event.data)
-      this.cryptos = this.datas.Cryptocurrency;
-      this.forex = this.datas.Forex;
-      this.stocks = this.datas.Stocks;
+      this.cryptos = this.datas.CRYPTOCURRENCY;
+      this.forex = this.datas.FOREX;
+      this.stocks = this.datas.STOCKS;
       this.spinner = false;
     }
   }
