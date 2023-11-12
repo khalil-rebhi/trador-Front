@@ -65,7 +65,7 @@ handler: (response : any) =>{
   this.userService.updatePortefeuilleBalance(formData).subscribe((response) => {
     console.log(response);
     
-    HeaderComponent.profilesolde = this.solde + this.amount;
+    HeaderComponent.profilesolde = response.solde + this.amount;
   },
   (error)=> {
     console.log(error);

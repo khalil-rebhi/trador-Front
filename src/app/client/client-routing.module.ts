@@ -6,7 +6,6 @@ import { ConfigProfileComponent } from './config-profile/config-profile.componen
 import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DataUserGuard } from '../shared/guard/Data-User.guard';
-import { OrderBookComponent } from './order-book/order-book.component';
 import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 import { DepositComponent } from '../deposit/deposit.component';
 export 
@@ -19,9 +18,6 @@ const clientroutes: Routes = [{ path : '', component:ClientComponent,canActivate
   },
   {
     path:'reclamation', component:ReclamationComponent,
-  },
-  {
-    path:'orderbook', component:OrderBookComponent,
   },
   { path: 'portefeuille', component: PortefeuilleComponent },
   {

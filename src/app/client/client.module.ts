@@ -9,7 +9,6 @@ import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
-import { OrderBookComponent } from './order-book/order-book.component';
 import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 
 
@@ -20,7 +19,6 @@ import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
     ConfigProfileComponent,
     IdeeComponent,
     ReclamationComponent,
-    OrderBookComponent,
     PortefeuilleComponent,
     ReclamationComponent
   ],
