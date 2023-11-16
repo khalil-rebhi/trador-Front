@@ -11,7 +11,7 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <ul class="list-group">
+          <ul class="list-group" *ngIf="stocks">
             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of stocks" (click)="navigateToMarket('crypto',data.symbol)">
               <div class="d-flex align-items-center">
                 <div class="col">
@@ -48,6 +48,7 @@
               </div>
             </li>
           </ul>
+          <h5 *ngIf="!stocks">Data not available</h5>
         </div>
       </div>
     </div>
@@ -59,7 +60,7 @@
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <ul class="list-group">
+          <ul class="list-group" *ngIf="forex">
             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of forex" (click)="navigateToMarket('crypto',data.symbol)">
               <div class="d-flex align-items-center">
                 <div class="col">
@@ -96,6 +97,7 @@
               </div>
             </li>
           </ul>
+          <h5 *ngIf="!forex">Data not available</h5>
         </div>
       </div>
     </div>
@@ -107,7 +109,7 @@
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <ul class="list-group">
+          <ul class="list-group" *ngIf="cryptos">
             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of cryptos" (click)="navigateToMarket('crypto',data.symbol)">
               <div class="d-flex align-items-center">
                 <div class="col">
@@ -144,6 +146,7 @@
               </div>
             </li>
           </ul>
+          <h5 *ngIf="!cryptos">Data not available</h5>
         </div>
       </div>
     </div>

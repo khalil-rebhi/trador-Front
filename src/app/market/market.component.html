@@ -13,9 +13,12 @@
           </div>
         </div>
       </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <app-candles *ngIf="candle" [graphData]="graphData"></app-candles>
-        <app-depth-chart [orderBookData]="orderBookData" *ngIf="depth"></app-depth-chart>
+      <div *ngIf="spinner">
+        <app-spinner></app-spinner>
+      </div>
+      <div class="tab-content" id="nav-tabContent" *ngIf="graphData">
+          <app-candles *ngIf="candle" [graphData]="graphData"></app-candles>
+          <app-depth-chart [orderBookData]="orderBookData" *ngIf="depth"></app-depth-chart>
       </div>
   </div>
   <div class="row-6 mt-2">
