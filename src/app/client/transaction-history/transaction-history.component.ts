@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionService } from 'src/app/core/services/transaction.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -7,9 +8,20 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./transaction-history.component.css']
 })
 export class TransactionHistoryComponent implements OnInit {
-  constructor () {}
+  public transactions : any;
+  constructor (private transactionservice : TransactionService, private userservice : UserService) {}
   ngOnInit(): void {
-   
+    
+   this.getTransactionByPortefeuilleId(Number(localStorage.getItem("id")));
+
   }
 
+ 
+
+  getTransactionByPortefeuilleId(userId : any){
+    this.transactionservice.getTransactionById(userId).subscribe((data:any)=> {
+      this.transactions=data
+      console.log ("***",this.transactions)
+    })
+  }
 }
