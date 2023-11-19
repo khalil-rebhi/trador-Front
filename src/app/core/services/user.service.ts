@@ -31,11 +31,13 @@ export class UserService {
 
   public getCurrentUser() : Observable<Client>{
     this.accessToken = localStorage.getItem("accessToken") || '';
+    console.log('*********',this.accessToken)
     return this.http.post<Client>('http://localhost:8089/trador/auth/getCurrentUser',{user : null , accessToken : this.accessToken}).pipe(
       tap((user : Client) => {
         this.store.dispatch(currentUser({accessToken : this.accessToken, user : user}))
         this.user$.next(user);
         if (user) {
+         
           this.isLoggedin$.next(true);
         } else{
           this.isLoggedin$.next(false);

@@ -25,8 +25,9 @@ export class UserEffects{
 
     loginSuccess$ = createEffect(() => this.actions$.pipe(
         ofType(LOGIN_SUCCESS),
-        exhaustMap((payload : {payload : {accessToken : string , user : Client}, type : string}) => {
+        exhaustMap((payload : {payload : {accessToken : string , user : Client}, type : any}) => {
             localStorage.setItem("accessToken",payload.payload.accessToken);
+            localStorage.setItem("id",payload.payload.user.idUser.toString());
             this.router.navigateByUrl("trador");
           return of({ type: 'NO_ACTION' });
         })

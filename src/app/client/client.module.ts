@@ -10,6 +10,7 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
     IdeeComponent,
     ReclamationComponent,
     PortefeuilleComponent,
-    ReclamationComponent
+    ReclamationComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     CommonModule,
