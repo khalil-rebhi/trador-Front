@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+  
+            <div class="panel-heading">
+                <h3 class="panel-title">Vos Actions</h3>
+            </div>
+
+                           <table class="table table-hover">
+                                    <thead>
+                                            <tr>
+                                                 <th scope="col">Nom de l'action</th>
+                                                 <th scope="col">Prix Unitaire</th>
+                                                 <th scope="col">Quantite</th>
+                                                 <th scope="col">Prix total</th>
+                                            </tr>
+                                    </thead>
+    <tbody class="table-group-divider">
+        
+        <tr *ngFor="let data of portefeuilleActions" class="fixed-height-row">
+            <td>{{ data?.action?.nom }}</td>
+            <td>{{ data?.action?.prix_unitaire }}</td>
+            <td>{{ data?.quantite }}</td>
+            <td>{{ data?.prix_total }}</td></tr>
+
+            <!--
+            <tr *ngFor="let data of items" class="fixed-height-row">
+                <td>{{ data?.id }}</td>
+                <td>{{ data?.id }}</td>
+                <td>{{ data?.name }}</td>
+                <td>{{ data?.name }}</td></tr>-->
+        
+            <!--<td class="btn-group">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userDetailsModal" (click)="consulterUtilisateur(user)"><i class="bi bi-box-arrow-up-left"></i></button>
+                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#userEditModal" (click)="modifierUtilisateur(user)"><i class="bi bi-pencil-square"></i></button>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" (click)="supprimerUtilisateur(user)"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-warning" (click)="bloquerUtilisateur(user.idUser)"><i class="bi bi-slash-square"></i></button>
+            </td>-->
+        
+    </tbody>
+  </table>
+</div>                                
+
+</div>
+</div>                           

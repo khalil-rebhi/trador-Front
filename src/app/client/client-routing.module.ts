@@ -8,6 +8,7 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DataUserGuard } from '../shared/guard/Data-User.guard';
 import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 import { DepositComponent } from '../deposit/deposit.component';
+import { WalletComponent } from '../wallet/wallet.component';
 export 
 const clientroutes: Routes = [{ path : '', component:ClientComponent,canActivate:[DataUserGuard], children:[
   {
@@ -22,6 +23,9 @@ const clientroutes: Routes = [{ path : '', component:ClientComponent,canActivate
   { path: 'portefeuille', component: PortefeuilleComponent },
   {
     path: 'deposit', component : DepositComponent,
+  },
+  {
+    path: 'wallet', component : WalletComponent,
   }
 
 

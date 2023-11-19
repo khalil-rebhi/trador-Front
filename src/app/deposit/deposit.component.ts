@@ -5,6 +5,7 @@ import { Portefeuille } from '../core/models/Portefeuille';
 import { Client } from '../core/models/Client';
 import { Store } from '@ngrx/store';
 import { HeaderComponent } from '../shared/header/header.component';
+import { PortefeuilleService } from '../core/services/portefeuille.service';
 //import * as Razorpay from 'razorpay';
 declare var Razorpay :any;
 @Component({
@@ -20,7 +21,7 @@ export class DepositComponent {
   solde : number ;
   idUser : number ;
   public user : Client;
-  constructor( private store : Store<any> , private userService : UserService) {
+  constructor( private store : Store<any> , private userService : UserService , private portefeuilleService : PortefeuilleService) {
     this.store.subscribe(result => {this.user = result.user.user})
   }
 
@@ -28,7 +29,7 @@ export class DepositComponent {
 
   ngOnInit() {
     if (this.user) {
-      this.userService.getPortefeuilleByUser(this.user.idUser).subscribe((portefeuille) => {
+      this.portefeuilleService.getPortefeuilleByUser(this.user.idUser).subscribe((portefeuille) => {
         this.solde = portefeuille.solde;
         console.log(this.solde);
       });
@@ -39,7 +40,7 @@ export class DepositComponent {
 
   depositAndPlaceOrder(form : NgForm) {
       let amount = this.amount;
-      this.userService.deposit(amount).subscribe((response) => {
+      this.portefeuilleService.deposit(amount).subscribe((response) => {
         console.log(response);
         this.openDepositModal(response);
       },
@@ -62,7 +63,7 @@ handler: (response : any) =>{
   const formData = new FormData();
   formData.append('idUser', this.user.idUser.toString());
   formData.append('amount', this.amount.toString());
-  this.userService.updatePortefeuilleBalance(formData).subscribe((response) => {
+  this.portefeuilleService.updatePortefeuilleBalance(formData).subscribe((response) => {
     console.log(response);
     
     HeaderComponent.profilesolde = response.solde + this.amount;

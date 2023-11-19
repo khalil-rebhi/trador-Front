@@ -5,7 +5,6 @@ import { Reclamation } from '../models/Reclamation';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { currentUser } from 'src/app/store/actions/user.action';
-import { Portefeuille } from '../models/Portefeuille';
 
 @Injectable({
   providedIn: 'root'
@@ -110,16 +109,6 @@ export class UserService {
     return this.http.post<Client>("http://localhost:8089/trador/user/changeimage",formData)}
 
 
-  public getPortefeuilleByUser(idUser : number) : Observable<Portefeuille>{
-    return this.http.get<Portefeuille>(`http://localhost:8089/trador/portefeuille/show/user/${idUser}`);
-  }
-
-  public deposit(amount : number){
-    return this.http.get("http://localhost:8089/trador/portefeuille/deposit/" + amount);
-  }
-
-  public updatePortefeuilleBalance(formData: any): Observable<Portefeuille> {
-    return this.http.put<Portefeuille>("http://localhost:8089/trador/portefeuille/updatebalance", formData);
-  }
+  
 
 }

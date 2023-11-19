@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { NotificationsService } from 'angular2-notifications';
 import { Client } from 'src/app/core/models/Client';
 import { Portefeuille } from 'src/app/core/models/Portefeuille';
+import { PortefeuilleService } from 'src/app/core/services/portefeuille.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { logout } from 'src/app/store/actions/user.action';
 
@@ -25,7 +26,7 @@ export class HeaderComponent implements AfterViewInit {
   static profileimage: any;
   static profilesolde: number;
   solde : number ;
-  constructor(private modalService: NgbModal, private store : Store<any> , private router:Router,private notifier : NotificationsService, private userService : UserService) {
+  constructor(private modalService: NgbModal, private store : Store<any> , private router:Router,private notifier : NotificationsService, private userService : UserService, private portefeuilleService : PortefeuilleService) {
     this.store.subscribe(result => {this.user = result.user.user})
   }
 
@@ -33,7 +34,7 @@ export class HeaderComponent implements AfterViewInit {
 
   ngOnInit() {
     HeaderComponent.profileimage = 'http://localhost:8089/trador/user/getpicture/'+this.user.photo;
-    this.userService.getPortefeuilleByUser(this.user.idUser).subscribe((portefeuille) => {
+    this.portefeuilleService.getPortefeuilleByUser(this.user.idUser).subscribe((portefeuille) => {
       HeaderComponent.profilesolde = portefeuille.solde;
       this.solde = portefeuille.solde;
     });
@@ -75,15 +76,11 @@ export class HeaderComponent implements AfterViewInit {
     this.router.navigateByUrl("/trador/client/deposit")
   }
 
-  toretrait(){
-    this.router.navigateByUrl("/trador/client/config")
-  }
-
   tohistorique(){
     this.router.navigateByUrl("/trador/client/orderbook") 
   }
 
   towallet(){
-    this.router.navigateByUrl("/trador/client/orderbook") 
+    this.router.navigateByUrl("/trador/client/wallet") 
   }
 }
