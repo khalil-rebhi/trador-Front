@@ -1,3 +1,38 @@
-<ul>
-    <li *ngFor="let transaction of transactions">{{ transaction.montant }}</li>
-</ul>
+<!-- transaction-history.component.html -->
+
+<div>
+    <h2>Historique des transactions</h2>
+    
+    <!-- Liste déroulante pour sélectionner le type -->
+    <label for="transactionType">Sélectionner le type : </label>
+<select id="transactionType" [ngModel]="selectedType" (ngModelChange)="onTypeChange($event)">
+  <option value="" selected>Tous les types</option>
+  <option [ngValue]="'ACHAT'">Achat</option>
+  <option [ngValue]="'VENTE'">Vente</option>
+  <option [ngValue]="'DIVIDENDE'">Dividende</option>
+  <option [ngValue]="'DEPOT'">Dépôt</option>
+  <option [ngValue]="'RETRAIT'">Retrait</option>
+</select>
+    
+  
+    <!-- Tableau des transactions filtrées -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date de création</th>
+          <th>Montant</th>
+          <th>Type</th>
+          <!-- Ajoutez d'autres en-têtes de colonnes au besoin -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.datetransaction | date:'medium' }}</td>
+          <td>{{ transaction.montant }}</td>
+          <td>{{ transaction.type }}</td>
+          <!-- Ajoutez d'autres cellules de données au besoin -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

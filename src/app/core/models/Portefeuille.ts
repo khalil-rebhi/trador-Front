@@ -4,3 +4,11 @@ export class Portefeuille{
     datecreation:Date;
     devise:string;
 }
+
+export class Transaction {
+    idTransaction: number;
+    datetransaction: Date;
+    montant: number;
+    type: string;
+    portefeuille: Portefeuille;  // Ajouter cette ligne pour la relation ManyToOne
+  }
