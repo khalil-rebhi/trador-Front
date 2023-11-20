@@ -12,7 +12,7 @@
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <ul class="list-group" *ngIf="stocks">
-            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of stocks" (click)="navigateToMarket('crypto',data.symbol)">
+            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of stocks" (click)="navigateToMarket('stocks',data.symbol)">
               <div class="d-flex align-items-center">
                 <div class="col">
                   <div class="row"></div>
@@ -61,7 +61,7 @@
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <ul class="list-group" *ngIf="forex">
-            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of forex" (click)="navigateToMarket('crypto',data.symbol)">
+            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-1 mt-1" *ngFor="let data of forex" (click)="navigateToMarket('forex',data.symbol)">
               <div class="d-flex align-items-center">
                 <div class="col">
                   <div class="row"></div>

@@ -30,7 +30,7 @@ export class MarketComponent implements OnInit {
       this.symbol = params["symbole"];
 
       this.orderBookWebSocket = new WebSocket(`ws://localhost:8089/trador/orderBook/crypto/btcusd`);
-      this.graphWebSocket = new WebSocket(`ws://localhost:8089/trador/graph/${this.symbol}/${this.interval}`)
+      this.graphWebSocket = new WebSocket(`ws://localhost:8089/trador/graph/${this.market}/${this.symbol}/${this.interval}`)
       this.orderBookWebSocket.onmessage = (event) => {
         this.zone.run(() => {
           this.orderBookData = JSON.parse(event.data);

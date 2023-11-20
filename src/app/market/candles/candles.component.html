@@ -2,10 +2,9 @@
     <div class="options vertical" >
         <label id="legendTitle">{{symbole}}</label>
     </div>
-
     <igx-financial-chart height="20rem" width="100%"
         [dataSource]="stocksData"
-        isToolbarVisible="false"
+        isToolbarVisible="true"
         chartType="Candle"
         yAxisLabelLocation="OutsideRight"
         yAxisMode="Numeric"
@@ -16,7 +15,6 @@
         zoomSliderType="None"
         toolTipType="Data"
         dataToolTipIncludedColumns="Open, Close, High, Low"
-        dataToolTipHeaderFormatTime="none"
         >
     </igx-financial-chart>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { Data } from 'src/app/core/models/Data';
 
 @Component({
@@ -6,19 +6,18 @@ import { Data } from 'src/app/core/models/Data';
   templateUrl: './candles.component.html',
   styleUrls: ['./candles.component.css']
 })
-export class CandlesComponent implements OnInit {
+export class CandlesComponent implements AfterViewChecked {
   public stocksData: any;
   public symbole : string;
   @Input() graphData : Data;
   public valueTooltip: TemplateRef<object>;
 
   constructor() {}
-
-  public onTooltipShow(e: any) {
-    if (e.context && e.context.dataItem) {
-      e.context.dataItem.tooltipTemplate = this.valueTooltip;
-    }
+  ngAfterViewChecked(): void {
+    this.stocksData = this.formatData(this.graphData);
+    this.stocksData.sort(this.compareDates);
   }
+
 
   private compareDates(a: any, b: any): number {
     const dateA = new Date(a.Date);
@@ -33,10 +32,6 @@ export class CandlesComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.stocksData = this.formatData(this.graphData);
-    this.stocksData.sort(this.compareDates);
-  }
 
   formatData(data: Data): any[] {
     const timeSeries = data['Time Series (1min)'];
