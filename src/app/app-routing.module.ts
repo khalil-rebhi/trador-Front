@@ -14,7 +14,7 @@ export const Approutes: Routes = [
   {
     path: '',
     children: [
-      { path: '', component: LandingComponent },
+      { path: 'home', component: LandingComponent },
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'forget', component: ForgetComponent },
@@ -22,7 +22,7 @@ export const Approutes: Routes = [
   },
   {
     path: 'trador',
-   // canActivate:[DataUserGuard],
+    canActivate:[DataUserGuard],
     component: FrontOfficeComponent,
     children: [
       { path: 'trador', redirectTo: '/client', pathMatch: 'full' },

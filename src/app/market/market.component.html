@@ -16,9 +16,12 @@
       <div *ngIf="spinner">
         <app-spinner></app-spinner>
       </div>
-      <div class="tab-content" id="nav-tabContent" *ngIf="graphData">
+      <div class="tab-content" id="nav-tabContent" *ngIf="!spinner && graphData">
           <app-candles *ngIf="candle" [graphData]="graphData"></app-candles>
           <app-depth-chart [orderBookData]="orderBookData" *ngIf="depth"></app-depth-chart>
+          <div class="btn-group m-2" role="group" *ngIf="candle">
+            <button (click)="changeIntervalle(entry.value)" *ngFor="let entry of mapEntries()" type="button" class="btn" [ngClass]="{ 'btn-outline-info': interval == entry.value, 'btn-info': interval !== entry.value }" [disabled]="interval === entry.value">{{ entry.key }}</button>
+        </div>
       </div>
   </div>
   <div class="row-6 mt-2">
