@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 import { WalletComponent } from '../wallet/wallet.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { WalletComponent } from '../wallet/wallet.component';
     ReclamationComponent,
     PortefeuilleComponent,
     ReclamationComponent,
-    WalletComponent
+    WalletComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     CommonModule,
