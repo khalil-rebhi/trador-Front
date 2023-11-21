@@ -87,4 +87,8 @@ export class HeaderComponent implements AfterViewInit {
   towallet(){
     this.router.navigateByUrl("/trador/client/wallet") 
   }
+
+  toretrait(){
+    
+  }
 }
