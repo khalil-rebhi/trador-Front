@@ -1442,6 +1442,13 @@
   dependencies:
     tslib "^2.3.0"
 
+"@ngrx/component-store@^16.3.0":
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/component-store/-/component-store-16.3.0.tgz#c6fa7d44bbde5024a93abf9e468f47cd800f7457"
+  integrity sha512-mCUzhCHLhZPZ6Vq0JI810Vv2uhEX6ceaMqJykdDEVKmvkokm3cwsV8bvodyzn5BcJf2w47JFCvdNSaWU31XU+A==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/effects@^16.3.0":
   version "16.3.0"
   resolved "https://registry.npmjs.org/@ngrx/effects/-/effects-16.3.0.tgz"
@@ -1613,6 +1620,11 @@
   resolved "https://registry.npmjs.org/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
+"@stomp/stompjs@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.npmjs.org/@stomp/stompjs/-/stompjs-7.0.0.tgz"
+  integrity sha512-fGdq4wPDnSV/KyOsjq4P+zLc8MFWC3lMmP5FBgLWKPJTYcuCbAIrnRGjB7q2jHZdYCOD5vxLuFoKIYLy5/u8Pw==
+
 "@szmarczak/http-timer@^5.0.1":
   version "5.0.1"
   resolved "https://registry.npmjs.org/@szmarczak/http-timer/-/http-timer-5.0.1.tgz"
@@ -1726,6 +1738,13 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/highcharts@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@types/highcharts/-/highcharts-7.0.0.tgz#88fc2140504dac329eb93d6e06a457c8db0d7f7e"
+  integrity sha512-YDevls0s9uqz6VEbchxp+NEaKssAPq5aDZgqEUpxOIUCQEncQtXxibp1w4lvgKyhM4qDejAcSZ+DKfA/kzqR0A==
+  dependencies:
+    highcharts "*"
+
 "@types/http-cache-semantics@^4.0.1":
   version "4.0.2"
   resolved "https://registry.npmjs.org/@types/http-cache-semantics/-/http-cache-semantics-4.0.2.tgz"
@@ -1815,6 +1834,11 @@
   integrity sha512-8B5EO9jLVCy+B58PLHvLDuOD8DRVMgQzq8d55SjLCOn9kqGyqOvy27exVaTio1q1nX5zLu8/6N0n2ThSxOM6tg==
   dependencies:
     "@types/node" "*"
+
+"@types/zingchart@^2.8.37":
+  version "2.8.37"
+  resolved "https://registry.npmjs.org/@types/zingchart/-/zingchart-2.8.37.tgz"
+  integrity sha512-TAU75b8jzI3QJdFScB+8bK6DCr1W+wtEra/NGt+J36QhGNu95e9fQkZAu++0bk/XDApiiFQIEGoBcThtDw3z4Q==
 
 "@vitejs/plugin-basic-ssl@1.0.1":
   version "1.0.1"
@@ -2155,10 +2179,10 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apexcharts@^3.43.0:
-  version "3.43.0"
-  resolved "https://registry.npmjs.org/apexcharts/-/apexcharts-3.43.0.tgz"
-  integrity sha512-YPw1aLatPQMUqVLMp5d+LDaXFi4QrRQND72/XO7/2NJdg+R5MjE9sifJ0GzOfgoZM7ltBUTjwfSxIvwR/9V8yw==
+apexcharts@^3.44.0:
+  version "3.44.0"
+  resolved "https://registry.npmjs.org/apexcharts/-/apexcharts-3.44.0.tgz"
+  integrity sha512-u7Xzrbcxc2yWznN78Jh5NMCYVAsWDfBjRl5ea++rVzFAqjU2hLz4RgKIFwYOBDRQtW1e/Qz8azJTqIJ1+Vu9Qg==
   dependencies:
     "@yr/monotone-cubic-spline" "^1.0.3"
     svg.draggable.js "^2.2.2"
@@ -2953,7 +2977,7 @@ debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.3, debug@^4.3.4, debug@~4.3.1, d
   dependencies:
     ms "2.1.2"
 
-debug@^3.2.6:
+debug@^3.2.6, debug@^3.2.7:
   version "3.2.7"
   resolved "https://registry.npmjs.org/debug/-/debug-3.2.7.tgz"
   integrity sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
@@ -3338,6 +3362,11 @@ events@^3.2.0:
   resolved "https://registry.npmjs.org/events/-/events-3.3.0.tgz"
   integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
 
+eventsource@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/eventsource/-/eventsource-2.0.2.tgz"
+  integrity sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==
+
 execa@^5.0.0:
   version "5.1.1"
   resolved "https://registry.npmjs.org/execa/-/execa-5.1.1.tgz"
@@ -3453,7 +3482,7 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-faye-websocket@^0.11.3:
+faye-websocket@^0.11.3, faye-websocket@^0.11.4:
   version "0.11.4"
   resolved "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.11.4.tgz"
   integrity sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==
@@ -3841,6 +3870,11 @@ hdr-histogram-percentiles-obj@^3.0.0:
   resolved "https://registry.npmjs.org/hdr-histogram-percentiles-obj/-/hdr-histogram-percentiles-obj-3.0.0.tgz"
   integrity sha512-7kIufnBqdsBGcSZLPJwqHT3yhk1QTsSlFsVD3kx5ixH/AlgBs9yM1q6DPhXZ8f8gtdqgh7N7/5btRLpQsS2gHw==
 
+highcharts@*, highcharts@^11.2.0:
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-11.2.0.tgz#32ddc885b1c7a7d438df30c6d751c28991b16616"
+  integrity sha512-9i650YK7ZBA1Mgtr3avMkLVCAI45RQvYnwi+eHsdFSaBGuQN6BHoa4j4lMkSJLv0V4LISTK1z7J7G82Lzd7zwg==
+
 hosted-git-info@^5.1.0:
   version "5.2.1"
   resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-5.2.1.tgz"
@@ -4017,6 +4051,20 @@ ieee754@^1.1.13:
   version "1.2.1"
   resolved "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
+
+igniteui-angular-charts@^16.1.1:
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/igniteui-angular-charts/-/igniteui-angular-charts-16.1.1.tgz#28f94d23a83904df8a13d9b06051a2bc81028baa"
+  integrity sha512-SHmzdzHnHPPNNbihVU0fIpSoruwxTYYeNvu8gJ9gqrvLcCCANaQ3JkEI4b/kJsiKOUELGUGxjmxEAxOw+Fwl8A==
+  dependencies:
+    tslib "^2.3.1"
+
+igniteui-angular-core@^16.1.1:
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/igniteui-angular-core/-/igniteui-angular-core-16.1.1.tgz#15e771f0e37cdca51cf89144562772a3d3f9785c"
+  integrity sha512-IqwKNpB+NGQkd0dzhp2d3qGyxKFDr+v1MEMo1eAg0FegpT8CgP1GCrCgL6JN+RwqnhuDHX9+B/5fScUqZYBUFg==
+  dependencies:
+    tslib "^2.3.1"
 
 ignore-walk@^6.0.0:
   version "6.0.3"
@@ -6288,6 +6336,17 @@ socket.io@^4.4.1:
     socket.io-adapter "~2.5.2"
     socket.io-parser "~4.2.4"
 
+sockjs-client@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.npmjs.org/sockjs-client/-/sockjs-client-1.6.1.tgz"
+  integrity sha512-2g0tjOR+fRs0amxENLi/q5TiJTqY+WXFOzb5UwXndlK6TO3U/mirZznpx6w34HVMoc3g7cY24yC/ZMIYnDlfkw==
+  dependencies:
+    debug "^3.2.7"
+    eventsource "^2.0.2"
+    faye-websocket "^0.11.4"
+    inherits "^2.0.4"
+    url-parse "^1.5.10"
+
 sockjs@^0.3.24:
   version "0.3.24"
   resolved "https://registry.npmjs.org/sockjs/-/sockjs-0.3.24.tgz"
@@ -6705,7 +6764,7 @@ tslib@2.6.1:
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.1.tgz"
   integrity sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==
 
-tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.6.2:
+tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
@@ -6863,7 +6922,7 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-url-parse@^1.5.3:
+url-parse@^1.5.10, url-parse@^1.5.3:
   version "1.5.10"
   resolved "https://registry.npmjs.org/url-parse/-/url-parse-1.5.10.tgz"
   integrity sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==
@@ -7152,6 +7211,7 @@ wildcard@^2.0.0:
   integrity sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -7279,6 +7339,11 @@ yocto-queue@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-1.0.0.tgz"
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
+
+zingchart@^2.9.12:
+  version "2.9.12"
+  resolved "https://registry.yarnpkg.com/zingchart/-/zingchart-2.9.12.tgz#b3a0c8d6010f125256e4b05f22f753841fb09e4d"
+  integrity sha512-P9BORV/ZuX7Ko37N8VERkbS6j5liLndwLFWwo8neQKNTEuCEIbT5DPOi3mJAJkizGSn9gFXLpzoXbYRUw5qcdw==
 
 zone.js@^0.11.4:
   version "0.11.4"

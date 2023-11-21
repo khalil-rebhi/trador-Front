@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -14,7 +14,8 @@ import { verify } from 'src/app/store/actions/user.action';
 @Component({
   selector: 'app-front-office',
   standalone : true,
-  imports:[RouterModule,SidebarComponent, HeaderComponent , CommonModule, NgbCollapseModule,SpinnerComponent,FormsModule],
+  imports:[RouterModule,SidebarComponent,HeaderComponent, CommonModule, NgbCollapseModule,SpinnerComponent,FormsModule],
+  providers: [DatePipe],
   templateUrl: './front-office.component.html',
   styleUrls: ['./front-office.component.css']
 })

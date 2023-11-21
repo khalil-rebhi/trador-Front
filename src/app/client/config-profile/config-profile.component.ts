@@ -38,9 +38,7 @@ export class ConfigProfileComponent  implements OnInit{
       switchMap(userId => this.clientService.getClient(userId))
     ).subscribe(result => {
       if (result) {
-        this.user = result
-        console.log(this.user.userApplicationId);
-        
+        this.user = result        
         this.spinner = false;
         this.birthDate = this.getFormattedDate(this.user.birthDate);
       }
