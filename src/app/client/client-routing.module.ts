@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client.component';
-import { ProfileComponent } from './profile/profile.component';
+
 import { ConfigProfileComponent } from './config-profile/config-profile.component';
 import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
@@ -11,6 +11,8 @@ import { DepthChartComponent } from '../market/depth-chart/depth-chart.component
 import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 import { DepositComponent } from '../deposit/deposit.component';
 import { WalletComponent } from '../wallet/wallet.component';
+import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
+
 
 
 export const clientroutes: Routes = [{
@@ -35,7 +37,9 @@ export const clientroutes: Routes = [{
     },
     {
       path: 'wallet', component: WalletComponent,
-
+    },
+    {
+      path:'chatbot', component:ChatbotComponent,
     }
 
 
