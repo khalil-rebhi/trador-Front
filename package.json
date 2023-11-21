@@ -34,6 +34,7 @@
     "highcharts": "^11.2.0",
     "ng-apexcharts": "^1.8.0",
     "ng2-file-upload": "^5.0.0",
+    "ngx-gauge": "^8.0.0",
     "npm-check-updates": "^16.14.5",
     "rxjs": "~7.8.1",
     "sockjs-client": "^1.6.1",

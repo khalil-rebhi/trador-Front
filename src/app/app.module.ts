@@ -31,6 +31,10 @@ import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-p
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { DataSurveillanceComponent } from './shared/data-surveillance/data-surveillance.component';
+import { IndicatorComponentComponent } from './indicator-component/indicator-component.component';
+import { NgxGaugeModule } from 'ngx-gauge';
+
+
 
 
 @NgModule({
@@ -45,6 +49,7 @@ import { DataSurveillanceComponent } from './shared/data-surveillance/data-surve
     VerificationCodeTimerComponent,
     ResetPasswordFormComponent,
     BackOfficeComponent,
+    IndicatorComponentComponent,
     
 
   ],
@@ -64,7 +69,8 @@ import { DataSurveillanceComponent } from './shared/data-surveillance/data-surve
     StoreModule.forRoot({user : userReducer} , {}),
     EffectsModule.forRoot(UserEffects),
     SimpleNotificationsModule.forRoot(),
-    DataSurveillanceComponent
+    DataSurveillanceComponent,
+    NgxGaugeModule
   ],
   providers: [
     {

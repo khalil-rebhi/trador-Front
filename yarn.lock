@@ -1733,7 +1733,7 @@
 
 "@types/highcharts@^7.0.0":
   version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@types/highcharts/-/highcharts-7.0.0.tgz#88fc2140504dac329eb93d6e06a457c8db0d7f7e"
+  resolved "https://registry.npmjs.org/@types/highcharts/-/highcharts-7.0.0.tgz"
   integrity sha512-YDevls0s9uqz6VEbchxp+NEaKssAPq5aDZgqEUpxOIUCQEncQtXxibp1w4lvgKyhM4qDejAcSZ+DKfA/kzqR0A==
   dependencies:
     highcharts "*"
@@ -3865,7 +3865,7 @@ hdr-histogram-percentiles-obj@^3.0.0:
 
 highcharts@*, highcharts@^11.2.0:
   version "11.2.0"
-  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-11.2.0.tgz#32ddc885b1c7a7d438df30c6d751c28991b16616"
+  resolved "https://registry.npmjs.org/highcharts/-/highcharts-11.2.0.tgz"
   integrity sha512-9i650YK7ZBA1Mgtr3avMkLVCAI45RQvYnwi+eHsdFSaBGuQN6BHoa4j4lMkSJLv0V4LISTK1z7J7G82Lzd7zwg==
 
 hosted-git-info@^5.1.0:
@@ -5060,6 +5060,13 @@ ng2-file-upload@^5.0.0:
   integrity sha512-M2JaX0unB/30GmQUScfXko2vseaPlU1R5jnhL5cfvOLNw8BBSVJAdOSmcavJzicgTZWCYz7y7Fvpr939bd4eCA==
   dependencies:
     tslib "^2.3.0"
+
+ngx-gauge@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.npmjs.org/ngx-gauge/-/ngx-gauge-8.0.0.tgz"
+  integrity sha512-EBBhKK1rnaTj3gzZHMbooOl5WzgNiFDdXV0ByC63LiGJzUimi5yHG5Y8Xp2SyjN0yXpaiE1x2g8opMwQJmTUBw==
+  dependencies:
+    tslib "^2.0.0"
 
 nice-napi@^1.0.2:
   version "1.0.2"
@@ -7190,7 +7197,6 @@ wildcard@^2.0.0:
   integrity sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
-  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -7321,7 +7327,7 @@ yocto-queue@^1.0.0:
 
 zingchart@^2.9.12:
   version "2.9.12"
-  resolved "https://registry.yarnpkg.com/zingchart/-/zingchart-2.9.12.tgz#b3a0c8d6010f125256e4b05f22f753841fb09e4d"
+  resolved "https://registry.npmjs.org/zingchart/-/zingchart-2.9.12.tgz"
   integrity sha512-P9BORV/ZuX7Ko37N8VERkbS6j5liLndwLFWwo8neQKNTEuCEIbT5DPOi3mJAJkizGSn9gFXLpzoXbYRUw5qcdw==
 
 zone.js@^0.11.4:

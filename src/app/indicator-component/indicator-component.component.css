@@ -1,0 +1,141 @@
+.gauge-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    stroke: #ff0099; /* Set the foreground color (green in this example) */
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke: #cccccc; /* Set the color of the background circle */
+    stroke-width: 10;
+    width: 40 px;
+    left: 100%;
+    
+    
+  /* .//  background-color: blueviolet; */
+    
+    
+    
+  }
+  
+  .indicators {
+    display: flex;
+    justify-content: space-between;
+    width: 700px; /* Adjust the width as needed */
+    margin-bottom: 20px;
+    background-color: white;
+    stroke: #ff0099; /* Set the foreground color (green in this example) */
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke: #cccccc; /* Set the color of the background circle */
+    stroke-width: 10; 
+  }
+
+  .indicatorsOS {
+    display: flex;
+    justify-content: space-between;
+    width: 700px; /* Adjust the width as needed */
+    margin-bottom: 20px;
+    margin-top: 50px; /* Pour déplacer vers le haut */
+    margin-right: 50px; 
+    background-color: white;
+    stroke: #ff0099; /* Set the foreground color (green in this example) */
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke: #cccccc; /* Set the color of the background circle */
+    stroke-width: 10; 
+  }
+  
+  .buy-signal, .sell-signal {
+    text-align: center;
+    margin-top: 10px; 
+
+  }
+.signal {
+    text-align: center;
+   
+}
+  .ngx-gauge {
+    width: 700px; /* Adjust the width as needed */
+    height: 500px;
+    stroke: #ff0099; /* Set the foreground color (green in this example) */
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke: #cccccc; /* Set the color of the background circle */
+    stroke-width: 10; 
+    
+    /* Adjust the height as needed */
+  }
+  .ngx-gauge .gauge-value {
+    display: none;
+  }
+  .ngx-gauge .gauge-background {
+    stroke-linecap: round; /* This will make the ends of the gauge rounded */
+  }
+  
+  .ngx-gauge .gauge-progress {
+    stroke-linecap: round; /* This will make the ends of the progress indicator rounded */
+  }
+  
+  .ngx-gauge .gauge-progress {
+    stroke: #ff0099; /* Set the foreground color (green in this example) */
+    stroke-width: 20; /* Set the thickness of the progress indicator */
+  }
+  
+  .ngx-gauge .gauge-background-circle {
+    stroke: #cccccc; /* Set the color of the background circle */
+    stroke-width: 10; /* Set the thickness of the background circle */
+  }
+
+  .labels {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+   
+    animation:blink 1s linear infinite;
+    color-scheme: red;
+   
+  }
+  .labels {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+   
+    animation:blink 1s linear infinite;
+   
+  }
+  .blinking {
+    animation:blink 1s linear infinite; /* Adjust the duration as needed */
+  }
+  @keyframes blink {
+    from, to {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      
+    }
+  }
+
+
+  .Global
+{
+    width:100%;
+}
+.Globalgauche
+{
+    position:relative;
+    width:40%;
+}
+.Globaldroite
+{
+    position:relative;
+    left:60%;
+    width:10%;
+    height: 100%;
+}
+  
+  
