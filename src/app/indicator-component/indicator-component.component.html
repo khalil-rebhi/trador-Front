@@ -1,0 +1,161 @@
+<!-- <div class="gauge-container">
+    <div class="indicators">
+        <div class="buy-signal">
+            <span>Achat : </span>
+            <span>{{ buySignal }}</span>
+          </div>
+      <div class="signal">
+        <span><h1>Résumé</h1> <br>
+        ({{symbole}}) </span>
+        <span></span>
+      </div>
+     
+      <div class="sell-signal">
+        <span>Vente : </span>
+        <span>{{ sellSignal }}</span>
+      </div>
+    </div>
+    <ngx-gauge [value]="gaugeValue"></ngx-gauge>
+  </div> -->
+
+  <!-- <div class="gauge-container">
+    <div class="indicators">
+        
+    <ngx-gauge [value]="gaugeValue" ></ngx-gauge>
+    <div class="gauge-titles">
+        <div class="title top">Strong Buy</div>
+        <div class="title left">Buy</div>
+        <div class="gauge-container">
+          <ngx-gauge [value]="gaugeValue" ></ngx-gauge>
+          <div class="needle" [style.transform]="'rotate(' + gaugeValue * 1.8 + 'deg)'"></div>
+        </div>
+        <div class="title right">Sell</div>
+        <div class="title bottom">Strong Sell</div>
+      </div>
+    <div class="needle">
+      <div class="buy-label" *ngIf="buySignal"></div>
+      <div class="sell-label" *ngIf="sellSignal"></div>
+    </div>
+  </div> -->
+<div class="row">
+  <br>
+  <div class="col-4">
+  <div class="gauge-container">
+    <div class="indicators ">
+      <div class="buy-signal">
+       
+        <span *ngIf="buySignal === 'Strong Buy'; else buyCondition">
+          
+        </span>
+        <ng-template #buyCondition>
+          <span *ngIf="buySignal === 'Buy'; else neutralCondition">
+           
+          </span>
+        </ng-template>
+        <ng-template #neutralCondition>
+          <span *ngIf="buySignal === 'Neutral' ;else strongSellCondition" >
+          
+          </span>
+        </ng-template>
+        <!-- <ng-template #sellCondition>
+          <span *ngIf="sellSignal === 'Sell'; else strongSellCondition">
+            <div class="labels">
+                sell
+            </div>
+          </span>
+        </ng-template> -->
+        <ng-template #strongSellCondition>
+         
+        </ng-template>
+      </div>
+  
+      <div class="signal">
+        <span><h1>Résumé</h1></span>
+      </div>
+  
+      <div class="sell-signal">
+       
+        <span *ngIf="sellSignal === 'Strong Sell'; else sellCondition">
+           
+        </span>
+        <ng-template #sellCondition>
+          <span *ngIf="sellSignal === 'Sell'; else neutralCondition">
+          
+          </span>
+        </ng-template>
+        <ng-template #neutralCondition>
+          <span *ngIf="sellSignal === 'Neutral'; else strongSellCondition">
+            
+          </span>
+        </ng-template>
+        <!-- <ng-template #strongSellCondition>
+          <span>
+           
+          </span>
+        </ng-template> -->
+      </div>
+    </div>
+    <ngx-gauge [value]="gaugeValue"></ngx-gauge>
+    <div class="labels" [class.blinking]="isBlinking" style="color: red;">
+      <h3>  {{ valueLabels[gaugeValue] || 'Unknown' }} </h3>
+      </div>
+  </div>
+  </div>
+  <div class="col-4">
+  <div class="indicatorsOS" >
+    <div class="buy-signal">
+      <span *ngIf="rsiSignal === 'Strong Buy'; else rsiBuyCondition">
+      </span>
+      <ng-template #rsiBuyCondition>
+        <span *ngIf="rsiSignal === 'Strong Sell'; else rsiNeutralCondition">
+        </span>
+      </ng-template>
+      <ng-template #rsiNeutralCondition>
+        <span *ngIf="rsiSignal === 'Neutre' ;else rsiStrongSellCondition" >
+        </span>
+      </ng-template>
+      <ng-template #rsiStrongSellCondition>
+      </ng-template>
+    </div>
+    <div class="signal">
+      <span><h1></h1></span>
+    </div>
+  </div>
+  <span><h1>Oscillations</h1></span>
+  <ngx-gauge [value]="RsiValue"></ngx-gauge>
+  <div  [class.blinking]="isBlinking" style="color: red;">
+    <h3>  {{ RsiLabels[RsiValue] || 'Unknown' }} </h3>
+  </div>
+  </div>
+
+  <div class="col-4">
+  <div class="indicatorsOS" >
+    <div class="buy-signal">
+      <span *ngIf="smaSignal === 'Strong Buy'; else rsiBuyCondition">
+      </span>
+      <ng-template #rsiBuyCondition>
+        <span *ngIf="smaSignal === 'Strong Sell'; else rsiNeutralCondition">
+        </span>
+      </ng-template>
+      <ng-template #rsiNeutralCondition>
+        <span *ngIf="smaSignal === 'Neutre' ;else rsiStrongSellCondition" >
+        </span>
+      </ng-template>
+      <ng-template #rsiStrongSellCondition>
+      </ng-template>
+    </div>
+    <div class="signal">
+      <span><h1></h1></span>
+    </div>
+  </div>
+  <span><h1>Moyennes mobiles </h1></span>
+  <ngx-gauge [value]="SmaValue"></ngx-gauge>
+  <div  [class.blinking]="isBlinking" style="color: red;">
+    <h3>  {{ RsiLabels[SmaValue] || 'Unknown' }} </h3>
+  </div>
+</div>
+</div>
+
+  
+   
+  
