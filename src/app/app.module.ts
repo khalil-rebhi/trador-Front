@@ -28,12 +28,12 @@ import { VerifCodeComponent } from './shared/verif-code/verif-code.component';
 import { VerificationCodeTimerComponent } from './shared/verification-code-timer/verification-code-timer.component';
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
-import { SimpleNotificationsModule } from 'angular2-notifications';import { MarketModule } from './market/market.module';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { MarketModule } from './market/market.module';
 import { DataSurveillanceComponent } from './shared/data-surveillance/data-surveillance.component';
 import { IndicatorComponentComponent } from './indicator-component/indicator-component.component';
 import { NgxGaugeModule } from 'ngx-gauge';
-
-
+import { DepositComponent } from './deposit/deposit.component';
 
 
 @NgModule({
@@ -49,8 +49,7 @@ import { NgxGaugeModule } from 'ngx-gauge';
     ResetPasswordFormComponent,
     BackOfficeComponent,
     IndicatorComponentComponent,
-    
-
+    DepositComponent,
   ],
   imports: [
     MarketModule,

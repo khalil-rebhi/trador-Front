@@ -108,5 +108,7 @@ export class UserService {
   public updateimage(formData:any){ 
     return this.http.post<Client>("http://localhost:8089/trador/user/changeimage",formData)}
 
-}
 
+  
+
+}

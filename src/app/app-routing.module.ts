@@ -7,11 +7,6 @@ import { ForgetComponent } from './shared/forget/forget.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { DataUserGuard } from './shared/guard/Data-User.guard';
-import { EditUserComponent } from './admin/edit-user/edit-user.component';
-import { DataSurveillanceComponent } from './shared/data-surveillance/data-surveillance.component';
-import { IndicatorComponentComponent } from './indicator-component/indicator-component.component';
-
-
 
 
 export const Approutes: Routes = [

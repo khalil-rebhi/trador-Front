@@ -9,8 +9,8 @@ import { IdeeComponent } from './idee/idee.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
-import { OrderBookComponent } from './order-book/order-book.component';
-import { PortfeuilleComponent } from './portfeuille/portfeuille.component';
+import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
+import { WalletComponent } from '../wallet/wallet.component';
 
 
 @NgModule({
@@ -20,8 +20,9 @@ import { PortfeuilleComponent } from './portfeuille/portfeuille.component';
     ConfigProfileComponent,
     IdeeComponent,
     ReclamationComponent,
-    OrderBookComponent,
-    PortfeuilleComponent
+    PortefeuilleComponent,
+    ReclamationComponent,
+    WalletComponent
   ],
   imports: [
     CommonModule,
