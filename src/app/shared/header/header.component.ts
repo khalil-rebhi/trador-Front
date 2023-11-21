@@ -80,7 +80,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   tohistorique(){
-    this.router.navigateByUrl("/trador/client/orderbook") 
+    this.router.navigateByUrl("/transactionhistory") 
   }
 
   towallet(){
