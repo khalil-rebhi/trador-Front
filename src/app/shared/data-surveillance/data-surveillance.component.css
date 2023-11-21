@@ -1,5 +1,8 @@
-.all{
-    width: 10%;
-    margin-top: 1rem;
-    font-size : small;
+.global{
+    height: 75vh;
+    overflow: auto;
+}
+
+li{
+    cursor: pointer;
 }

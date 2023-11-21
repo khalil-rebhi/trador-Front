@@ -13,3 +13,7 @@
   .form-label{
     font-weight: bold;
   }
+
+  .global{
+    overflow-y: scroll;
+  }

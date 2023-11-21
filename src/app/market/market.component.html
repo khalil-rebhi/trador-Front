@@ -1,21 +1,20 @@
-<app-spinner *ngIf="spinner"></app-spinner>
-<div class="col" *ngIf="orderBookData && !spinner">
+<div class="col">
   <div class="row-6">
       <!-- tabs-->
       <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <div class="tooltip-container">
-            <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" (click)="toCandle()" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqElEQVR4nO2WORLAIAhFuf+NUlnkOuQMPw1WcUWIWfwzNI6DT0CQaOmqg4iYJgpiC8BKm1hz6GGcgiDWLGQAmm/iBRB6HcmLiv54BgA0aUVis+omvQAobK45ytWHWQRQcZRLzz8AjkJ93AKAgdpxP4St+gAPhNm9E2I2AFfC3D1DoBhGmjZtOo6DBUCUBkA7qpNaf0I85VcMRyt2xX02QE4wXnsfwDd1Av+m6F1O0fz2AAAAAElFTkSuQmCC"></button>
+            <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" (click)="toCandle()" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqElEQVR4nO2WORLAIAhFuf+NUlnkOuQMPw1WcUWIWfwzNI6DT0CQaOmqg4iYJgpiC8BKm1hz6GGcgiDWLGQAmm/iBRB6HcmLiv54BgA0aUVis+omvQAobK45ytWHWQRQcZRLzz8AjkJ93AKAgdpxP4St+gAPhNm9E2I2AFfC3D1DoBhGmjZtOo6DBUCUBkA7qpNaf0I85VcMRyt2xX02QE4wXnsfwDd1Av+m6F1O0fz2AAAAAElFTkSuQmCC" alt="candle"></button>
             <div class="tooltip">Candlesticks Chart</div>
           </div>
           <div class="tooltip-container">
-            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"(click)="toDepthChart()" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVElEQVR4nO2UQQrAIBAD8/9vie9KwVuFgkostcxAbguBbHYlgDWqJHcqegE/aDvnGNfQbqaNHYoIYyeiHunBlqgdmrmBsYlalEucU4MH4s++TPgfF3fjQWrZMKbwAAAAAElFTkSuQmCC"></button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"(click)="toDepthChart()" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVElEQVR4nO2UQQrAIBAD8/9vie9KwVuFgkostcxAbguBbHYlgDWqJHcqegE/aDvnGNfQbqaNHYoIYyeiHunBlqgdmrmBsYlalEucU4MH4s++TPgfF3fjQWrZMKbwAAAAAElFTkSuQmCC" alt="depth"></button>
             <div class="tooltip">Depth Chart</div>
           </div>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <app-candlsticks *ngIf="candle" [orderBookData]="orderBookData"></app-candlsticks>
+        <app-candles *ngIf="candle" [graphData]="graphData"></app-candles>
         <app-depth-chart [orderBookData]="orderBookData" *ngIf="depth"></app-depth-chart>
       </div>
   </div>

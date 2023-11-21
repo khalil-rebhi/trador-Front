@@ -86,8 +86,8 @@ data-boxed-layout="full"
       Please verify your account
     </div>
     <div class="col-4 text-end">
-      <a class="btn btn-outline-warning" (click)="sendVerificationMail()" *ngIf="verify">Send me verification email</a>
-      <a class="btn btn-outline-warning" *ngIf="!verify" data-bs-toggle="modal" data-bs-target="#userDetailsModal">Enter code</a>
+      <a class="btn btn-warning mb-1" (click)="sendVerificationMail()" *ngIf="verify">Send me verification email</a>
+      <a class="btn btn-warning mb-1" *ngIf="!verify" data-bs-toggle="modal" data-bs-target="#userDetailsModal">Enter code</a>
     </div>
   </div>
 </header>
@@ -112,7 +112,7 @@ data-boxed-layout="full"
   <!-- ============================================================== -->
   <!-- Container fluid  -->
   <!-- ============================================================== -->
-  <div class="container-fluid">
+  <div class="container" style="overflow-y: scroll;">
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->

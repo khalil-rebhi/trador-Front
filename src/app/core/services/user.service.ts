@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject, catchError, tap , of} from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, tap } from 'rxjs';
 import { Client } from '../models/Client';
 import { Reclamation } from '../models/Reclamation';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
