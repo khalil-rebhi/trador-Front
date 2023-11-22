@@ -21,7 +21,7 @@
     "@angular/platform-server": "^16.2.8",
     "@angular/router": "^16.2.8",
     "@ng-bootstrap/ng-bootstrap": "15.1.1",
-    "@ngrx/component-store": "^16.3.0",
+    "@ngrx/component-store": "^17.0.0",
     "@ngrx/effects": "^16.3.0",
     "@ngrx/store": "16.3.0",
     "@popperjs/core": "2.11.8",
@@ -41,14 +41,13 @@
     "ngx-gauge": "^8.0.0",
     "npm-check-updates": "^16.14.5",
     "openai": "^4.16.1",
-    "razorpay": "^0.0.0",
+    "razorpay": "^2.8.3",
     "rxjs": "~7.8.1",
     "sockjs-client": "^1.6.1",
     "tslib": "^2.6.2",
     "wrap-ansi": "^8.1.0",
     "zingchart": "^2.9.12",
-    "zone.js": "^0.11.4",
-    "razorpay": "^2.8.3"
+    "zone.js": "^0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.5",

@@ -42,8 +42,8 @@ export class MarketComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) =>{
       this.market = params["market"];
       this.symbol = params["symbole"];
-      //this.connectGraphWebSocket();
-      //this.connectOrderBook();
+      this.connectGraphWebSocket();
+      this.connectOrderBook();
     })
   }
 

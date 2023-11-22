@@ -9,6 +9,9 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { CandlesComponent } from './candles/candles.component';
 import { IgxFinancialChartModule, IgxLegendModule } from 'igniteui-angular-charts';
+import { NgxGaugeModule } from 'ngx-gauge';
+import { SymboleStore } from '../store/SymboleStore';
+import { IndicatorComponentComponent } from '../indicator-component/indicator-component.component';
 
 
 @NgModule({
@@ -16,7 +19,8 @@ import { IgxFinancialChartModule, IgxLegendModule } from 'igniteui-angular-chart
     MarketComponent,
     DepthChartComponent,
     OrderBookComponent,
-    CandlesComponent
+    CandlesComponent,
+    IndicatorComponentComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,8 @@ import { IgxFinancialChartModule, IgxLegendModule } from 'igniteui-angular-chart
     SpinnerComponent,
     FormsModule,
     IgxFinancialChartModule,
-    IgxLegendModule
+    IgxLegendModule,
+    NgxGaugeModule
   ]
 })
 export class MarketModule { }

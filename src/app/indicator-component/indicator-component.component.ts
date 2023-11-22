@@ -1,26 +1,24 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgxGaugeModule } from 'ngx-gauge';
 import { Subscription } from 'rxjs';
 import { WebSocketSubject } from 'rxjs/webSocket';
 import { SymbolData } from '../core/models/SymbolData';
+import { SymboleStore } from '../store/SymboleStore';
+import { SideBarData } from '../core/models/SideBarData';
 
 @Component({
   selector: 'app-indicator-component',
   templateUrl: './indicator-component.component.html',
   styleUrls: ['./indicator-component.component.css']
 })
-export class IndicatorComponentComponent implements OnInit{
+export class IndicatorComponentComponent implements OnInit {
   private webSocket: WebSocket;
-  private webSocketSubscription: Subscription;
-  public symbole: string;
-  public buySignal: string;
-  public sellSignal: string;
-  public smaSignal: string;
-  public rsiSignal: string;
+  public symboleData: SideBarData;
   public gaugeValue: number;
-  public RsiValue: number;
-  public SmaValue: number;
-  Data: SymbolData ;
+  RsiValue: number;
+  SmaValue: number;
+  @Input() symbole: string = "EUR";
+  Data: SideBarData;
   isBlinking: boolean = false;
   valueLabels: { [key: number]: string } = {
     10: 'Strong Sell',
@@ -37,49 +35,27 @@ export class IndicatorComponentComponent implements OnInit{
     100: 'Strong Buy'
   };
   //@ViewChild('gauge') gauge: NgxGaugeModule;
-
-  constructor( ) {}
+  spinner = true;
+  constructor(private readonly sideBarState: SymboleStore) { }
 
   ngOnInit(): void {
-    this.webSocket = new WebSocket('ws://localhost:8089/trador/ticker/AAPL');
-
-    this.webSocket.onmessage=(event)=>{
-      this.Data=JSON.parse(event.data)
-        this.Data = JSON.parse(event.data);
-        console.log("data"+this.Data);
-        this.symbole = event.data.symbol ;
-        console.log(this.symbole);
-        
-         // Log each item in the array separately
-    this.Data.forEach((item, index) => {
-      console.log(`Item ${index + 1}:`, item);
-
-      // Access properties of each item
-      this.buySignal = item.buySignal;
-      console.log("buy signal", this.buySignal);
-
-      this.sellSignal = item.sellSignal;
-      console.log("sell signal", this.sellSignal);
-
-      this.rsiSignal=item.rsiSignal;
-      console.log("rsi signal" ,this.rsiSignal);
-
-      this.smaSignal=item.smaSignal;
-      console.log("sma signal" ,this.smaSignal);
-      
-
-      this.updateGaugeValue();
-      this.updateRsiValue();
-      this.updateSmaValue();
-    }
-
-    
-    
-    );
+    setTimeout(() => {
+      this.updateData()
+    }, 2000);
   }
-    
-   
+
+  updateData() {
+    setInterval(() => {
+      this.sideBarState.forex$.subscribe(res => {
+        this.symboleData = res.filter(sym => sym.symbol === this.symbole)[0]
+        this.updateGaugeValue()
+        this.updateRsiValue()
+        this.updateSmaValue()
+        this.spinner = false;
+      });
+    }, 10000)
   }
+
   toggleBlinking() {
     this.isBlinking = !this.isBlinking;
   }
@@ -87,50 +63,50 @@ export class IndicatorComponentComponent implements OnInit{
   private updateGaugeValue() {
     // Ajoutez votre logique pour calculer la valeur du compteur en fonction des signaux d'achat et de vente
     // Vous pouvez ajuster la valeur du compteur (gaugeValue) en conséquence
-    if (this.buySignal === 'Buy' && this.sellSignal === null) {
+    if (this.symboleData.buySignal === 'Buy' && this.symboleData.sellSignal === null) {
       // Logique pour le signal d'achat
-      this.gaugeValue =35 ;
+      this.gaugeValue = 35;
     }
-     else if (this.sellSignal === 'Sell' && this.buySignal === null) {
+    else if (this.symboleData.sellSignal === 'Sell' && this.symboleData.buySignal === null) {
       // Logique pour le signal de vente
-      this.gaugeValue =75 ;
-    }else if (this.buySignal === 'Strong Buy' && this.sellSignal === null) {
+      this.gaugeValue = 75;
+    } else if (this.symboleData.buySignal === 'Strong Buy' && this.symboleData.sellSignal === null) {
       this.gaugeValue = 90; // Adjust the gauge value for a strong buy
-    } else if (this.sellSignal === 'Strong Sell' && this.buySignal === null) {
+    } else if (this.symboleData.sellSignal === 'Strong Sell' && this.symboleData.buySignal === null) {
       this.gaugeValue -= 10;
-    }else {
+    } else {
       // Logique pour d'autres scénarios
-      this.gaugeValue =50 ;
+      this.gaugeValue = 50;
     }
   }
 
   private updateRsiValue() {
     // Ajoutez votre logique pour calculer la valeur du compteur en fonction des signaux d'achat et de vente
     // Vous pouvez ajuster la valeur du compteur (gaugeValue) en conséquence
-    if (this.rsiSignal === 'Strong Sell') {
+    if (this.symboleData.rsiSignal === 'Strong Sell') {
       // Logique pour le signal d'achat
-      this.RsiValue =35 ;
-    }else if (this.rsiSignal === 'Strong Buy' && this.sellSignal === null) {
+      this.RsiValue = 35;
+    } else if (this.symboleData.rsiSignal === 'Strong Buy' && this.symboleData.sellSignal === null) {
       this.RsiValue = 80; // Adjust the gauge value for a strong buy
-   
-    }else {
+
+    } else {
       // Logique pour d'autres scénarios
-      this.RsiValue =50 ;
+      this.RsiValue = 50;
     }
   }
 
   private updateSmaValue() {
     // Ajoutez votre logique pour calculer la valeur du compteur en fonction des signaux d'achat et de vente
     // Vous pouvez ajuster la valeur du compteur (gaugeValue) en conséquence
-    if (this.smaSignal === 'Strong Sell') {
+    if (this.symboleData.smaSignal === 'Strong Sell') {
       // Logique pour le signal d'achat
-      this.SmaValue =35 ;
-    }else if (this.smaSignal === 'Strong Buy') {
+      this.SmaValue = 35;
+    } else if (this.symboleData.smaSignal === 'Strong Buy') {
       this.SmaValue = 80; // Adjust the gauge value for a strong buy
-   
-    }else {
+
+    } else {
       // Logique pour d'autres scénarios
-      this.SmaValue =50 ;
+      this.SmaValue = 50;
     }
   }
 
