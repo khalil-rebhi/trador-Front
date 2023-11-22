@@ -12,6 +12,7 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 import { WalletComponent } from '../wallet/wallet.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import { EducationComponent } from './education/education.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
     PortefeuilleComponent,
     ReclamationComponent,
     WalletComponent,
-    TransactionHistoryComponent
+    TransactionHistoryComponent,
+    EducationComponent
   ],
   imports: [
     CommonModule,

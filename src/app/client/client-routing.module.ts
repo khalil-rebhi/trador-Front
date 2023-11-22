@@ -12,6 +12,7 @@ import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 import { DepositComponent } from '../deposit/deposit.component';
 import { WalletComponent } from '../wallet/wallet.component';
 import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
+import { EducationComponent } from './education/education.component';
 
 
 
@@ -40,7 +41,11 @@ export const clientroutes: Routes = [{
     },
     {
       path:'chatbot', component:ChatbotComponent,
+    },
+    {
+      path:'education', component:EducationComponent,
     }
+
 
 
   ]
