@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SymboleStore } from '../store/SymboleStore';
-import { SideBarData } from '../core/models/SideBarData';
+import { SymboleStore } from '../../store/SymboleStore';
+import { SideBarData } from '../../core/models/SideBarData';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -35,7 +35,11 @@ export class IndicatorComponentComponent implements OnInit {
   };
   //@ViewChild('gauge') gauge: NgxGaugeModule;
   spinner = true;
-  constructor(private readonly sideBarState: SymboleStore) { 
+  constructor(private readonly sideBarState: SymboleStore) {}
+
+  ngOnInit(): void {
+    console.log(this.market);
+    
     switch (this.market) {
       case "forex":
         this.marketData =this.sideBarState.forex$
@@ -49,24 +53,19 @@ export class IndicatorComponentComponent implements OnInit {
       default:
         break;
     }
-  }
-
-  ngOnInit(): void {
     setTimeout(() => {
       this.updateData()
     }, 2000);
   }
 
   updateData() {
-    setInterval(() => {
-      this.sideBarState.forex$.subscribe(res => {
+      this.marketData.subscribe(res => {
         this.symboleData = res.filter(sym => sym.symbol === this.symbole)[0]
         this.updateGaugeValue()
         this.updateRsiValue()
         this.updateSmaValue()
         this.spinner = false;
       });
-    }, 10000)
   }
 
   toggleBlinking() {
@@ -74,51 +73,39 @@ export class IndicatorComponentComponent implements OnInit {
   }
 
   private updateGaugeValue() {
-    // Ajoutez votre logique pour calculer la valeur du compteur en fonction des signaux d'achat et de vente
-    // Vous pouvez ajuster la valeur du compteur (gaugeValue) en conséquence
-    if (this.symboleData.buySignal === 'Buy' && this.symboleData.sellSignal === null) {
-      // Logique pour le signal d'achat
+    console.log(this.symboleData);
+    
+    if (this.symboleData?.buySignal === 'Buy' && this.symboleData.sellSignal === null) {
       this.gaugeValue = 35;
     }
     else if (this.symboleData.sellSignal === 'Sell' && this.symboleData.buySignal === null) {
-      // Logique pour le signal de vente
       this.gaugeValue = 75;
     } else if (this.symboleData.buySignal === 'Strong Buy' && this.symboleData.sellSignal === null) {
-      this.gaugeValue = 90; // Adjust the gauge value for a strong buy
+      this.gaugeValue = 90; 
     } else if (this.symboleData.sellSignal === 'Strong Sell' && this.symboleData.buySignal === null) {
-      this.gaugeValue -= 10;
+      this.gaugeValue = 10;
     } else {
-      // Logique pour d'autres scénarios
       this.gaugeValue = 50;
     }
   }
 
   private updateRsiValue() {
-    // Ajoutez votre logique pour calculer la valeur du compteur en fonction des signaux d'achat et de vente
-    // Vous pouvez ajuster la valeur du compteur (gaugeValue) en conséquence
     if (this.symboleData.rsiSignal === 'Strong Sell') {
-      // Logique pour le signal d'achat
       this.RsiValue = 35;
     } else if (this.symboleData.rsiSignal === 'Strong Buy' && this.symboleData.sellSignal === null) {
-      this.RsiValue = 80; // Adjust the gauge value for a strong buy
-
+      this.RsiValue = 80; 
     } else {
-      // Logique pour d'autres scénarios
       this.RsiValue = 50;
     }
   }
 
   private updateSmaValue() {
-    // Ajoutez votre logique pour calculer la valeur du compteur en fonction des signaux d'achat et de vente
-    // Vous pouvez ajuster la valeur du compteur (gaugeValue) en conséquence
     if (this.symboleData.smaSignal === 'Strong Sell') {
-      // Logique pour le signal d'achat
       this.SmaValue = 35;
     } else if (this.symboleData.smaSignal === 'Strong Buy') {
-      this.SmaValue = 80; // Adjust the gauge value for a strong buy
+      this.SmaValue = 80;
 
     } else {
-      // Logique pour d'autres scénarios
       this.SmaValue = 50;
     }
   }

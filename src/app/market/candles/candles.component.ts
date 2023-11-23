@@ -1,23 +1,32 @@
-import { AfterViewChecked, AfterViewInit, Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { Data } from 'src/app/core/models/Data';
 
 @Component({
   selector: 'app-candles',
   templateUrl: './candles.component.html',
-  styleUrls: ['./candles.component.css']
+  styleUrls: ['./candles.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush,
 })
-export class CandlesComponent implements AfterViewChecked {
+export class CandlesComponent implements OnInit {
   public stocksData: any;
   public symbole : string;
   @Input() graphData : Data;
   public valueTooltip: TemplateRef<object>;
 
   constructor() {}
-  ngAfterViewChecked(): void {
+
+  ngOnInit(): void {
+    this.updateStocksData();
+  }
+
+  private updateStocksData(){
     this.stocksData = this.formatData(this.graphData);
     this.stocksData.sort(this.compareDates);
   }
 
+  ngOnChanges(){
+    this.updateStocksData();
+  }
 
   private compareDates(a: any, b: any): number {
     const dateA = new Date(a.Date);

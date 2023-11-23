@@ -34,6 +34,7 @@ import { DataSurveillanceComponent } from './shared/data-surveillance/data-surve
 import { DepositComponent } from './deposit/deposit.component';
 import { ChatbotComponent } from './shared/chatbot/chatbot.component';
 import { SymboleStore } from './store/SymboleStore';
+import { BidAskModalComponent } from './market/bid-ask-modal/bid-ask-modal.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { SymboleStore } from './store/SymboleStore';
     ResetPasswordFormComponent,
     BackOfficeComponent,
     DepositComponent,
-    ChatbotComponent,
+    ChatbotComponent
   ],
   imports: [
     MarketModule,

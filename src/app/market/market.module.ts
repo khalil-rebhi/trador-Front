@@ -10,8 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { CandlesComponent } from './candles/candles.component';
 import { IgxFinancialChartModule, IgxLegendModule } from 'igniteui-angular-charts';
 import { NgxGaugeModule } from 'ngx-gauge';
-import { SymboleStore } from '../store/SymboleStore';
-import { IndicatorComponentComponent } from '../indicator-component/indicator-component.component';
+import { IndicatorComponentComponent } from './indicator-component/indicator-component.component';
+import { BidAskModalComponent } from './bid-ask-modal/bid-ask-modal.component';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { IndicatorComponentComponent } from '../indicator-component/indicator-co
     DepthChartComponent,
     OrderBookComponent,
     CandlesComponent,
-    IndicatorComponentComponent
+    IndicatorComponentComponent,
+    BidAskModalComponent
   ],
   imports: [
     CommonModule,

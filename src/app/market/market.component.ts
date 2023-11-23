@@ -3,6 +3,8 @@ import { OrderBook } from '../core/models/OrderBook';
 import { ActivatedRoute } from '@angular/router';
 import { Data } from '../core/models/Data';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { BidAskModalComponent } from './bid-ask-modal/bid-ask-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -33,7 +35,7 @@ export class MarketComponent implements OnInit {
 
   myMap: Map<string, string> = new Map<string, string>();
   
-  constructor (private activatedRoute : ActivatedRoute,private zone: NgZone) {
+  constructor (private activatedRoute : ActivatedRoute,private zone: NgZone,private modalService: NgbModal) {
     this.myMap.set('1 day', '1day');
     this.myMap.set('1 week', '1week');
     this.myMap.set('2 weeks', '2weeks');
@@ -51,6 +53,8 @@ export class MarketComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) =>{
       this.market = params["market"];
+      console.log(this.market);
+      
       this.symbol = params["symbole"];
       this.connectGraphWebSocket();
       this.connectOrderBook();
@@ -98,8 +102,12 @@ export class MarketComponent implements OnInit {
   }
 
   placeBid(){
-
+    const modalRef = this.modalService.open(BidAskModalComponent);
+    modalRef.componentInstance.actionType = 'Bid';
   }
-  placeAsk(){}
+  placeAsk(){
+    const modalRef = this.modalService.open(BidAskModalComponent);
+    modalRef.componentInstance.actionType = 'Ask';
+  }
 
 }
