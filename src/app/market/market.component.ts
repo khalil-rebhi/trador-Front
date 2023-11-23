@@ -2,12 +2,21 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { OrderBook } from '../core/models/OrderBook';
 import { ActivatedRoute } from '@angular/router';
 import { Data } from '../core/models/Data';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-market',
   templateUrl: './market.component.html',
-  styleUrls: ['./market.component.css']
+  styleUrls: ['./market.component.css'],
+  animations : [
+    trigger('fadeInOut',[
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(200))
+    ])
+  ]
 })
 export class MarketComponent implements OnInit {
   orderBookWebSocket: WebSocket;
@@ -20,6 +29,7 @@ export class MarketComponent implements OnInit {
   symbol : string;
   interval = "1day";
   spinner = true;
+  showOrderBook = true;
 
   myMap: Map<string, string> = new Map<string, string>();
   
@@ -82,5 +92,14 @@ export class MarketComponent implements OnInit {
     this.interval = interval;
     this.connectGraphWebSocket();
   }
+
+  toggleOrderBook(){
+    this.showOrderBook = !this.showOrderBook;
+  }
+
+  placeBid(){
+
+  }
+  placeAsk(){}
 
 }

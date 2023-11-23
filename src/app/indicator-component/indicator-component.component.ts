@@ -1,10 +1,7 @@
-import { AfterViewChecked, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { NgxGaugeModule } from 'ngx-gauge';
-import { Subscription } from 'rxjs';
-import { WebSocketSubject } from 'rxjs/webSocket';
-import { SymbolData } from '../core/models/SymbolData';
+import { Component, Input, OnInit } from '@angular/core';
 import { SymboleStore } from '../store/SymboleStore';
 import { SideBarData } from '../core/models/SideBarData';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-indicator-component',
@@ -12,19 +9,21 @@ import { SideBarData } from '../core/models/SideBarData';
   styleUrls: ['./indicator-component.component.css']
 })
 export class IndicatorComponentComponent implements OnInit {
-  private webSocket: WebSocket;
   public symboleData: SideBarData;
   public gaugeValue: number;
+
   RsiValue: number;
   SmaValue: number;
-  @Input() symbole: string = "EUR";
+  marketData : Observable<SideBarData[]>;
+  @Input() symbole: string;
+  @Input() market : string;
   Data: SideBarData;
   isBlinking: boolean = false;
   valueLabels: { [key: number]: string } = {
     10: 'Strong Sell',
-    35: 'Vendre',
-    50: 'Neutre',
-    75: 'Acheter',
+    35: 'Sell',
+    50: 'Neutral',
+    75: 'Buy',
     90: 'Strong Buy'
   };
 
@@ -36,7 +35,21 @@ export class IndicatorComponentComponent implements OnInit {
   };
   //@ViewChild('gauge') gauge: NgxGaugeModule;
   spinner = true;
-  constructor(private readonly sideBarState: SymboleStore) { }
+  constructor(private readonly sideBarState: SymboleStore) { 
+    switch (this.market) {
+      case "forex":
+        this.marketData =this.sideBarState.forex$
+        break;
+      case "stocks":
+        this.marketData = this.sideBarState.stocks$;
+        break;
+      case "crypto" :
+        this.marketData = this.sideBarState.crypto$;
+        break;
+      default:
+        break;
+    }
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
