@@ -8,11 +8,13 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
     AdminComponent,
     ListUsersComponent,
-    EditUserComponent
+    EditUserComponent,
+
   ],
   imports: [
     CommonModule,

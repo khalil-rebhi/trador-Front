@@ -4,6 +4,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
 
 const routes: Routes = [
   {path : 'users' , component : ListUsersComponent}
+  
 ];
 
 @NgModule({

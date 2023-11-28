@@ -5,23 +5,27 @@
 </div>
 
 <div>
-    <div class="container">
-        <div class="row g-3">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
+    <div class="container" >
+        <div class="row g-3" *ngFor="let course of courses">
+            <div class="col-12 col-md-6 col-lg-4"  >
+                <div class="card" >
                     <img src="assets/images/education/forex.jpg" alt="forex" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title"> Introduction aux marchés financiers</h5>
-                        <p class="card-text"> Plongez dans les marchés financiers. Découvrez leur fonctionnement, ce qui les fait évoluer et comment capitaliser sur leurs mouvements.</p>
+                        <h5 class="card-title">{{course.title}}</h5>
+                        <p class="card-text">{{course.description}}</p>
                      
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-success">Débutant</button> 
+                        <button class="btn btn-success" (click)="gotocourse(course.idcourse)">Débutant</button>
+                         
                     </div>
 
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+
+
+
+           <!-- <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
                     <img src="assets/images/education/trading1.jpg.png" alt="forex" class="card-img-top">
                     <div class="card-body">
@@ -30,7 +34,7 @@
                         
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-success">Débutant</button> 
+                        <button class="btn btn-success" >Débutant</button> 
                     </div>
 
                 </div>
@@ -94,7 +98,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

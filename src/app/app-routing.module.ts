@@ -31,6 +31,10 @@ export const Approutes: Routes = [
       },
       {
         path: 'market/:market/:symbole', loadChildren: () => import('./market/market.module').then(m => m.MarketModule)
+      },
+      
+      {
+        path: 'education', loadChildren: () => import('./client/education/education.module').then(m => m.EducationModule)
       }
     ]
   }, 

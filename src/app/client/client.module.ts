@@ -15,6 +15,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
 import { EducationComponent } from './education/education.component';
 
 
+
 @NgModule({
   declarations: [
     ClientComponent,
@@ -27,15 +28,15 @@ import { EducationComponent } from './education/education.component';
     WalletComponent,
     TransactionHistoryComponent,
     EducationComponent
+   
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
     FormsModule,
-    SpinnerComponent
+    SpinnerComponent,
    //RouterModule.forRoot(clientroutes, { useHash: false }),
-  
-    
+   
   ],
   providers: [DatePipe]
 })

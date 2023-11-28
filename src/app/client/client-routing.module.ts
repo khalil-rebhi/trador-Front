@@ -13,6 +13,10 @@ import { DepositComponent } from '../deposit/deposit.component';
 import { WalletComponent } from '../wallet/wallet.component';
 import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
 import { EducationComponent } from './education/education.component';
+import { CoursesComponent } from './education/courses/courses.component';
+
+
+
 
 
 
@@ -44,6 +48,9 @@ export const clientroutes: Routes = [{
     },
     {
       path:'education', component:EducationComponent,
+    },
+    {
+      path:'courses',component:CoursesComponent
     }
 
 
