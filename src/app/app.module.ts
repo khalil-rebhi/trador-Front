@@ -35,6 +35,8 @@ import { IndicatorComponentComponent } from './indicator-component/indicator-com
 import { NgxGaugeModule } from 'ngx-gauge';
 import { DepositComponent } from './deposit/deposit.component';
 import { ChatbotComponent } from './shared/chatbot/chatbot.component';
+import { PostComponent } from './post/post.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { ChatbotComponent } from './shared/chatbot/chatbot.component';
     IndicatorComponentComponent,
     DepositComponent,
     ChatbotComponent,
+    PostComponent,
+    CommentComponent
   ],
   imports: [
     MarketModule,
@@ -72,7 +76,7 @@ import { ChatbotComponent } from './shared/chatbot/chatbot.component';
     SimpleNotificationsModule.forRoot(),
     DataSurveillanceComponent,
     NgxGaugeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {

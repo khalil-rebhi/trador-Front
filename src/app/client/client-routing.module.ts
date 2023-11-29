@@ -12,6 +12,8 @@ import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 import { DepositComponent } from '../deposit/deposit.component';
 import { WalletComponent } from '../wallet/wallet.component';
 import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
+import { PostComponent } from '../post/post.component';
+import { CommentComponent } from '../comment/comment.component';
 
 
 
@@ -40,6 +42,12 @@ export const clientroutes: Routes = [{
     },
     {
       path:'chatbot', component:ChatbotComponent,
+    },
+    {
+      path:'post', component:PostComponent,
+    },
+    {
+      path:'comment', component:CommentComponent,
     }
 
 
