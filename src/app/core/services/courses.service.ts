@@ -23,6 +23,12 @@ export class CoursesService {
   }
 
 
+  addCourses(course:Course):Observable<Course>{
+    return this.http.post<Course>('http://localhost:8089/trador/courses/create',course)
+  }
+
+  
+
 
  
 }

@@ -13,7 +13,8 @@ import { DepositComponent } from '../deposit/deposit.component';
 import { WalletComponent } from '../wallet/wallet.component';
 import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
 import { EducationComponent } from './education/education.component';
-import { CoursesComponent } from './education/courses/courses.component';
+import { CoursesComponent } from './education/course1/courses.component';
+import { QuizComponent } from './education/quiz/quiz.component';
 
 
 
@@ -50,8 +51,12 @@ export const clientroutes: Routes = [{
       path:'education', component:EducationComponent,
     },
     {
-      path:'courses',component:CoursesComponent
+      path:'course1',component:CoursesComponent
+    },
+    {
+      path:'Quiz',component:QuizComponent
     }
+
 
 
 

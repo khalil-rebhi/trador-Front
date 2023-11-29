@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { FormsModule } from '@angular/forms';
+import { EduAdminComponent } from './edu-admin/edu-admin.component';
 
 
 
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     AdminComponent,
     ListUsersComponent,
     EditUserComponent,
+    EduAdminComponent,
 
   ],
   imports: [
