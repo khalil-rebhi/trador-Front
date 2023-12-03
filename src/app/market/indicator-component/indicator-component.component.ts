@@ -38,8 +38,6 @@ export class IndicatorComponentComponent implements OnInit {
   constructor(private readonly sideBarState: SymboleStore) {}
 
   ngOnInit(): void {
-    console.log(this.market);
-    
     switch (this.market) {
       case "forex":
         this.marketData =this.sideBarState.forex$
@@ -73,8 +71,6 @@ export class IndicatorComponentComponent implements OnInit {
   }
 
   private updateGaugeValue() {
-    console.log(this.symboleData);
-    
     if (this.symboleData?.buySignal === 'Buy' && this.symboleData.sellSignal === null) {
       this.gaugeValue = 35;
     }

@@ -1,4 +1,4 @@
-import { Component,Input,ViewChild } from '@angular/core';
+import { Component,Input,OnInit,ViewChild } from '@angular/core';
 import { OrderBook } from 'src/app/core/models/OrderBook';
 @Component({
   selector: 'app-order-book',

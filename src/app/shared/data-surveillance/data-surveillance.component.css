@@ -1,8 +1,11 @@
 .global{
     height: 75vh;
-    overflow: auto;
 }
 
 li{
     cursor: pointer;
+}
+
+.accordion-body{
+    overflow-y: auto;
 }

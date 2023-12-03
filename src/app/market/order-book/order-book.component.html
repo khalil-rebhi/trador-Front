@@ -17,7 +17,7 @@
           <tr *ngFor="let bid of orderBookData?.bids" class="table-success">
             <td>{{ bid.price }}</td>
             <td>{{ bid.amount.toFixed(4) }}</td>
-            <td>{{ (bid.amount * bid.amount).toFixed(4) }}</td>
+            <td>{{ (bid.amount * bid.price).toFixed(4) }}</td>
           </tr>
         </tbody>
       </table>
@@ -35,7 +35,7 @@
           <tr *ngFor="let ask of orderBookData?.asks" class="table-danger">
             <td>{{ ask.price }}</td>
             <td>{{ ask.amount.toFixed(4) }}</td>
-            <td>{{ (ask.amount * ask.amount).toFixed(4) }}</td>
+            <td>{{ (ask.amount * ask.price).toFixed(4) }}</td>
           </tr>
         </tbody>
       </table>

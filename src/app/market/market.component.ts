@@ -53,8 +53,6 @@ export class MarketComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) =>{
       this.market = params["market"];
-      console.log(this.market);
-      
       this.symbol = params["symbole"];
       this.connectGraphWebSocket();
       this.connectOrderBook();
@@ -62,9 +60,10 @@ export class MarketComponent implements OnInit {
   }
 
   connectOrderBook(){
-    this.orderBookWebSocket = new WebSocket(`ws://localhost:8089/trador/orderBook/crypto/btcusd`);
+    this.orderBookWebSocket = new WebSocket(`ws://localhost:8089/trador/orderBook/${this.market}/${this.symbol}`);
     this.orderBookWebSocket.onmessage = (event) => {
       this.zone.run(() => {
+        console.log(event.data);
         this.orderBookData = JSON.parse(event.data);
       });
     };
