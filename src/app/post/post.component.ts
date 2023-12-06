@@ -4,9 +4,11 @@ import { PostService } from '../core/services/post.service';
 import { Store } from '@ngrx/store';
 import { Client } from '../core/models/Client';
 import { Post } from '../core/models/Post';
+import { Comment } from '../core/models/Comment';
 import { User } from '../store/actions/user.action';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommentService } from '../core/services/comment.service';
 
 @Component({
   selector: 'app-post',
@@ -23,6 +25,7 @@ export class PostComponent {
   public user : Client;
   postContent: string = '';
   posts: Post[] = [];
+  comments: Comment[] = [];
   updatedContent: string = '';
   postIdToUpdate: number | null = null;
   postToUpdate: Post | null = null;
@@ -37,12 +40,13 @@ export class PostComponent {
 
 
 
-  constructor(private store : Store<any> ,private postService: PostService, public modalService : NgbModal ) {
+  constructor(private store : Store<any> ,private postService: PostService, private commentservice: CommentService, public modalService : NgbModal ) {
     this.store.subscribe(result => {this.user = result.user.user})
   }
 
   ngOnInit() {
     this.loadPosts();
+    this.loadComments();
   }
 
   createPost() {
@@ -89,11 +93,54 @@ export class PostComponent {
     this.postService.getPosts().subscribe(
       (data) => {
         this.posts = data;
+        console.log(this.posts);
+
       },
       (error) => {
         console.error('Error fetching posts:', error);
       }
     );
+  }
+
+  onDeletePost(idPost: number , idUser:number): void {
+    if ( this.user.idUser == idUser) {
+    this.postService.deletePost(idPost).subscribe(
+      () => {
+        console.log('Post deleted successfully.');
+        // You can perform additional actions after deletion if needed.
+        this.loadPosts();
+      },
+      (error) => {
+        console.error('Error deleting post:', error);
+      }
+    );
+  }else {
+  console.warn('User does not have permission to delete this post.');
+  // You can handle unauthorized deletion here, e.g., show a message.
+}
+  }
+
+  loadComments() {
+    this.commentservice.getComments().subscribe(
+      (data) => {
+        this.comments = data;
+        console.log(this.comments);
+      },
+      (error) => {
+        console.error('Error fetching comments:', error);
+      }
+    );
+  }
+
+  existcomment(postid : number) : any{
+    let test : Boolean = false;
+    this.comments.forEach(element => {
+      if(postid == element.post.idPost){
+        test = true;
+        return;
+      }
+    });
+    return test;
   }
   
   toggleLike(post: Post) {

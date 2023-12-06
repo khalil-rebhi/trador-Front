@@ -1,9 +1,14 @@
+import { Client } from "./Client";
+import { Post } from "./Post";
+
 export class Comment {
     idComment: number;
-    idUser: number;
     content: string;
+    createdAt: Date;
     likes: number;
     dislikes: number;
-    parentComment: Comment | null;
+    parentComment: Comment;
     replies: Comment[];
+    post: Post; // Assuming you have a Post class
+    user: Client; // Assuming you have a User class
 }

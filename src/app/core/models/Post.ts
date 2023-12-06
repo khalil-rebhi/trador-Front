@@ -7,7 +7,7 @@ export class Post {
     likes: number;
     dislikes: number;
     comments?: Comment[]; // Assuming you have a Comment model
-    user?: Client; // Assuming you have a User model
+    user: Client; // Assuming you have a User model
     isLiked: boolean;
     isDisliked: boolean;
   }

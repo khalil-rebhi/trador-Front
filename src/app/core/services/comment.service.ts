@@ -19,6 +19,10 @@ export class CommentService {
     })
   };
   constructor(private http: HttpClient) {}
+  
+  getComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>("http://localhost:8089/trador/comment/show");
+  }
 
   getCommentsByPost(idPost: number): Observable<Comment[]> {
     return this.http.get<Comment[]>("http://localhost:8089/trador/post/"+idPost);

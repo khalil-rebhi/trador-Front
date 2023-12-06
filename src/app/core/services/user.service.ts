@@ -61,7 +61,18 @@ export class UserService {
     return this.http.post('http://localhost:8089/trador/user/changePassword', credentials);
   }
 
-  
+  /*uploadImage(userId: number): Observable<any> {
+    return this.http.post(`http://localhost:8089/trador/user/uploadImage/${userId}`, this.updateClient);
+}*/
+/*uploadImage(userId: number, file: File): Observable<any> {
+  const formData: FormData = new FormData();
+  formData.append('file', file);
+
+  return this.http.post(`http://localhost:8089/trador/user/uploadImage/${userId}`, formData);
+}*/
+/*public uploadPhoto(idUser:number){
+  return this.http.post('http://localhost:8089/trador/user/uploadProfilePicture/'+idUser,this.updateClient);
+}*/
   
   public deleteUser(userId: number): Observable<any> {
     return this.http.delete(`http://localhost:8089/trador/user/remove/${userId}`);
@@ -87,10 +98,7 @@ export class UserService {
   public getClient(user : Client) : Observable<Client>{
     return this.http.get<Client>('http://localhost:8089/trador/user/show/'+user.idUser);
   }
-
-  public uploadPhoto(idUser:number){
-    return this.http.post('http://localhost:8089/trador/user/uploadProfilePicture/'+idUser,this.updateClient);
-  }
+  
   public addreclamation(Reclamation:Reclamation){
     return this.http.post('http://localhost:8089/trador/reclamation/addReclamation',Reclamation);
   }
@@ -107,10 +115,7 @@ export class UserService {
     return this.http.post("http://localhost:8089/trador/user/bannedAccount/" + userId , userId);
   }
 
-  public updateimage(formData:any){ 
-    return this.http.post<Client>("http://localhost:8089/trador/user/changeimage",formData)}
-
-
-  
+  public updateimage(userId: number, formData:any){ 
+    return this.http.post<any>(`http://localhost:8089/trador/user/uploadImage/${userId}`, formData)}
 
 }

@@ -26,27 +26,29 @@ Trad'OR thank your interaction !   <button type="button" class="btn-close" aria-
 
 <!-- post-list.component.html -->
 <div class="container">
-  <div class="row">
-    <div *ngFor="let post of posts" class="col-md-6 mx-auto mt-4">
-      <div class="card">
+  <div class="row col-md-6 mx-auto mt-4">
+    <div *ngFor="let post of posts">
+      <div class="card border-purple border-1">
         <div class="card-header">
-          {{ post.user?.name }}           {{ post.user?.familyName }}
+          {{ post.user.name }}           {{ post.user.familyName }}
         </div>
-        <div class="card-body">
+        <div class="card-body" >
           <p class="card-text">{{ post.content }}</p>
         </div>
-        <div class="card-footer">
-          <i class="bi bi-hand-thumbs-up clickable-icon"
+        <div class="card-footer bg-purple">
+          <i class="bi bi-hand-thumbs-up clickable-icon text-white"
      [class.text-success]="post.isLiked"
      [class.text-muted]="!post.isLiked && !post.isDisliked"
      (click)="toggleLike(post)"></i>
-  <span class="like-count">{{ post.likes }}</span>
+  <span class="like-count text-white">{{ post.likes }}</span>
   <span class="mx-2"></span>
-  <i class="bi bi-hand-thumbs-down clickable-icon"
+  <i class="bi bi-hand-thumbs-down clickable-icon text-white"
      [class.text-danger]="post.isDisliked"
      [class.text-muted]="!post.isLiked && !post.isDisliked"
      (click)="toggleDislike(post)"></i>
-  <span class="like-count">{{ post.dislikes }}</span>
+  <span class="like-count text-white">{{ post.dislikes }}</span>
+  <span class="mx-2"></span>
+
   <!--<i class="bi bi-chat-dots clickable-icon" (click)="toggleCommentForm()"></i>
   <span class="comment-count">{{ post.comments?.length ?? 0 }}</span>
 
@@ -61,7 +63,12 @@ Trad'OR thank your interaction !   <button type="button" class="btn-close" aria-
       <p>{{ comment.content }}</p>
     </div>
   </div>--->
-          <i class="bi bi-pencil clickable-icon" (click)="openUpdateModal(post)"></i>
+          <i class="bi bi-pencil clickable-icon text-white" (click)="openUpdateModal(post)"></i>
+          <span class="mx-2"></span>
+            <i class="bi bi-trash clickable-icon text-white" (click)="onDeletePost(post.idPost,post.user.idUser)"></i>    
+            <ul class="list-group list-group-flush" *ngFor="let comment of comments">
+              <li *ngIf="comment.post.idPost == post.idPost" class="list-group-item">{{ comment.content }}</li>
+            </ul>
         </div>
       </div>
     </div>
