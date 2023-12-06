@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { HeaderComponent } from '../shared/header/header.component';
 import { PortefeuilleService } from '../core/services/portefeuille.service';
 
-declare var Razorpay :any;
+declare var Razorpay :any
 
 @Component({
   selector: 'app-deposit',
