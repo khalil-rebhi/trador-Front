@@ -1,0 +1,102 @@
+<!-- post-create.component.html -->
+<!-- post-create.component.html -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-4">
+      <div class="card">
+        <div class="card-header">
+          Create a New Post
+        </div>
+        <div class="card-body">
+          <label for="content">Content:</label>
+          <textarea id="content" [(ngModel)]="postContent" rows="4" cols="50" class="form-control"></textarea>
+        </div>
+        <div class="card-footer">
+          <button (click)="createPost()" class="btn btn-primary">Create Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+Trad'OR thank your interaction !   <button type="button" class="btn-close" aria-label="Close" (click)="showAlert = false"></button>
+</div>
+  
+
+<!-- post-list.component.html -->
+<div class="container">
+  <div class="row col-md-6 mx-auto mt-4">
+    <div *ngFor="let post of posts">
+      <div class="card border-purple border-1">
+        <div class="card-header">
+          {{ post.user.name }}           {{ post.user.familyName }}
+        </div>
+        <div class="card-body" >
+          <p class="card-text">{{ post.content }}</p>
+        </div>
+        <div class="card-footer bg-purple">
+          <i class="bi bi-hand-thumbs-up clickable-icon text-white"
+     [class.text-success]="post.isLiked"
+     [class.text-muted]="!post.isLiked && !post.isDisliked"
+     (click)="toggleLike(post)"></i>
+  <span class="like-count text-white">{{ post.likes }}</span>
+  <span class="mx-2"></span>
+  <i class="bi bi-hand-thumbs-down clickable-icon text-white"
+     [class.text-danger]="post.isDisliked"
+     [class.text-muted]="!post.isLiked && !post.isDisliked"
+     (click)="toggleDislike(post)"></i>
+  <span class="like-count text-white">{{ post.dislikes }}</span>
+  <span class="mx-2"></span>
+
+  <!--<i class="bi bi-chat-dots clickable-icon" (click)="toggleCommentForm()"></i>
+  <span class="comment-count">{{ post.comments?.length ?? 0 }}</span>
+
+  <div *ngIf="isCommentFormVisible">
+    <label for="newComment">Your Comment:</label>
+    <textarea id="newComment" [(ngModel)]="newComment" rows="4" cols="50"></textarea>
+    <button (click)="submitComment()">Submit Comment</button>
+  </div>
+
+  <div *ngIf="post.comments?.length > 0">
+    <div *ngFor="let comment of post.comments">
+      <p>{{ comment.content }}</p>
+    </div>
+  </div>--->
+          <i class="bi bi-pencil clickable-icon text-white" (click)="openUpdateModal(post)"></i>
+          <span class="mx-2"></span>
+            <i class="bi bi-trash clickable-icon text-white" (click)="onDeletePost(post.idPost,post.user.idUser)"></i>    
+            <ul class="list-group list-group-flush" *ngFor="let comment of comments">
+              <li *ngIf="comment.post.idPost == post.idPost" class="list-group-item">{{ comment.content }}</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- post-list.component.html -->
+<!-- ... existing code ... -->
+
+<div #updatePostModal class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-basic-title">Update Post</h5>
+        <button type="button" class="close" (click)="modalService.dismissAll()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="updateContent">Updated Content:</label>
+        <textarea id="updateContent" [(ngModel)]="updatedContent" rows="4" cols="50"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="updatePost()">Update</button>
+        <button type="button" class="btn btn-secondary" (click)="modalService.dismissAll()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

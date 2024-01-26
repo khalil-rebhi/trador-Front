@@ -24,7 +24,8 @@ export class Client{
     youtube:string;
     facebook:string;
     bio:string;
-    photo:string;
+    profileImage:string;
+    profileImageName:string;
     enabled?:boolean;
     accountNonLocked?:boolean;
     authorities?: any;

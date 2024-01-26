@@ -37,6 +37,8 @@ import { DepositComponent } from './deposit/deposit.component';
 import { ChatbotComponent } from './shared/chatbot/chatbot.component';
 import { ChatComponent } from './chat/chat.component';
 import { NewsComponentComponent } from './news-component/news-component.component';
+import { PostComponent } from './post/post.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { NewsComponentComponent } from './news-component/news-component.componen
     ChatbotComponent,
     ChatComponent,
     NewsComponentComponent,
+    PostComponent,
+    CommentComponent
   ],
   imports: [
     MarketModule,
@@ -76,7 +80,7 @@ import { NewsComponentComponent } from './news-component/news-component.componen
     SimpleNotificationsModule.forRoot(),
     DataSurveillanceComponent,
     NgxGaugeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {

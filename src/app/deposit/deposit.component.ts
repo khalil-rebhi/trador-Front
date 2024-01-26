@@ -6,8 +6,9 @@ import { Client } from '../core/models/Client';
 import { Store } from '@ngrx/store';
 import { HeaderComponent } from '../shared/header/header.component';
 import { PortefeuilleService } from '../core/services/portefeuille.service';
-//import * as Razorpay from 'razorpay';
-declare var Razorpay :any;
+
+declare var Razorpay :any
+
 @Component({
   selector: 'app-deposit',
   templateUrl: './deposit.component.html',

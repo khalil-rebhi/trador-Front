@@ -25,7 +25,7 @@ export class ConfigProfileComponent  implements OnInit{
   imgURL: any;
   userFile: any;
   imagevalidation: string = "";
-  userpicture : any = HeaderComponent.profileimage;
+  userpicture : any = HeaderComponent.profileImage;
   public imagePath: any;
   repeatPassword: string;
   password: string;
@@ -44,7 +44,7 @@ export class ConfigProfileComponent  implements OnInit{
       }
     });
 
-    this.userpicture = 'http://localhost:8089/trador/user/getpicture/'+this.user.photo;
+    this.userpicture = `http://localhost:8089/trador/user/getpicture/${this.user.profileImage}`;
   }
   
 
@@ -139,18 +139,18 @@ export class ConfigProfileComponent  implements OnInit{
     const formData = new FormData();
     formData.append('iduser', this.user.idUser.toString());
     formData.append('file', this.userFile);
-    console.log("iduse = "+ this.user.idUser);
+    console.log("iduser = "+ this.user.idUser);
     console.log(formData);
-    this.userService.updateimage(formData).subscribe(
+    this.userService.updateimage(this.user.idUser , formData).subscribe(
 
       (res: any) => {
         this.alertstyle="success";
         this.alertmessage="profile image successfully updated !"; 
         this.userpicture = this.imgURL;
         this.user = res;
-        HeaderComponent.profileimage = this.imgURL;
-        localStorage.setItem("photo",this.user.photo);
-        console.log(this.store.select(this.user.photo));
+        HeaderComponent.profileImage = this.imgURL;
+        localStorage.setItem("profileImageName",this.user.profileImage);
+        console.log(this.store.select(this.user.profileImage));
         //AdminaccounthomeComponent.profileimagehome = this.imgURL;
       },
       (err : any)=> {

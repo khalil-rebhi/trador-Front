@@ -24,7 +24,7 @@ export class HeaderComponent implements AfterViewInit {
   public showSearch = false;
   public user : Client;
   public portefeuille : Portefeuille ;
-  static profileimage: any;
+  static profileImage: any;
   static profilesolde: number;
   solde : number ;
   constructor(private modalService: NgbModal, private store : Store<any> , private router:Router,private notifier : NotificationsService, private userService : UserService, private portefeuilleService : PortefeuilleService) {
@@ -34,15 +34,15 @@ export class HeaderComponent implements AfterViewInit {
   ngAfterViewInit() { }
 
   ngOnInit() {
-    HeaderComponent.profileimage = 'http://localhost:8089/trador/user/getpicture/'+this.user.photo;
+    HeaderComponent.profileImage = `http://localhost:8089/trador/user/getpicture/${this.user.profileImageName}` ;
     this.portefeuilleService.getPortefeuilleByUser(this.user.idUser).subscribe((portefeuille) => {
       HeaderComponent.profilesolde = portefeuille.solde;
       this.solde = portefeuille.solde;
     });
   }
 
-  get profileimage() {
-    return HeaderComponent.profileimage;
+  get profileImage() {
+    return HeaderComponent.profileImage;
   }
 
   get profilesolde() {
