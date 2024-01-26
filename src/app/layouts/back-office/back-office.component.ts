@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { logout } from 'src/app/store/actions/user.action';
 
@@ -11,7 +11,7 @@ import { logout } from 'src/app/store/actions/user.action';
 })
 export class BackOfficeComponent {
 
-  constructor(private store:Store<any> ) {
+  constructor(private store:Store<any> , private router:Router) {
     
   }
 
@@ -22,5 +22,9 @@ export class BackOfficeComponent {
   toggleClass(id : string){
     document.getElementsByClassName("collapsed").item(0)?.classList.remove("collapsed");
     document.getElementById(id)?.classList.add("collapsed");
+  }
+
+  gotoeducation(){
+    this.router.navigateByUrl('/admin/eduAdmin')
   }
 }

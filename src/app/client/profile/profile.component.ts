@@ -1,6 +1,6 @@
 import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { Client } from 'src/app/core/models/Client';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',

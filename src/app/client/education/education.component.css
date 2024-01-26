@@ -1,0 +1,34 @@
+/* Appliquer un style de base aux cartes */
+.card {
+    border: 1px solid #ddd; /* Bordure grise */
+    transition: transform 0.3s ease-in-out; /* Transition pour l'effet de transformation */
+    height: 100%; /* Définir une hauteur fixe pour toutes les cartes */
+}
+
+/* Effet d'ombre au survol */
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05); /* Agrandir légèrement la carte au survol */
+}
+
+/* Style pour les boutons de la carte */
+.btn-success {
+    background-color: #28a745; /* Couleur verte */
+    color: #fff; /* Texte blanc */
+    transition: background-color 0.3s ease-in-out; /* Transition pour la couleur de fond */
+}
+
+/* Effet de couleur au survol du bouton */
+.btn-success:hover {
+    background-color: #218838; /* Couleur verte légèrement plus sombre */
+}
+.course-price {
+    font-size: 1.2em; /* Taille de police du prix */
+    color: #ff5733; /* Couleur du texte du prix */
+    margin-right: 10px; /* Marge à droite pour séparer le prix du bouton */
+}
+.card-footer{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}

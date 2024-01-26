@@ -14,8 +14,9 @@ import { WalletComponent } from '../wallet/wallet.component';
 import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
 import { PostComponent } from '../post/post.component';
 import { CommentComponent } from '../comment/comment.component';
-
-
+import { EducationComponent } from './education/education.component';
+import { CoursesComponent } from './education/course1/courses.component';
+import { QuizComponent } from './education/quiz/quiz.component';
 
 export const clientroutes: Routes = [{
   path: '', component: ClientComponent, canActivate: [DataUserGuard], children: [
@@ -41,14 +42,25 @@ export const clientroutes: Routes = [{
       path: 'wallet', component: WalletComponent,
     },
     {
-      path:'chatbot', component:ChatbotComponent,
+      path: 'chatbot', component: ChatbotComponent,
     },
     {
-      path:'post', component:PostComponent,
+      path: 'post', component: PostComponent,
     },
     {
-      path:'comment', component:CommentComponent,
+      path: 'comment', component: CommentComponent,
+    },
+    {
+      path: 'education', component: EducationComponent,
+    },
+    {
+      path: 'course1', component: CoursesComponent
+    },
+    {
+      path: 'Quiz', component: QuizComponent
     }
+
+
 
 
   ]

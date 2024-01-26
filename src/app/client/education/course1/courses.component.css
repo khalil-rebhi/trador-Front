@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajustez la hauteur en fonction de vos besoins */
+  }
+  
+
+  
+  .course-title {
+    font-family: 'Arial', sans-serif; /* Choisissez la police de caractères que vous préférez */
+    font-size: 24px;
+    color: #333; /* Couleur du texte */
+    margin-bottom: 10px;
+  }
+  
+  .course-subtitle {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .course-description {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #777;
+  }
+  

@@ -9,6 +9,7 @@ import { BackOfficeComponent } from './layouts/back-office/back-office.component
 import { DataUserGuard } from './shared/guard/Data-User.guard';
 import { ChatComponent } from './chat/chat.component';
 import { NewsComponentComponent } from './news-component/news-component.component';
+import { EduAdminComponent } from './admin/edu-admin/edu-admin.component';
 
 
 export const Approutes: Routes = [
@@ -35,6 +36,10 @@ export const Approutes: Routes = [
       },
       {
         path: 'market/:market/:symbole', loadChildren: () => import('./market/market.module').then(m => m.MarketModule)
+      },
+      
+      {
+        path: 'education', loadChildren: () => import('./client/education/education.module').then(m => m.EducationModule)
       }
     ]
   }, 
@@ -45,6 +50,9 @@ export const Approutes: Routes = [
       {
         path: '',
         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+      },
+      {
+        path:'eduAdmin', component:EduAdminComponent
       }
     ]
   },
