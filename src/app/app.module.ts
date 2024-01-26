@@ -31,14 +31,14 @@ import { BackOfficeComponent } from './layouts/back-office/back-office.component
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MarketModule } from './market/market.module';
 import { DataSurveillanceComponent } from './shared/data-surveillance/data-surveillance.component';
-import { IndicatorComponentComponent } from './indicator-component/indicator-component.component';
-import { NgxGaugeModule } from 'ngx-gauge';
 import { DepositComponent } from './deposit/deposit.component';
 import { ChatbotComponent } from './shared/chatbot/chatbot.component';
 import { ChatComponent } from './chat/chat.component';
 import { NewsComponentComponent } from './news-component/news-component.component';
 import { PostComponent } from './post/post.component';
 import { CommentComponent } from './comment/comment.component';
+import { SymboleStore } from './store/SymboleStore';
+import { BidAskModalComponent } from './market/bid-ask-modal/bid-ask-modal.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,6 @@ import { CommentComponent } from './comment/comment.component';
     VerificationCodeTimerComponent,
     ResetPasswordFormComponent,
     BackOfficeComponent,
-    IndicatorComponentComponent,
     DepositComponent,
     ChatbotComponent,
     ChatComponent,
@@ -80,13 +79,14 @@ import { CommentComponent } from './comment/comment.component';
     SimpleNotificationsModule.forRoot(),
     DataSurveillanceComponent,
     NgxGaugeModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
-    }
+    },
+    SymboleStore
   ],
   bootstrap: [AppComponent]
 })

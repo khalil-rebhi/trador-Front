@@ -2,12 +2,23 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { OrderBook } from '../core/models/OrderBook';
 import { ActivatedRoute } from '@angular/router';
 import { Data } from '../core/models/Data';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { BidAskModalComponent } from './bid-ask-modal/bid-ask-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-market',
   templateUrl: './market.component.html',
-  styleUrls: ['./market.component.css']
+  styleUrls: ['./market.component.css'],
+  animations : [
+    trigger('fadeInOut',[
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(200))
+    ])
+  ]
 })
 export class MarketComponent implements OnInit {
   orderBookWebSocket: WebSocket;
@@ -20,10 +31,11 @@ export class MarketComponent implements OnInit {
   symbol : string;
   interval = "1day";
   spinner = true;
+  showOrderBook = true;
 
   myMap: Map<string, string> = new Map<string, string>();
   
-  constructor (private activatedRoute : ActivatedRoute,private zone: NgZone) {
+  constructor (private activatedRoute : ActivatedRoute,private zone: NgZone,private modalService: NgbModal) {
     this.myMap.set('1 day', '1day');
     this.myMap.set('1 week', '1week');
     this.myMap.set('2 weeks', '2weeks');
@@ -42,15 +54,16 @@ export class MarketComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) =>{
       this.market = params["market"];
       this.symbol = params["symbole"];
-      //this.connectGraphWebSocket();
-      //this.connectOrderBook();
+      this.connectGraphWebSocket();
+      this.connectOrderBook();
     })
   }
 
   connectOrderBook(){
-    this.orderBookWebSocket = new WebSocket(`ws://localhost:8089/trador/orderBook/crypto/btcusd`);
+    this.orderBookWebSocket = new WebSocket(`ws://localhost:8089/trador/orderBook/${this.market}/${this.symbol}`);
     this.orderBookWebSocket.onmessage = (event) => {
       this.zone.run(() => {
+        console.log(event.data);
         this.orderBookData = JSON.parse(event.data);
       });
     };
@@ -81,6 +94,19 @@ export class MarketComponent implements OnInit {
     }
     this.interval = interval;
     this.connectGraphWebSocket();
+  }
+
+  toggleOrderBook(){
+    this.showOrderBook = !this.showOrderBook;
+  }
+
+  placeBid(){
+    const modalRef = this.modalService.open(BidAskModalComponent);
+    modalRef.componentInstance.actionType = 'Bid';
+  }
+  placeAsk(){
+    const modalRef = this.modalService.open(BidAskModalComponent);
+    modalRef.componentInstance.actionType = 'Ask';
   }
 
 }

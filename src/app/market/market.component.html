@@ -24,7 +24,29 @@
         </div>
       </div>
   </div>
-  <div class="row-6 mt-2">
-    <app-order-book [orderBookData]="orderBookData"></app-order-book>
+  <div class=" row-6 mt-2">
+    <div class="row d-flex mt-2 mb-2">
+      <div class="col-4 align-items-start btn-group">
+        <button (click)="placeBid()" class="btn btn-success w-25">Place Bid</button>
+        <button (click)="placeAsk()" class="btn btn-danger w-25">Place Ask</button>
+      </div>
+      <div class="col-6"></div>
+      <div class="col-2 justify-content-center btn-group">
+        <div class="tooltip-container">
+          <a class="btn btn-outline-dark" (click)="toggleOrderBook()"><i class="bi bi-chevron-left"></i></a>
+          <div class="tooltip" *ngIf="showOrderBook">Show predictions</div>
+          <div class="tooltip" *ngIf="!showOrderBook">Show order book</div>
+        </div>
+        <div class="tooltip-container">
+          <a class="btn btn-outline-dark" (click)="toggleOrderBook()"><i class="bi bi-chevron-right"></i></a>
+          <div class="tooltip" *ngIf="showOrderBook">Show predictions</div>
+          <div class="tooltip" *ngIf="!showOrderBook">Show order book</div>
+        </div>
+      </div>
+    </div>
+    <div style="height:15rem;" >
+      <app-order-book [orderBookData]="orderBookData" *ngIf="showOrderBook" [@fadeInOut]="showOrderBook ? 'visible' : 'hidden'"></app-order-book>
+      <app-indicator-component [market]="market" [symbole]="symbol" *ngIf="!showOrderBook" [@fadeInOut]="showOrderBook ? 'hidden' : 'visible'"></app-indicator-component>
+    </div>
   </div>
 </div>
