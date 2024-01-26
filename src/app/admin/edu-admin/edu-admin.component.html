@@ -1,0 +1,61 @@
+<h4>Add Courses</h4>
+<div class="container">
+    <form >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Titre de cour</label>
+          <input type="text" class="form-control" id="title" aria-describedby="title" [(ngModel)]="course.title" #ngModel="ngModel" name="title">
+          
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Description de cour</label>
+            <input type="text" class="form-control" id="description" aria-describedby="description" [(ngModel)]="course.description" #ngModel="ngModel" name="description">
+            
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Contenu du cour</label>
+            <input type="text" class="form-control" id="content" aria-describedby="content" [(ngModel)]="course.content" #ngModel="ngModel" name="content">
+            
+        </div> 
+       
+        
+        <button type="button" class="btn btn-primary" (click)="addCourse()">Submit</button>
+      </form>
+
+</div>
+
+<h4>Add Chapters</h4>
+<div class="container">
+    <form >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Titre de chapitre</label>
+          <input type="text" class="form-control" id="title" aria-describedby="title" [(ngModel)]="chapter.title" #ngModel="ngModel" name="title">
+          
+        </div>
+
+
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Contenu du Chapitre</label>
+            <input type="text" class="form-control" id="content" aria-describedby="content" [(ngModel)]="chapter.content" #ngModel="ngModel" name="content">
+            
+        </div> 
+
+        
+       
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">id du cour</label>
+            <input type="number" class="form-control" id="content" aria-describedby="content" [(ngModel)]="chapter.content" #ngModel="ngModel" name="content">
+            
+        </div> 
+        
+        <button type="button" class="btn btn-primary" (click)="addCourse()">Submit</button>
+      </form>
+
+</div>
+
+
+
+
+
