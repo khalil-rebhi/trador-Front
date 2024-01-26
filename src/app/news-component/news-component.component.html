@@ -1,0 +1,33 @@
+<div class="text text-content">
+    <h1 style="text-align: center;">Les actualités financieres et de Trade</h1>
+    <p style="text-align: center;">Soyez à jour avec nous et avec nos actualités .<br>
+    <span style="color: inherit; font-size: inherit;">D</span><span style="color: inherit; font-size: inherit;">es fondamentaux aux stratégies les plus avancées, a</span><span style="color: inherit; font-size: inherit;">pprenez à votre rythme et testez vos connaissance avec des quizz et de</span><span style="color: inherit; font-size: inherit;">s exercices pratiques</span><span style="color: inherit; font-size: inherit;">.</span></p>
+</div>
+
+<div>
+    <div class="container">
+        <div class="row g-3" >
+            <div class="col-12 col-md-6 col-lg-4"  *ngFor="let news of newsList"  >
+                <div class="card">
+                    <img src="https://econ-alerts.com/wp-content/uploads/2017/05/stock-photo-5547354-financial-newspaper-series-1200x630.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ news.title }}</h5>
+                        <p class="card-text"> {{ news.summary }}</p> 
+                        <p class="card-text"> Auteurs {{ news.authors }}</p> 
+                      
+                     
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-success"[href]="news.url" >Visiter le lien</a> 
+                       
+                         
+                    </div>
+
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+

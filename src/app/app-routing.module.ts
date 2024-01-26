@@ -7,6 +7,8 @@ import { ForgetComponent } from './shared/forget/forget.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { DataUserGuard } from './shared/guard/Data-User.guard';
+import { ChatComponent } from './chat/chat.component';
+import { NewsComponentComponent } from './news-component/news-component.component';
 
 
 export const Approutes: Routes = [
@@ -17,6 +19,8 @@ export const Approutes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'forget', component: ForgetComponent },
+      { path: 'chat', component: ChatComponent },
+      { path: 'news', component: NewsComponentComponent }
     ]
   },
   {
