@@ -46,7 +46,9 @@ export class UserEffects{
         ofType(SIGNUP),
         exhaustMap((payload : Client) => {
             const {type , ...result} = payload;
-            this.authService.signup(result).subscribe(() => {
+            this.authService.signup(result).subscribe((result) => {
+                console.log(result);
+                
                 this.router.navigateByUrl("login");
                 return of({type : 'NO_ACTION'})
             });

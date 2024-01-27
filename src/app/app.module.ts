@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Approutes } from './app-routing.module';
-import { HeaderComponent } from './shared/header/header.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  CommonModule, LocationStrategy,
-  PathLocationStrategy
-} from '@angular/common';
-import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
-import { LoginComponent } from './shared/login/login.component';
+import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './store/reducers/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+
+import { NgxGaugeModule } from 'ngx-gauge';
+
+import { Approutes } from './app-routing.module';
+import { userReducer } from './store/reducers/user.reducer';
 import { UserEffects } from './store/effects/user.effects';
+import { SymboleStore } from './store/SymboleStore';
+
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { LoginComponent } from './shared/login/login.component';
 import { SignupComponent } from './shared/signup/signup.component';
 import { LandingComponent } from './shared/landing/landing.component';
 import { ForgetComponent } from './shared/forget/forget.component';
@@ -28,8 +30,7 @@ import { VerifCodeComponent } from './shared/verif-code/verif-code.component';
 import { VerificationCodeTimerComponent } from './shared/verification-code-timer/verification-code-timer.component';
 import { ResetPasswordFormComponent } from './shared/reset-password-form/reset-password-form.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
-import { SimpleNotificationsModule } from 'angular2-notifications';
-import { MarketModule } from './market/market.module';
+import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
 import { DataSurveillanceComponent } from './shared/data-surveillance/data-surveillance.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { ChatbotComponent } from './shared/chatbot/chatbot.component';
@@ -37,8 +38,7 @@ import { ChatComponent } from './chat/chat.component';
 import { NewsComponentComponent } from './news-component/news-component.component';
 import { PostComponent } from './post/post.component';
 import { CommentComponent } from './comment/comment.component';
-import { SymboleStore } from './store/SymboleStore';
-import { BidAskModalComponent } from './market/bid-ask-modal/bid-ask-modal.component';
+import { MarketModule } from './market/market.module';
 
 @NgModule({
   declarations: [
@@ -57,11 +57,15 @@ import { BidAskModalComponent } from './market/bid-ask-modal/bid-ask-modal.compo
     ChatComponent,
     NewsComponentComponent,
     PostComponent,
-    CommentComponent
+    CommentComponent,
   ],
   imports: [
-    MarketModule,
+    FrontOfficeComponent,
+    DataSurveillanceComponent,
     CommonModule,
+    HeaderComponent,
+    SidebarComponent,
+    SpinnerComponent,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -69,25 +73,16 @@ import { BidAskModalComponent } from './market/bid-ask-modal/bid-ask-modal.compo
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot(Approutes, { useHash: false }),
-    FrontOfficeComponent,
-    HeaderComponent,
-    SpinnerComponent,
-    SidebarComponent,
-    DataSurveillanceComponent,
-    StoreModule.forRoot({user : userReducer}),
-    EffectsModule.forRoot(UserEffects),
+    StoreModule.forRoot({ user: userReducer }),
+    EffectsModule.forRoot([UserEffects]),
     SimpleNotificationsModule.forRoot(),
-    DataSurveillanceComponent,
     NgxGaugeModule,
-    ReactiveFormsModule
+    MarketModule
   ],
   providers: [
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy
-    },
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
     SymboleStore
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
