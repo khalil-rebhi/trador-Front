@@ -46,6 +46,7 @@ export class UserEffects{
         ofType(SIGNUP),
         exhaustMap((payload : Client) => {
             const {type , ...result} = payload;
+            console.log(result);
             this.authService.signup(result).subscribe((result) => {
                 console.log(result);
                 

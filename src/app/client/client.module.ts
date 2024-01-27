@@ -13,6 +13,8 @@ import { PortefeuilleComponent } from './portefeuille/portefeuille.component';
 import { WalletComponent } from '../wallet/wallet.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { EducationComponent } from './education/education.component';
+import { ChatComponent } from '../chat/chat.component';
+import { NewsComponentComponent } from '../news-component/news-component.component';
 
 
 
@@ -27,7 +29,9 @@ import { EducationComponent } from './education/education.component';
     ReclamationComponent,
     WalletComponent,
     TransactionHistoryComponent,
-    EducationComponent
+    EducationComponent,
+    ChatComponent,
+    NewsComponentComponent,
    
   ],
   imports: [

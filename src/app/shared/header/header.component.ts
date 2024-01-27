@@ -76,19 +76,31 @@ export class HeaderComponent implements AfterViewInit {
     this.router.navigateByUrl("/trador/market/stocks/IBM")
   }
 
-  toWallet(){
-    this.router.navigateByUrl("/trador/client/portefeuille");
-  }
 
   todepot(){
     this.router.navigateByUrl("/trador/client/deposit")
   }
 
-  tohistorique(){
-    this.router.navigateByUrl("/transactionhistory") 
+  toEducation(){
+    this.router.navigateByUrl("/trador/client/education")
   }
 
-  towallet(){
+  toForum(){
+    this.router.navigateByUrl("/trador/client/post")
+  }
+
+  toNews(){
+    this.router.navigateByUrl("/trador/client/news")
+  }
+  toChat(){
+    this.router.navigateByUrl("/trador/client/chat")
+  }
+
+  tohistorique(){
+    this.router.navigateByUrl("/trador/client/transaction-history") 
+  }
+
+  toWallet(){
     this.router.navigateByUrl("/trador/client/wallet") 
   }
 

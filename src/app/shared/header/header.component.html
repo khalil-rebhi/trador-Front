@@ -3,28 +3,9 @@
 <!-- ============================================================== -->
 <ul class="navbar-nav float-start me-auto">
   <li class="nav-item">
-    <a
-      class="nav-link line waves-effect waves-dark"
-      href="/trador/client/education"
+    <a class="nav-link line waves-effect waves-dark" (click)="toMarket()"
+      >Market</a
     >
-      Education
-    </a>
-  </li>
-  <li class="nav-item">
-    <a
-      class="nav-link line waves-effect waves-dark"
-      routerLink="/trador/client/config"
-    >
-      About
-    </a>
-  </li>
-  <li class="nav-item">
-    <a
-      class="nav-link line waves-effect waves-dark"
-      href="/trador/client/portefeuille"
-    >
-      Wallet
-    </a>
   </li>
   <li class="nav-item">
     <a class="nav-link line waves-effect waves-dark" (click)="toWallet()">
@@ -32,15 +13,24 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link line waves-effect waves-dark" href="/trador/client/post">
+    <a
+      class="nav-link line waves-effect waves-dark"
+      (click)="toEducation()"
+    >
+      Education
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link line waves-effect waves-dark" (click)="toForum()">
       Forum
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link line waves-effect waves-dark" (click)="toMarket()"
-      >Market</a
-    >
+    <a class="nav-link line waves-effect waves-dark" (click)="toNews()">
+      News
+    </a>
   </li>
+  
 </ul>
 <!-- ============================================================== -->
 <!-- Right side toggle and nav items -->
@@ -85,16 +75,13 @@
       <a class="dropdown-item" style="cursor: pointer" (click)="todepot()">
         Deposit</a
       >
-      <a class="dropdown-item" style="cursor: pointer" (click)="tohistorique()">
-        Transactions</a
-      >
       <a class="dropdown-item" style="cursor: pointer" (click)="toretrait()">
         Retrait</a
       >
       <a class="dropdown-item" style="cursor: pointer" (click)="tohistorique()">
         Transactions History</a
       >
-      <a class="dropdown-item" style="cursor: pointer" (click)="towallet()">
+      <a class="dropdown-item" style="cursor: pointer" (click)="toWallet()">
         Wallet</a
       >
     </div>
@@ -123,7 +110,7 @@
       <a class="dropdown-item" style="cursor: pointer" (click)="toprofile()">
         My Profile</a
       >
-      <a class="dropdown-item" style="cursor: pointer"> Inbox</a>
+      <a class="dropdown-item" style="cursor: pointer" (click)="toChat()"> Inbox</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"> Account Setting</a>
       <div class="dropdown-divider"></div>

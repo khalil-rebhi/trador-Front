@@ -17,6 +17,9 @@ import { CommentComponent } from '../comment/comment.component';
 import { EducationComponent } from './education/education.component';
 import { CoursesComponent } from './education/course1/courses.component';
 import { QuizComponent } from './education/quiz/quiz.component';
+import { ChatComponent } from '../chat/chat.component';
+import { NewsComponentComponent } from '../news-component/news-component.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 export const clientroutes: Routes = [{
   path: '', component: ClientComponent, canActivate: [DataUserGuard], children: [
@@ -58,7 +61,10 @@ export const clientroutes: Routes = [{
     },
     {
       path: 'Quiz', component: QuizComponent
-    }
+    },
+    { path: 'chat', component: ChatComponent },
+    { path: 'news', component: NewsComponentComponent },
+    {path : 'transaction-history', component : TransactionHistoryComponent}
 
 
 

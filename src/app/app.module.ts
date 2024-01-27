@@ -34,8 +34,6 @@ import { FrontOfficeComponent } from './layouts/front-office/front-office.compon
 import { DataSurveillanceComponent } from './shared/data-surveillance/data-surveillance.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { ChatbotComponent } from './shared/chatbot/chatbot.component';
-import { ChatComponent } from './chat/chat.component';
-import { NewsComponentComponent } from './news-component/news-component.component';
 import { PostComponent } from './post/post.component';
 import { CommentComponent } from './comment/comment.component';
 import { MarketModule } from './market/market.module';
@@ -54,8 +52,7 @@ import { MarketModule } from './market/market.module';
     BackOfficeComponent,
     DepositComponent,
     ChatbotComponent,
-    ChatComponent,
-    NewsComponentComponent,
+
     PostComponent,
     CommentComponent,
   ],
