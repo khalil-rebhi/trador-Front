@@ -15,6 +15,8 @@ import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
 import { EducationComponent } from './education/education.component';
 import { CoursesComponent } from './education/course1/courses.component';
 import { QuizComponent } from './education/quiz/quiz.component';
+import { Quiz2Component } from './education/quiz2/quiz2.component';
+import { ResultatComponent } from './education/resultat/resultat.component';
 
 
 
@@ -55,6 +57,12 @@ export const clientroutes: Routes = [{
     },
     {
       path:'Quiz',component:QuizComponent
+    },
+    {
+      path:'Quiz2',component:Quiz2Component
+    },
+    {
+      path:'result',component:ResultatComponent
     }
 
 

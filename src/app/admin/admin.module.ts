@@ -10,12 +10,14 @@ import { EduAdminComponent } from './edu-admin/edu-admin.component';
 
 
 
+
 @NgModule({
   declarations: [
     AdminComponent,
     ListUsersComponent,
     EditUserComponent,
     EduAdminComponent,
+
 
   ],
   imports: [

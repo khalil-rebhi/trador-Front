@@ -1,0 +1,79 @@
+.circle,
+.circle svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.circle {
+  margin: auto;
+  text-align: center;
+}
+
+.circle svg circle {
+  width: 150px;
+  height: 150px;
+  fill: none;
+  stroke-width: 9;
+  stroke: #000;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+}
+
+.circle svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #a9a2a2;
+}
+
+.circle svg circle:nth-child(2) {
+  stroke-linecap: round;
+  stroke: linear-gradient(180deg, #111a1b 0%, #0074e0 100%);
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(-90deg) translate(5px, 5px);
+  transform-origin: 50% 50%;
+}
+
+.circle .number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  background-color: #0074e0;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.blue-grad-text {
+  background-image: linear-gradient(45deg, #2dcce2 0%, #0074e0 100%);
+}
+
+.red-grad-text {
+  background-image: linear-gradient(45deg, #f11111 0%, #dc00e0 100%);
+}
+
+.green-grad-text {
+  background-image: linear-gradient(45deg, #9a2de2 0%, #9500e0 100%);
+}
+
+.score-subtitle {
+  font-family: "Open Sans";
+  font-weight: 800;
+  color: #999999;
+}
+.content{
+    justify-content: center;
+}
