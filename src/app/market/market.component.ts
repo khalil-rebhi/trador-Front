@@ -5,6 +5,7 @@ import { Data } from '../core/models/Data';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BidAskModalComponent } from './bid-ask-modal/bid-ask-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { staticOrderBook } from './StaticOrderBook';
 
 
 @Component({
@@ -60,13 +61,14 @@ export class MarketComponent implements OnInit {
   }
 
   connectOrderBook(){
-    this.orderBookWebSocket = new WebSocket(`ws://localhost:8089/trador/orderBook/${this.market}/${this.symbol}`);
-    this.orderBookWebSocket.onmessage = (event) => {
-      this.zone.run(() => {
-        console.log(event.data);
-        this.orderBookData = JSON.parse(event.data);
-      });
-    };
+    // this.orderBookWebSocket = new WebSocket(`ws://localhost:8089/trador/orderBook/${this.market}/${this.symbol}`);
+    // this.orderBookWebSocket.onmessage = (event) => {
+    //   this.zone.run(() => {
+    //     console.log(event.data);
+    //     this.orderBookData = JSON.parse(event.data);
+    //   });
+    // };
+    this.orderBookData = staticOrderBook;
   }
   connectGraphWebSocket(){
     this.graphWebSocket = new WebSocket(`ws://localhost:8089/trador/graph/${this.market}/${this.symbol}/${this.interval}`)

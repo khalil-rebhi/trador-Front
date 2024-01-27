@@ -39,13 +39,13 @@ Trad'OR thank your interaction !   <button type="button" class="btn-close" aria-
           <i class="bi bi-hand-thumbs-up clickable-icon text-white"
      [class.text-success]="post.isLiked"
      [class.text-muted]="!post.isLiked && !post.isDisliked"
-     (click)="toggleLike(post)"></i>
+     (click)="toggleLike(post)" style="cursor: pointer;"></i>
   <span class="like-count text-white">{{ post.likes }}</span>
   <span class="mx-2"></span>
   <i class="bi bi-hand-thumbs-down clickable-icon text-white"
      [class.text-danger]="post.isDisliked"
      [class.text-muted]="!post.isLiked && !post.isDisliked"
-     (click)="toggleDislike(post)"></i>
+     (click)="toggleDislike(post)" style="cursor: pointer;"></i>
   <span class="like-count text-white">{{ post.dislikes }}</span>
   <span class="mx-2"></span>
 

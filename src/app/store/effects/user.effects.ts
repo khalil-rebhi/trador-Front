@@ -28,7 +28,7 @@ export class UserEffects{
         exhaustMap((payload : {payload : {accessToken : string , user : Client}, type : any}) => {
             localStorage.setItem("accessToken",payload.payload.accessToken);
             localStorage.setItem("id",payload.payload.user.idUser.toString());
-            this.router.navigateByUrl("trador");
+            this.router.navigateByUrl("trador/market/stocks/IBM");
           return of({ type: 'NO_ACTION' });
         })
       ));
